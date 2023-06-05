@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>ブラウザでプッシュ通知を実装</title>
+</head>
+<body>
+  <center>
+    <h1 style="margin-top: 300px">ブラウザでプッシュ通知を実装しよう</h1>
+  </center>
+  <center>
+    <!--Push()へ飛ぶ-->
+    <input type="button" id="push" onclick="return push()" value="クリックするとプッシュ通知が送られます">
+  </center>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+  <script>
+    //プッシュ通知の作成
+    function push(){
+      Push.create("プッシュ通知", //プッシュ通知のタイトル
+      {
+        body: "プッシュ通知のテストです。", //プッシュ通知の内容
+        timeout: 8000, //プッシュ通知を表示する時間
+        onClick: function () { //プッシュ通知をクリックしたときのイベント
+        window.focus(); //プッシュ通知をしたWebサイトを開く
+        this.close(); //プッシュ通知を閉じる
+        }
+      });
+      //音を鳴らす
+      let sound = new Audio("./sample.mp3");
+      sound.play();
+
+    /*APIにて音声を生成する方法
+      //webオーディオAPIコンテキストを生成
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      //オシレーターノードを生成
+      const oscillator = audioCtx.createOscillator();
+      //ゲインの生成
+      const gainNode = audioCtx.createGain();
+      //webオーディオAPIコンテキストと接続？(ここがよく分からない)
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      //音量
+      gainNode.gain.value = 0.2;
+      //通知音のタイプ
+      oscillator.type = 'sawtooth';
+      //通知音スタート
+      oscillator.start();
+      //通知音ストップ
+      oscillator.stop(0.2);
+      */
+  }
+  </script>
+</body>
+</html>
