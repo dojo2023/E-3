@@ -1,0 +1,39 @@
+input[type=radio]+label:before{
+    content: "";
+    display: inline-block;
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+}
+
+input[type=radio][value="none"]+label:before{
+    background-image: url(/img/nonemark.png);
+}
+
+/*
+input[type=radio][value="101"]+label:before{
+    background-image: url(/img/101.png);
+}
+input[type=radio][value="102"]+label:before{
+    background-image: url(/img/102.png);
+}
+input[type=radio][value="103"]+label:before{
+    background-image: url(/img/103.png);
+}
+input[type=radio][value="104"]+label:before{
+    background-image: url(/img/104.png);
+}
+input[type=radio][value="105"]+label:before{
+    background-image: url(/img/105.png);
+}
+input[type=radio][value="106"]+label:before{
+    background-image: url(/img/106.png);
+}*/
+
+input[type=radio]:checked+label::before{
+    border: 3px solid #000;
+    box-sizing: border-box;
+}
+input[type=radio]{
+    display: none;
+}

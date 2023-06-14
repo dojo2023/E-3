@@ -5,14 +5,9 @@ push.htmlで動作する
 使用するライブラリ (CDN方式のためダウンロード不要)
 -jQuery
 
-参考文献
-https://www.casleydi.com/blog/engineer/293/
-
 ・ドロワー表示について (ハンバーガーメニュー)
 drawer.html, drawer.css, drawer.jsで動作する
 
 使用するライブラリ
 -なし
 
-参考文献
-https://dubdesign.net/javascript/classlisttoggle-rightdrawer/

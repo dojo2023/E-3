@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animeoverlay</title>
+    <link rel="stylesheet" href="css/overlay.css">
+    <link rel="stylesheet" href="css/imgradio.css">
+    <style id="stylesheet" type="text/css"></style>
+</head>
+<body>
+    <div>
+        <input type="radio" name="dress" value="none" id="nonedress"><label for="nonedress"></label>
+        <input type="radio" name="dress" value="101" id="1"><label for="1"></label>
+        <input type="radio" name="dress" value="102" id="2"><label for="2"></label>
+        <input type="radio" name="dress" value="103" id="3"><label for="3"></label>
+    </div>
+    <div>
+        <input type="radio" name="hat" value="none" id="nonehat"><label for="nonehat"></label>
+        <input type="radio" name="hat" value="104" id="4"><label for="4"></label>
+        <input type="radio" name="hat" value="105" id="5"><label for="5"></label>
+        <input type="radio" name="hat" value="106" id="6"><label for="6"></label>
+    </div>
+    <div>
+        <input type="radio" name="grass" value="none" id="nonegrass"><label for="nonegrass"></label>
+        <input type="radio" name="grass" value="107" id="7"><label for="7"></label>
+    </div>
+    <div>
+        <input type="radio" name="bg" value="none" id="nonebg"><label for="nonebg"></label>
+        <input type="radio" name="bg" value="108" id="8"><label for="8"></label>
+        <input type="radio" name="bg" value="109" id="9"><label for="9"></label>
+    </div>
+    <div class="box">
+    <img id="imgbg"/>
+        <div id="touch">
+            <img src="img/1.png" class="abs"/>
+            <img src="img/10.png" class="abs"/>
+            <div class="arm">
+                <img src="img/60.png" class="abs"/>
+            </div>
+            <img src="img/40.png" class="abs"/>
+            <img src="img/50.png" class="abs"/>
+            <img id="imgdress" class="abs"/>
+            <img id="imghat" class="abs"/>
+            <img id="imggrass" class="abs"/>
+        </div>
+    </div>
+<script src="js/jquery-3.6.4.min.js"></script>
+<script src="js/animeoverlaywritecss.js"></script>
+<script src="js/animeoverlay.js"></script>
+<script src="js/imgradio.js"></script>
+</body>
+</html>
