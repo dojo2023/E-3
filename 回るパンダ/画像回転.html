@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div class="box">
+    <img src="image/無題1.png" />
+  </div>
+</body>
+<style>
+    body {
+  text-align: center;
+}
+.box {
+  height: 200px;
+  margin-inline: auto;
+  margin-top: 50px;
+  width: 200px;
+}
+.box img {
+  animation: rotation-y 2.5s linear infinite;
+  background-color: #b2d8ff;
+  height: auto;
+  width: 100%;
+}
+.title {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 40px;
+  position: relative;
+}
+/* アニメーション */
+@keyframes rotation-y {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(3000deg);
+  }
+}
+</style>
+</html>
