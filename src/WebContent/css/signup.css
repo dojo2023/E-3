@@ -1,1 +1,31 @@
-@charset "UTF-8";
+input[type=radio]+label:before{
+    content: "";
+    display: inline-block;
+    background-size: contain;
+    width: 140px;
+    height: 140px;
+}
+
+input[type=radio][value="pet1"]+label:before{
+	background-image: url(./img/pet1.png);
+}
+input[type=radio][value="pet2"]+label:before{
+	background-image: url(./img/pet2.png);
+}
+input[type=radio][value="pet3"]+label:before{
+	background-image: url(./img/pet3.png);
+}
+input[type=radio][value="pet4"]+label:before{
+	background-image: url(./img/pet4.png);
+}
+input[type=radio][value="pet5"]+label:before{
+	background-image: url(./img/pet5.png);
+}
+
+input[type=radio]:checked+label::before{
+    border: 3px solid #000;
+    box-sizing: border-box;
+}
+input[type=radio]{
+    display: none;
+}
