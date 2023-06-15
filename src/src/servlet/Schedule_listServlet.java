@@ -31,8 +31,8 @@ public class Schedule_listServlet extends HttpServlet {
 			return;
 		}else {
 		*/
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
-			dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+		dispatcher.forward(request, response);
 		//}
 	}
 
@@ -44,6 +44,7 @@ public class Schedule_listServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String values = request.getParameter("values");
 		System.out.println(values);
+		String user = request.getParameter("userid");
 
 		if(values.equals("スケジュール表示")) {
 			// 検索処理を行う

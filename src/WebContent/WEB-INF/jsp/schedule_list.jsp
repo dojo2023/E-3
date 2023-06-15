@@ -70,6 +70,7 @@
 
     <div>
         <form method="POST" action="/Esan/Schedule_listServlet">
+        	<input type="hidden" name="userid" value="ユーザ名">
             <input type="submit" name="values" value="スケジュール表示">
         </form>
     </div>
@@ -79,12 +80,14 @@
 
     <div id="schedule">
         <table border>
-        <c:forEach begin="0" end="5" step="1" var="i">
+        <c:forEach begin="0" end="24" step="1" var="hour">
+        <c:forEach begin="0" end="5" step="1" var="minutes">
         	<tr>
-            <td class="hourtime">00:${i}0</td>
+            <td class="hourtime">00:${minutes}0</td>
             <td class="td1"></td>
             <td class="td2"></td>
             </tr>
+        </c:forEach>
         </c:forEach>
             <tr>
             <td class="hourtime">00:00</td>
