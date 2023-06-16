@@ -97,10 +97,15 @@
 	        	</c:choose>
 	        	<c:set var="time" value="${zero}${hour}:${minutes}0"/>
 	        	<tr>
-	            <td class="hourtime">${time}</td>
+
+	        	<c:choose>
+	        		<c:when test="${minutes == 0}"><td class="hourtime">${time}</td></c:when>
+	        		<c:when test="${minutes == 3}"><td class="halftime">${time}</td></c:when>
+	        		<c:otherwise><td class="hiddentime">${time}</td></c:otherwise>
+	        	</c:choose>
 
 	            <c:choose>
-	            	<c:when test="${hour < scheduleList[colorcount].finish_hour || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}"><td class="td1" bgcolor="${scheduleList[colorcount].color_code}"></c:when>
+	            	<c:when test="${(hour >= scheduleList[colorcount].start_hour && hour < scheduleList[colorcount].finish_hour) || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}"><td class="td1" bgcolor="${scheduleList[colorcount].color_code}"></c:when>
 	            	<c:otherwise><td class="td1"></c:otherwise>
 	            </c:choose>
 
