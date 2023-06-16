@@ -17,7 +17,7 @@
 	<h2>ログイン</h2>
 	<div class="main">
 	<form class="form1" method="POST" action="/Esan/LoginServlet">
-		<input type="text" name="username" placeholder="ユーザネーム"><br>
+		<input type="text" name="user_name" placeholder="ユーザネーム"><br>
       	<input type="password" name="password" placeholder="パスワード"><br>
       	<input type="submit" name="LOGIN" value="ログイン" class="submit"><br>
       	<a href="/Esan/SignupServlet" id="signup">アカウント作成</a>
