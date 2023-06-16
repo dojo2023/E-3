@@ -11,7 +11,7 @@
     background: #e0edff;
     border-radius: 15px;
   }
-  
+
   .balloon1:before {
     content: "";
     position: absolute;
@@ -21,7 +21,7 @@
     border: 15px solid transparent;
     border-top: 15px solid #e0edff;
   }
-  
+
   .balloon1 p {
     margin: 0;
     padding: 0;
@@ -38,9 +38,8 @@
 #schedule td {
   width: 10rem;
 }
-/*
+
 #schedule {
-  height: 300px;
+  height: 500px;
   overflow: scroll;
 }
-*/

@@ -10,6 +10,9 @@ public class Schedule implements Serializable {
 	private String finish_time;
 	private int color_id;
 	private String content;
+	private String color_code;
+	private String start_hour;
+	private String finish_hour;
 
 	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
 		this.user_name = user_name;
@@ -19,6 +22,17 @@ public class Schedule implements Serializable {
 		this.finish_date = finish_date;
 		this.finish_time = finish_time;
 		this.color_id = color_id;
+		this.content = content;
+	}
+
+	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
+		this.user_name = user_name;
+		this.schedule_name = schedule_name;
+		this.start_date = start_date;
+		this.start_time = start_time;
+		this.finish_date = finish_date;
+		this.finish_time = finish_time;
+		this.color_code = color_code;
 		this.content = content;
 	}
 
@@ -71,10 +85,31 @@ public class Schedule implements Serializable {
 		this.color_id = color_id;
 	}
 
+	public String getColor_code() {
+		return color_code;
+	}
+	public void setColor_code(String color_code) {
+		this.color_code = color_code;
+	}
+
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getStart_hour() {
+		return start_hour;
+	}
+	public void setStart_hour(String start_hour) {
+		this.start_hour = start_hour;
+	}
+
+	public String getFinish_hour() {
+		return finish_hour;
+	}
+	public void setFinish_hour(String finish_hour) {
+		this.finish_hour = finish_hour;
 	}
 }

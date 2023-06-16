@@ -74,9 +74,13 @@ function createProcess(year, month) {
 }
 
 $(document).on('click', '#days' + 1, function() {
+	document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
 });
 $(document).on('click', '#days' + 2, function() {
+	document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
 });
 $(document).on('click', '#days' + 3, function() {
