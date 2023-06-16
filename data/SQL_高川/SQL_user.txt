@@ -1,0 +1,28 @@
+userテーブルの情報
+
+【ドライバ】
+org.h2.Driver
+
+【JDBC URL】
+jdbc:h2:file:C:/dojo6//data/SQL_高川/fcdb2
+
+【ユーザー名】	【パスワード】
+sa		（なし）
+
+【userテーブルを作成するSQL文】
+create table user (
+  user_name varchar(20) primary key,
+  password varchar(100) not null,
+  email varchar(50) not null,
+  pet_name varchar(20) not null,
+  pet_id int default 1 not null ,
+  done_cnt int default 0,
+  last_login_date int,
+  login_days int,
+  coin_cnt int default 0
+);
+
+【userテーブルにサンプルデータを登録するSQL文】
+insert into user (user_name, password, email, pet_name, pet_id) 
+values ('fc', 'doraemon', 'fc.gmail', 'ドラちゃん', '2');
+

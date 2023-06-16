@@ -6,11 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.User;
+import model.Login;
 
 public class LoginDAO {
 	// ログインできるならtrueを返す
-	public boolean isLoginOK(User idpw) {
+	public boolean isLoginOK(Login login) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -19,18 +19,18 @@ public class LoginDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高川/fcbd2", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高川/fcdb2", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "select count(*) from IDPW where ID = ? and PW = ?";
+			String sql = "select count(*) from user where user_name = ? and password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, idpw.getId());
-			pStmt.setString(2,idpw.getPw());
+			pStmt.setString(1, login.getUn());
+			pStmt.setString(2,login.getPw());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+			// ユーザーネームとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
 			if (rs.getInt("count(*)") == 1) {
 				loginResult = true;
@@ -61,3 +61,4 @@ public class LoginDAO {
 		return loginResult;
 	}
 }
+
