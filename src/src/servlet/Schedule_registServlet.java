@@ -8,9 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.Schedule_registDAO;
+import model.Schedule;
 
 /**
  * Servlet implementation class Schedule_registServlet
@@ -39,13 +39,13 @@ public class Schedule_registServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//もしログインしてなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if(session.getAttribute("id") == null){
-			response.sendRedirect("/Esan/LoginServlet");
-			return;
-		}
-		//リクエストパラメータを取得
+//		//もしログインしてなかったらログインサーブレットにリダイレクトする
+//		HttpSession session = request.getSession();
+//		if(session.getAttribute("id") == null){
+//			response.sendRedirect("/Esan/LoginServlet");
+//			return;
+//		}
+//		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String user_name = request.getParameter("user_name");
 		String schedule_name = request.getParameter("schedule_name");
@@ -57,11 +57,15 @@ public class Schedule_registServlet extends HttpServlet {
 		String content= request.getParameter("content");
 
 		//登録処理
-
 		Schedule_registDAO registDAO = new Schedule_registDAO();
-		if(registDAO.insert(Schedule(user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content))) {
-			request.setAttribute("", registDAO);
+		if(registDAO.insert(new Schedule(user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content))) {
+			//登録成功
+			response.sendRedirect("Schedule_listServlet");
+			return;
+		}else{
+			//登録失敗
+			response.sendRedirect("Schedule_registServlet");
 		}
-	}
 
+	}
 }
