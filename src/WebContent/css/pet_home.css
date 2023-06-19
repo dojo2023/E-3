@@ -1,1 +1,42 @@
 @charset "UTF-8";
+/* 吹き出し本体 */
+.balloon{
+  width: 300px;
+  position: relative;
+  padding: 20px;
+  background-color: #107b5e;
+  color: #ffffff;
+  border-radius: 10px;
+}
+/* 色付きの半円 */
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: rotate(135deg);
+  left: 10px;
+  bottom: -25px;
+  border-left: 20px solid #107b5e;
+  border-top: 20px solid #107b5e;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+/* 白い半円 */
+.balloon::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: rotate(150deg);
+  left: 0px;
+  bottom: -40px;
+  border-left: 20px solid #ffffff;
+  border-top: 20px solid #ffffff;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}

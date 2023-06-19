@@ -1,0 +1,19 @@
+【JDBC URL】
+jdbc:h2:file:C:/dojo6/data/SQL_飯泉/fcdb4
+
+
+
+【fcテーブルを作成するSQL文】
+create table pet(
+
+pet_img_id varchar(10) primary key,  ペットの画像ID 
+pet_id int not null,　　　　　　　  ペットの種類ID
+pet_img_path varchar(200) not null  ペットの画像パス
+);
+
+
+user_name varchar(20) primary key,
+closet_kind_id int,
+closet_img_id int,
+last_closet boolean,
+
