@@ -25,7 +25,7 @@ public class Schedule_registDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
 
 			//SQL準備
-			String sql = "select user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name";
+			String sql = "select user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content from schedule where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL完成
@@ -126,32 +126,32 @@ public class Schedule_registDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQLの完成
-			if(sche.getUser_name() != null && sche.getUser_name().equals("")) {
+			if(sche.getUser_name() != null && !sche.getUser_name().equals("")) {
 				pStmt.setString(1, sche.getUser_name());
 			}else {
 				pStmt.setString(1,null);
 			}
-			if(sche.getSchedule_name() != null && sche.getSchedule_name().equals("")) {
+			if(sche.getSchedule_name() != null && !sche.getSchedule_name().equals("")) {
 				pStmt.setString(2, sche.getSchedule_name());
 			}else {
 				pStmt.setString(2,null);
 			}
-			if(sche.getStart_date() != null && sche.getStart_date().equals("")) {
+			if(sche.getStart_date() != null && !sche.getStart_date().equals("")) {
 				pStmt.setString(3, sche.getStart_date());
 			}else {
 				pStmt.setString(3,null);
 			}
-			if(sche.getStart_time() != null && sche.getStart_time().equals("")) {
+			if(sche.getStart_time() != null && !sche.getStart_time().equals("")) {
 				pStmt.setString(4, sche.getStart_time());
 			}else {
 				pStmt.setString(4,null);
 			}
-			if(sche.getFinish_date() != null && sche.getFinish_date().equals("")) {
+			if(sche.getFinish_date() != null && !sche.getFinish_date().equals("")) {
 				pStmt.setNString(5, sche.getFinish_date());
 			}else {
 				pStmt.setString(5,null);
 			}
-			if(sche.getFinish_time() != null && sche.getFinish_time().equals("")) {
+			if(sche.getFinish_time() != null && !sche.getFinish_time().equals("")) {
 				pStmt.setString(6, sche.getFinish_time());
 			}else {
 				pStmt.setString(6,null);
@@ -161,7 +161,7 @@ public class Schedule_registDAO {
 			}else {
 				pStmt.setInt(7,0);
 			}
-			if(sche.getContent() != null && sche.getContent().equals("")) {
+			if(sche.getContent() != null && !sche.getContent().equals("")) {
 				pStmt.setString(8, sche.getContent());
 			}else {
 				pStmt.setString(8,null);

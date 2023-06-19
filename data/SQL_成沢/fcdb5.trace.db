@@ -150,3 +150,25 @@ select USER_NAME,schedule_name,start_date,start_time,finish_date,finish_time,col
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
 	at dao.Schedule_registDAO.select(Schedule_registDAO.java:29)
 	at test.test.main(test.java:15)
+2023-06-19 12:07:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "parameterIndex" に対する値 "8" が不正です
+Invalid value "8" for parameter "parameterIndex" [90008-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:587)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1573)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:427)
+	at dao.Schedule_editDAO.update(Schedule_editDAO.java:165)
+	at test.editTest.main(editTest.java:16)
+2023-06-19 13:11:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "parameterIndex" に対する値 "8" が不正です
+Invalid value "8" for parameter "parameterIndex" [90008-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:587)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1573)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:427)
+	at dao.Schedule_editDAO.update(Schedule_editDAO.java:165)
+	at test.editTest.main(editTest.java:16)

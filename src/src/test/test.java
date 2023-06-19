@@ -31,7 +31,7 @@ public class test {
 		if(dao.insert(regist)) {
 			System.out.println("登録成功！");
 			List<Schedule> sche2 = dao.select(regist);
-			for(Schedule sche:sche2) {
+			for(Schedule sche : sche2) {
 				System.out.println("user_name:" +sche.getUser_name());
 				System.out.println("schedule_name:" +sche.getSchedule_name());
 				System.out.println("start_date:" +sche.getStart_date());
@@ -44,6 +44,5 @@ public class test {
 		}else {
 			System.out.println("登録失敗");
 		}
-
 	}
 }
