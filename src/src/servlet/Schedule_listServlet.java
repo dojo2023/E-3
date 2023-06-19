@@ -40,7 +40,7 @@ public class Schedule_listServlet extends HttpServlet {
 		session.setAttribute("pet", "1");
 		session.setAttribute("coin", "52");
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list2.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -57,31 +57,44 @@ public class Schedule_listServlet extends HttpServlet {
 		System.out.println(date);
 		request.setAttribute("date", date);
 
-
 		//スケジュールをすべて取得
 		if(values != null) {
-		if(values.equals("スケジュール表示")) {
-			// 検索処理を行う
-			Schedule_listDAO sDao = new Schedule_listDAO();
-			List<Schedule> scheduleList = sDao.selectcolor_code();
-			//List<Schedule> scheduleList = sDao.select();
+			if(values.equals("スケジュール表示")) {
+				// 検索処理を行う
+				Schedule_listDAO sDao = new Schedule_listDAO();
+				List<Schedule> scheduleList = sDao.selectcolor_code();
+				//List<Schedule> scheduleList = sDao.select();
 
-			for(Schedule e: scheduleList) {
-				e.setStart_time(e.getStart_time().substring(0, 5));
-				e.setFinish_time(e.getFinish_time().substring(0, 5));
-				e.setStart_hour(e.getStart_time().substring(0, 2));
-				e.setFinish_hour(e.getFinish_time().substring(0, 2));
+				for(Schedule e: scheduleList) {
+					e.setStart_time(e.getStart_time().substring(0, 5));
+					e.setFinish_time(e.getFinish_time().substring(0, 5));
+					e.setStart_hour(e.getStart_time().substring(0, 2));
+					e.setFinish_hour(e.getFinish_time().substring(0, 2));
+				}
+				// 検索結果をリクエストスコープに格納する
+				request.setAttribute("scheduleList", scheduleList);
+
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list2.jsp");
+				dispatcher.forward(request, response);
 			}
-
-			// 検索結果をリクエストスコープに格納する
-			request.setAttribute("scheduleList", scheduleList);
-
-		}
 		}
 
+		if(values.equals("削除")) {
+			request.setCharacterEncoding("UTF-8");
+			String user_name = request.getParameter("user_name");
+			String schedule_name = request.getParameter("schedule_name");
 
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
-		dispatcher.forward(request, response);
+			Schedule_listDAO sDao = new Schedule_listDAO();
+			if (sDao.delete(user_name, schedule_name)) {	// 削除成功
+				request.setAttribute("result","レコードを削除しました。");
+			}
+			else {						// 削除失敗
+				request.setAttribute("result","レコードを削除できませんでした。");
+			}
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 }

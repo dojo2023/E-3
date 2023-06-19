@@ -84,6 +84,7 @@
     <p>${e.user_name} ${e.schedule_name} ${e.start_date} ${e.start_time} ${e.finish_date} ${e.finish_time} ${e.color_code} ${e.content}</p>
     </c:forEach>
     <p>${scheduleList[1].user_name}</p>
+    <p>${fn:length(scheduleList)}</p>
 
     <div id="schedule">
     <c:set var="count" value="0" />
@@ -105,13 +106,6 @@
 	        		<c:when test="${minutes == 3}"><td class="halftime">${time}</td></c:when>
 	        		<c:otherwise><td class="hiddentime">${time}</td></c:otherwise>
 	        	</c:choose>
-
-
-				<c:choose>
-					<c:when test="${scheduleList[count-1].finish_hour < scheduleList[count].start_hour}">
-						<td></td>
-					</c:when>
-				</c:choose>
 
 				<c:choose>
 	            	<c:when test="${(hour >= scheduleList[colorcount].start_hour && hour < scheduleList[colorcount].finish_hour) || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}">
