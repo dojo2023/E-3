@@ -6,9 +6,9 @@ public class Signup implements Serializable {
 	private String pw;	// パスワード
 	private String em; //メールアドレス
 	private String pn; //ペット名
-	private String pi; //ペットの種類
+	private int pi; //ペットの種類
 
-	public Signup(String un, String pw, String em, String pn, String pi) {
+	public Signup(String un, String pw, String em, String pn, int pi) {
 		this.un = un;
 		this.pw = pw;
 		this.em = em;
@@ -21,7 +21,7 @@ public class Signup implements Serializable {
 		this.pw = "";
 		this.em = "";
 		this.pn = "";
-		this.pi = "";
+		this.pi = 0;
 	}
 
 	public String getUn() {
@@ -56,11 +56,11 @@ public class Signup implements Serializable {
 		this.pn = pn;
 	}
 
-	public String getPi() {
+	public int getPi() {
 		return pi;
 	}
 
-	public void setPi(String pi) {
+	public void setPi(int pi) {
 		this.pi = pi;
 	}
 }
