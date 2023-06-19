@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Pet;
+import model.User;
 
 public class Pet_homeDAO {
+	/*
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<Pet_home> select(Pet_home param) {
 		Connection conn = null;
@@ -93,8 +95,9 @@ public class Pet_homeDAO {
 		// 結果を返す
 		return cardList;
 	}
+	*/
 
-	public List<Pet> selectpet(Pet pet){
+	public List<Pet> selectpet(User pet){
 
 		Connection conn = null;
 		List<Pet> petList = new ArrayList<Pet>();
@@ -112,9 +115,10 @@ public class Pet_homeDAO {
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			//pStmt.setInt(1, 1);
 
-			if (pet.getPet_id.getNumber() != null) {
-				pStmt.setInt(1, pet.getPet_id())
+			if (pet.getPet_id() != null) {
+				pStmt.setString(1, pet.getPet_id());
 				}else {
 					pStmt.setInt(1, 1);
 				}
@@ -128,7 +132,6 @@ public class Pet_homeDAO {
 	            rs.getString("pet_img_path")
 	            );
 	            petList.add(petimg);
-
 			}
 		}
 		catch (SQLException e) {
