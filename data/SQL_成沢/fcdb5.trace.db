@@ -35,3 +35,118 @@ login_days int
 coin_cnt int default 1,
 primary key (user_name)
 ) [42001-200]
+2023-06-16 11:18:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 不明なデータ型: "NOT"
+Unknown data type: "NOT"; SQL statement:
+create table schedule(
+user_name varchar(20) not null,
+schedule_name varchar(20) not null,
+start_date not null,
+start_time not null,
+finish_date not null,
+finish_time not null,
+color_id not null default 1,
+content varchar(100),
+primary key(user_name)
+) [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5971)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5697)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8442)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8379)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-19 10:51:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "USER_NAME" が見つかりません
+Column "USER_NAME" not found; SQL statement:
+select user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Select.prepare(Select.java:1245)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at dao.Schedule_registDAO.select(Schedule_registDAO.java:29)
+	at test.test.main(test.java:15)
+2023-06-19 10:53:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "USER_NAME" が見つかりません
+Column "USER_NAME" not found; SQL statement:
+select USER_NAME,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Select.prepare(Select.java:1245)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at dao.Schedule_registDAO.select(Schedule_registDAO.java:29)
+	at test.test.main(test.java:15)
+2023-06-19 10:54:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "USER_NAME" が見つかりません
+Column "USER_NAME" not found; SQL statement:
+select USER_NAME,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Select.prepare(Select.java:1245)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at dao.Schedule_registDAO.select(Schedule_registDAO.java:29)
+	at test.test.main(test.java:15)
+2023-06-19 10:56:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "USER_NAME" が見つかりません
+Column "USER_NAME" not found; SQL statement:
+select USER_NAME,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content where USER_NAME like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by USER_NAME [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Select.prepare(Select.java:1245)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at dao.Schedule_registDAO.select(Schedule_registDAO.java:29)
+	at test.test.main(test.java:15)
