@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Schedule_listDAO;
 import model.Schedule;
@@ -30,10 +31,17 @@ public class Schedule_listServlet extends HttpServlet {
 			response.sendRedirect("/BCM/LoginServlet");
 			return;
 		}else {
-		*/
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+			dispatcher.forward(request, response);
+		}*/
+
+		HttpSession session = request.getSession();
+		session.setAttribute("id", "ユーザ名");
+		session.setAttribute("pet", "1");
+		session.setAttribute("coin", "52");
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 		dispatcher.forward(request, response);
-		//}
 	}
 
 	/**
@@ -45,15 +53,33 @@ public class Schedule_listServlet extends HttpServlet {
 		String values = request.getParameter("values");
 		System.out.println(values);
 		String user = request.getParameter("userid");
+		String date = request.getParameter("date");
+		System.out.println(date);
+		request.setAttribute("date", date);
 
+
+		//スケジュールをすべて取得
+		if(values != null) {
 		if(values.equals("スケジュール表示")) {
 			// 検索処理を行う
 			Schedule_listDAO sDao = new Schedule_listDAO();
-			List<Schedule> scheduleList = sDao.select();
+			List<Schedule> scheduleList = sDao.selectcolor_code();
+			//List<Schedule> scheduleList = sDao.select();
+
+			for(Schedule e: scheduleList) {
+				e.setStart_time(e.getStart_time().substring(0, 5));
+				e.setFinish_time(e.getFinish_time().substring(0, 5));
+				e.setStart_hour(e.getStart_time().substring(0, 2));
+				e.setFinish_hour(e.getFinish_time().substring(0, 2));
+			}
 
 			// 検索結果をリクエストスコープに格納する
 			request.setAttribute("scheduleList", scheduleList);
+
 		}
+		}
+
+
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 		dispatcher.forward(request, response);

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
+import model.Login;
+import model.Login_user;
+import model.Result;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,22 +37,22 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String un = request.getParameter("username");
+		String un = request.getParameter("user_name");
 		String pw = request.getParameter("password");
 
 		// ログイン処理を行う
 		LoginDAO logDao = new LoginDAO();
-		if (logDao.isLoginOK(new user(username, password))) {	// ログイン成功
+		if (logDao.isLoginOK(new Login(un, pw))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("un", new Login_user(un));
 
-		// メニューサーブレットにリダイレクトする
+		// スケジュール管理画面にリダイレクトする
 		response.sendRedirect("/Esan/Schedule_listServlet");
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("IDまたはPWに間違いがあります。"));
+			request.setAttribute("result", new Result("ログインエラー", "ユーザネームとパスワードが一致しません。", "/Esan/LoginServlet"));
 
 			// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
