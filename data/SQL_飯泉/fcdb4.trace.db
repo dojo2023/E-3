@@ -1,0 +1,4 @@
+2023-06-19 14:37:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "PREPAREDSTATEMENT[*] PSTMT = CONN.PREPARESTATEMENT(SQL)"; 期待されるステートメント "PREPARE"
+Syntax error in SQL statement "PREPAREDSTATEMENT[*] PSTMT = CONN.PREPARESTATEMENT(SQL)"; expected "PREPARE"; SQL statement:
+PreparedStatement pStmt = conn.prepareStatement(sql) [42001-200]

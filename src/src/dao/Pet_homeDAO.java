@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Pet_home;
+import model.Pet;
 
 public class Pet_homeDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
@@ -93,3 +93,72 @@ public class Pet_homeDAO {
 		// 結果を返す
 		return cardList;
 	}
+
+	public List<Pet> selectpet(Pet pet){
+
+		Connection conn = null;
+		List<Pet> petList = new ArrayList<Pet>();
+
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_飯泉/fcdb4", "sa", "");
+
+			// SQL文を準備する
+			String sql = "select  pet_img_id,pet_img_path from pet where pet_id = ?";
+
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			if (pet.getPet_id.getNumber() != null) {
+				pStmt.setInt(1, pet.getPet_id())
+				}else {
+					pStmt.setInt(1, 1);
+				}
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Pet petimg = new Pet(
+	            rs.getString("pet_img_id"),
+	            rs.getString("pet_img_path")
+	            );
+	            petList.add(petimg);
+
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			petList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			petList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					petList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return petList;
+	}
+}
+
+
+
+
+
+
