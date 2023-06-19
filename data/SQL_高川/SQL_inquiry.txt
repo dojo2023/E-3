@@ -1,0 +1,18 @@
+inquiryテーブルの情報
+
+【ドライバ】
+org.h2.Driver
+
+【JDBC URL】
+jdbc:h2:file:C:/dojo6//data/SQL_高川/fcdb2
+
+【ユーザー名】	【パスワード】
+sa		（なし）
+
+【userテーブルを作成するSQL文】
+create table inquiry (
+  inquiry_id int auto_increment primary key,
+  user_name varchar(20),
+  email varchar(50) not null,
+  inquiry_content varchar(200) not null
+);

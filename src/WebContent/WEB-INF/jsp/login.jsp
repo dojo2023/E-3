@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,7 @@
 	<form id="login_form" class="form1" method="POST" action="/Esan/LoginServlet">
 		<input type="text" name="user_name" placeholder="ユーザネーム"><br>
       	<input type="password" name="password" placeholder="パスワード"><br>
+      	<p><c:out value="${result.message}" /></p>
       	<input type="submit" name="LOGIN" value="ログイン" class="submit"><br>
       	<span id="error_message"></span>
       	<a href="/Esan/SignupServlet" id="signup">アカウント作成</a>

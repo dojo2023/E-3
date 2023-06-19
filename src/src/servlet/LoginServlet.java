@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
+		return;
 	}
 
 	/**
@@ -39,6 +40,34 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String un = request.getParameter("user_name");
 		String pw = request.getParameter("password");
+
+		if (un.equals("") && pw.equals("")){
+			// リクエストスコープにメッセージ、戻り先を格納する
+			request.setAttribute("result", new Result("未入力の項目があります", "/Esan/LoginServlet"));
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		else if (un.equals("")){
+			// リクエストスコープにメッセージ、戻り先を格納する
+			request.setAttribute("result", new Result("ユーザーネームを入力してください", "/Esan/LoginServlet"));
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		else if (pw.equals("")){
+			// リクエストスコープにメッセージ、戻り先を格納する
+			request.setAttribute("result", new Result("パスワードを入力してください", "/Esan/LoginServlet"));
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		// ログイン処理を行う
 		LoginDAO logDao = new LoginDAO();
@@ -51,12 +80,13 @@ public class LoginServlet extends HttpServlet {
 		response.sendRedirect("/Esan/Schedule_listServlet");
 		}
 		else {									// ログイン失敗
-			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			// リクエストスコープにメッセージ、戻り先を格納する
 			request.setAttribute("result", new Result("ユーザネームとパスワードが一致しません。", "/Esan/LoginServlet"));
 
 			// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
 	}
 }
