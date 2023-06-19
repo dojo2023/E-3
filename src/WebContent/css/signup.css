@@ -2,24 +2,24 @@ input[type=radio]+label:before{
     content: "";
     display: inline-block;
     background-size: contain;
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
 }
 
 input[type=radio][value="pet1"]+label:before{
-	background-image: url(./img/pet1.png);
+	background-image: url(/WebContent/img/pet1.png);
 }
 input[type=radio][value="pet2"]+label:before{
-	background-image: url(./img/pet2.png);
+	background-image: url(/WebContent/img/pet2.png);
 }
 input[type=radio][value="pet3"]+label:before{
-	background-image: url(./img/pet3.png);
+	background-image: url(/WebContent/img/pet3.png);
 }
 input[type=radio][value="pet4"]+label:before{
-	background-image: url(./img/pet4.png);
+	background-image: url(/WebContent/img/pet4.png);
 }
 input[type=radio][value="pet5"]+label:before{
-	background-image: url(./img/pet5.png);
+	background-image: url(/WebContent/img/pet5.png);
 }
 
 input[type=radio]:checked+label::before{
