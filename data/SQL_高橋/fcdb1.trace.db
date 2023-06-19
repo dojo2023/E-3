@@ -298,3 +298,11 @@ select * from schedule [42102-199]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "SCHEDULE" が見つかりません
 Table "SCHEDULE" not found; SQL statement:
 select * from schedule [42102-200]
+2023-06-19 14:01:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USER" が見つかりません
+Table "USER" not found; SQL statement:
+select pet_img_path from pet inner join user on pet.pet_id = user.pet_id [42102-200]
+2023-06-19 17:26:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT USER_NAME, SCHEDULE_NAME, START_DATE, START_TIME, FINISH_DATE, FINISH_TIME, COLOR_CODE, CONTENT FROM SCHEDULE INNER JOIN SCHEDULE_COLOR ON SCHEDULE.COLOR_ID = SCHEDULE_COLOR.COLOR_ID ORDAR[*] BY START_TIME"
+Syntax error in SQL statement "SELECT USER_NAME, SCHEDULE_NAME, START_DATE, START_TIME, FINISH_DATE, FINISH_TIME, COLOR_CODE, CONTENT FROM SCHEDULE INNER JOIN SCHEDULE_COLOR ON SCHEDULE.COLOR_ID = SCHEDULE_COLOR.COLOR_ID ORDAR[*] BY START_TIME"; SQL statement:
+select user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id ordar by start_time [42000-200]
