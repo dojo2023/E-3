@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("ログインエラー", "ユーザネームとパスワードが一致しません。", "/Esan/LoginServlet"));
+			request.setAttribute("result", new Result("ユーザネームとパスワードが一致しません。", "/Esan/LoginServlet"));
 
 			// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

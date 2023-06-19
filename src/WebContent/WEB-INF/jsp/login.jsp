@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="./error_message_login.js"></script>
 <meta charset="UTF-8">
 <title>ログイン画面</title>
 </head>
@@ -16,10 +17,11 @@
 	<!-- メイン（ここから） -->
 	<h2>ログイン</h2>
 	<div class="main">
-	<form class="form1" method="POST" action="/Esan/LoginServlet">
+	<form id="login_form" class="form1" method="POST" action="/Esan/LoginServlet">
 		<input type="text" name="user_name" placeholder="ユーザネーム"><br>
       	<input type="password" name="password" placeholder="パスワード"><br>
       	<input type="submit" name="LOGIN" value="ログイン" class="submit"><br>
+      	<span id="error_message"></span>
       	<a href="/Esan/SignupServlet" id="signup">アカウント作成</a>
     </form>
     	<a href="/Esan/InquiryServlet" id="inquiry">お問い合わせ</a>
