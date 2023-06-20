@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,6 +42,27 @@ public class Schedule_listServlet extends HttpServlet {
 		session.setAttribute("pet", "1");
 		session.setAttribute("coin", "52");
 
+		Calendar cl = Calendar.getInstance();
+
+        //日付をyyyyMMddの形で出力する
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
+        String today = sdf1.format(cl.getTime());
+        today = today.replace("/", "-");
+        System.out.println(today);
+
+        Schedule_listDAO sDao = new Schedule_listDAO();
+		List<Schedule> scheduleList = sDao.selectdate(today);
+
+		for(Schedule e: scheduleList) {
+			e.setStart_time(e.getStart_time().substring(0, 5));
+			e.setFinish_time(e.getFinish_time().substring(0, 5));
+			e.setStart_hour(e.getStart_time().substring(0, 2));
+			e.setFinish_hour(e.getFinish_time().substring(0, 2));
+		}
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("scheduleList", scheduleList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -53,15 +76,13 @@ public class Schedule_listServlet extends HttpServlet {
 		String values = request.getParameter("values");
 		System.out.println(values);
 		String user = request.getParameter("userid");
-		String date = request.getParameter("date");
-		System.out.println(date);
-		request.setAttribute("date", date);
+
+		Schedule_listDAO sDao = new Schedule_listDAO();
 
 		//スケジュールをすべて取得
 		if(values != null) {
 			if(values.equals("スケジュール表示")) {
 				// 検索処理を行う
-				Schedule_listDAO sDao = new Schedule_listDAO();
 				List<Schedule> scheduleList = sDao.selectcolor_code();
 				//List<Schedule> scheduleList = sDao.select();
 
@@ -82,12 +103,9 @@ public class Schedule_listServlet extends HttpServlet {
 
 		//削除処理
 		if(values.equals("削除")) {
-			request.setCharacterEncoding("UTF-8");
-			String user_name = request.getParameter("user_name");
-			String schedule_name = request.getParameter("schedule_name");
+			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
 
-			Schedule_listDAO sDao = new Schedule_listDAO();
-			if (sDao.delete(user_name, schedule_name)) {	// 削除成功
+			if (sDao.delete(schedule_id)) {	// 削除成功
 				request.setAttribute("result","レコードを削除しました。");
 			}
 			else {						// 削除失敗
@@ -98,8 +116,25 @@ public class Schedule_listServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 
-		if(date != null) {
+		if(values.equals("date")) {
+			String date = request.getParameter("date");
+			date = date.replaceAll("/", "-");
+			System.out.println(date);
 
+			List<Schedule> scheduleList = sDao.selectdate(date);
+
+			for(Schedule e: scheduleList) {
+				e.setStart_time(e.getStart_time().substring(0, 5));
+				e.setFinish_time(e.getFinish_time().substring(0, 5));
+				e.setStart_hour(e.getStart_time().substring(0, 2));
+				e.setFinish_hour(e.getFinish_time().substring(0, 2));
+			}
+
+			// 検索結果をリクエストスコープに格納する
+			request.setAttribute("scheduleList", scheduleList);
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }
