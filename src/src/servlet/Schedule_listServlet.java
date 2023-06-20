@@ -40,7 +40,7 @@ public class Schedule_listServlet extends HttpServlet {
 		session.setAttribute("pet", "1");
 		session.setAttribute("coin", "52");
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list2.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -75,11 +75,12 @@ public class Schedule_listServlet extends HttpServlet {
 				request.setAttribute("scheduleList", scheduleList);
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list2.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
 
+		//削除処理
 		if(values.equals("削除")) {
 			request.setCharacterEncoding("UTF-8");
 			String user_name = request.getParameter("user_name");
@@ -93,8 +94,12 @@ public class Schedule_listServlet extends HttpServlet {
 				request.setAttribute("result","レコードを削除できませんでした。");
 			}
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
 			dispatcher.forward(request, response);
+		}
+
+		if(date != null) {
+
 		}
 	}
 }

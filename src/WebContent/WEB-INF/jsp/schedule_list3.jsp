@@ -168,68 +168,6 @@
             	</c:if>
 			    </td>
 
-			    <c:forEach begin="${count}" end="${tdlength}" step="1" var="dep">
-					<c:if test="${hour == scheduleList[dep].start_hour}">
-					<c:set var="judge" value="true"/>
-					</c:if>
-					<td>${hour} ${scheduleList[dep].start_hour}</td>
-		        </c:forEach>
-		        	<td>${judge}</td>
-
-		        <c:if test="${judge == true}">
-		        <c:if test="${tdcount == 0}">
-					<c:choose>
-	            	<c:when test="${(hour >= scheduleList[colorcount].start_hour && hour < scheduleList[colorcount].finish_hour) || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}">
-	            		<td class="td${colorcount}" bgcolor="${scheduleList[colorcount].color_code}">
-	            	</c:when>
-	            	<c:otherwise>
-	            		<td class="td${colorcount}">
-	            	</c:otherwise>
-	            	</c:choose>
-				</c:if>
-
-				<c:if test="${tdcount != 0}">
-						<c:forEach begin="0" end="${tdcount-1}" step="1" var="tdnum">
-		            		<c:choose>
-			            	<c:when test="${(hour >= scheduleList[tdnum].start_hour && hour < scheduleList[tdnum].finish_hour) || (hour == scheduleList[tdnum].finish_hour && minutes == 0)}">
-			            		<td class="td${tdnum}" bgcolor="${scheduleList[tdnum].color_code}">
-			            	</c:when>
-			            	<c:otherwise>
-			            		<td class="td${tdnum}">
-			            	</c:otherwise>
-			            	</c:choose>
-	            		</c:forEach>
-						<c:choose>
-		            	<c:when test="${(hour >= scheduleList[colorcount].start_hour && hour < scheduleList[colorcount].finish_hour) || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}">
-		            		<td class="td${colorcount}" bgcolor="${scheduleList[colorcount].color_code}">
-		            	</c:when>
-		            	<c:otherwise>
-		            		<td class="td${colorcount}">
-		            	</c:otherwise>
-		            	</c:choose>
-				</c:if>
-
-	            <c:if test="${time == scheduleList[count].start_time}">
-            		${scheduleList[count].start_time} - ${scheduleList[count].finish_time}<br>
-            		<a href="#info${count}" class="modal-open">${scheduleList[count].schedule_name}</a>
-
-            		<!-- モーダルウィンドウ内 -->
-            		<section id="info${count}" style="display:none">
-				        <h2>${scheduleList[count].schedule_name} ${scheduleList[count].start_time} - ${scheduleList[count].finish_time}</h2>
-				        <p>${scheduleList[count].content}</p>
-				        <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
-				            <input type="submit" name="edit" value="編集">
-				        </form>
-				        <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
-				            <input type="submit" name="delete" value="削除">
-				        </form>
-				    </section>
-
-				    <c:set var="count" value="${count + 1}" />
-            	</c:if>
-
-		        <c:set var="judge" value="false"/>
-		        </c:if>
 	        </c:forEach>
         </c:forEach>
 
