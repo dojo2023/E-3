@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,24 +14,6 @@
 <img src="img/bg.png">
 <!--コイン-->
 <img src="img/fc.png" width="150" height="150">
-
-<!--吹き出し-->
-<link rel="stylesheet" href="/Esan/css/pet_home.css">
-<div class="balloon">
-  おはようございます！
-  <br>今日も一日がんばろう！
-</div>
-<!--ペット画像-->
-<img src ="imgpet1/head.png">
-<img src="imgpet1/body.png">
-<img src="imgpet1/right_arm.png">
-<img src="imgpet1/left_arm.png">
-<img src="imgpet1/legs.png">
-<!--画面遷移ボタン-->
-
- <a href="./schedule_list.jsp">スケジュール管理</a>
-<a href="./gacha.jsp">ガチャ</a>
-
 <!-- モーダルウィンドウ -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -46,7 +31,11 @@
 <body>
 <main>
     <section>
-
+<style>
+p {
+margin: 20px 0 0 20px;
+}
+</style>
       <p><a href="#info" class="modal-open"><img src="img/closet.png"></a></p>
 
     <section id="info">
@@ -63,6 +52,37 @@
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-1/js/9-6-1.js"></script>
 </body>
 </html>
+
+<!--吹き出し-->
+<link rel="stylesheet" href="/Esan/css/pet_home.css">
+<script src="./js/message.js"></script>
+<div class="balloon">
+  おはようございます！
+  <br>今日も一日がんばろう！
+</div>
+
+
+<c:forEach var="e" items="${petList}" >
+<p>${e.pet_img_id} ${e.pet_img_path}</p>
+<c:choose>
+	<c:when test='${fn: contains(e.pet_img_id,"head")}'>
+		<img src ="${e.pet_img_path}">
+	</c:when>
+</c:choose>
+</c:forEach>
+
+
+<!--ペット画像-->
+<img src="imgpet1/head.png">
+<img src="imgpet1/body.png">
+<img src="imgpet1/right_arm.png">
+<img src="imgpet1/left_arm.png">
+<img src="imgpet1/legs.png">
+<!--画面遷移ボタン-->
+
+ <a href="./schedule_list.jsp">スケジュール管理</a>
+<a href="./gacha.jsp">ガチャ</a>
+
 
 </head>
 </body>

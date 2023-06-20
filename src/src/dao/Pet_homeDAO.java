@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Pet;
-import model.User;
 
 public class Pet_homeDAO {
 	/*
@@ -97,7 +96,7 @@ public class Pet_homeDAO {
 	}
 	*/
 
-	public List<Pet> selectpet(User pet){
+	public List<Pet> selectpet(){
 
 		Connection conn = null;
 		List<Pet> petList = new ArrayList<Pet>();
@@ -115,13 +114,13 @@ public class Pet_homeDAO {
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			//pStmt.setInt(1, 1);
+			pStmt.setInt(1, 1);
 
-			if (pet.getPet_id() != null) {
+			/*if (pet.getPet_id() != null) {
 				pStmt.setString(1, pet.getPet_id());
 				}else {
 					pStmt.setInt(1, 1);
-				}
+				}*/
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
