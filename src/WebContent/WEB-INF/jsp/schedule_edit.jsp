@@ -27,8 +27,8 @@
     <textarea id="content" cols="30" rows="10" placeholder="内容"></textarea>
     <p>(エラーメッセージをここに挿入)</p>
 
-    <input type="button" id="back_btn" value="編集せずに戻る">
     <input type="submit" id="regist_btn" value="編集を完了">
 </form>
+    <button onclick="location.href='/Esan/Schedule_listServlet'">編集せずに戻る</button>
 </body>
 </html>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Schedule_registDAO;
 import model.Schedule;
@@ -30,6 +31,10 @@ public class Schedule_registServlet extends HttpServlet {
 //			return;
 //		}
 
+		//セッションスコープからユーザ名を取得
+		HttpSession session = request.getSession();
+		session.getAttribute("un");
+
 		//スケジュール登録画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_regist.jsp");
 		dispatcher.forward(request, response);
@@ -45,7 +50,8 @@ public class Schedule_registServlet extends HttpServlet {
 //			response.sendRedirect("/Esan/LoginServlet");
 //			return;
 //		}
-//		//リクエストパラメータを取得
+
+		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String user_name = request.getParameter("user_name");
 		String schedule_name = request.getParameter("schedule_name");
