@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +7,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ガチャ</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
-<link rel="stylesheet" href="/Esan/css/modal_gacha_result.css">
-<link rel="stylesheet" href="Esan/css/gacha.css">
+<link rel="stylesheet" type="text/css" href="/Esan/css/modal_gacha_result.css">
+<link rel="stylesheet" type="text/css" href="/Esan/css/gacha.css">
 </head>
 <body>
   <div class="contents">
-      <img src="img/chicken.png" class="tori">
-      <img src="img/chicken_house.png" class="ouchi">
+      <img src="/Esan/img/chicken.png" class="tori">
+      <img src="/Esan/img/chicken_house.png" class="ouchi">
       <!--リンク元のHTMLリンク先は表示させたいエリアのid名を指定します。-->
       <a href="#info" class="modal-open">
           <button type="button" id="gacha_btn" class="botan">
-          <img src="img/gacha_btn.png"></button>
+          <img src="/Esan/img/gacha_btn.png"></button>
       </a>
   </div>
     <!--ここからガチャ結果画面-->
@@ -26,10 +25,10 @@
     <section id="info">
     <div class="wrapper">
     <table>
-    <tr><th>レア度</th><td><img src="Esan/img/rarity1.png"></td></tr>
+    <tr><th>レア度</th><td><img src="/Esan/img/rarity1.png"></td></tr>
     </table>
     <img src="${closet_path}" class="result"><br>
-    <c:out value="${closet_name}"/>を手に入れた！<br>
+    を手に入れた！<br>
     <hr>
     <button type="button" id="ok_btn">OK</button>
     </div>
@@ -40,7 +39,7 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="ano
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <!--自作のJS-->
-<script src="Esan/js/modal_gacha_result.js"></script>
+<script src="/Esan/js/modal_gacha_result.js"></script>
 <footer>
 <div class="hureai">
 <a href="/Esan/Pet_homeServlet">ふれあい画面</a>
