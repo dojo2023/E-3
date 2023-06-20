@@ -21,19 +21,32 @@ public class SignupDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高川/fcdb2", "sa", "");
 
 			// SELECT文を準備する
-			String selectsql = "select count(*) from user where user_name = ?";
-			PreparedStatement selectpStmt = conn.prepareStatement(selectsql);
-			selectpStmt.setString(1, signup.getUn());
+			String selectun = "select count(*) from user where user_name = ?";
+			PreparedStatement selectpStmt_un = conn.prepareStatement(selectun);
+			selectpStmt_un.setString(1, signup.getUn());
 
 			// SELECT文を実行し、結果表を取得する
-			ResultSet rs = selectpStmt.executeQuery();
+			ResultSet ru = selectpStmt_un.executeQuery();
 
-			// ユーザーネームが重複しているかをチェックする
-			rs.next();
-			if (rs.getInt("count(*)") == 1) {
+			// 重複しているかをチェックする
+			ru.next();
+			if (ru.getInt("count(*)") == 1) {
 				return signupResult = "dup";
 			}
 
+			// SELECT文を準備する
+			String selectem = "select count(*) from user where email = ?";
+			PreparedStatement selectpStmt_em = conn.prepareStatement(selectem);
+			selectpStmt_em.setString(1, signup.getEm());
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet re = selectpStmt_em.executeQuery();
+
+			// 重複しているかをチェックする
+			re.next();
+			if (re.getInt("count(*)") == 1) {
+				return signupResult = "don";
+			}
 
 			// insert文を準備する
 			String sql = "insert into user(user_name, password, email, pet_name, pet_id) values(?, ?, ?, ?, ?)";

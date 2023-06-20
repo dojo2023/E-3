@@ -28,11 +28,13 @@
       	<label>ペットを選択してください。<br>
       	※１度決めたペットの変更はできません<br>
       	</label>
-		<input type="radio" name="pet_id" value=1 id="pet1_radio" checked><label for="pet1_radio"></label>
-    	<input type="radio" name="pet_id" value=2 id="pet2_radio"><label for="pet2_radio"></label>
-  	  	<input type="radio" name="pet_id" value=3 id="pet3_radio"><label for="pet3_radio"></label>
-  	  	<input type="radio" name="pet_id" value=4 id="pet4_radio"><label for="pet4_radio"></label>
-    	<input type="radio" name="pet_id" value=5 id="pet5_radio"><label for="pet5_radio"></label><br>
+      	<div>
+  			<input type="radio" name="pet_id" value="1" id="pet1_radio" checked><label for="pet1_radio"></label>
+	    	<input type="radio" name="pet_id" value="2" id="pet2_radio"><label for="pet2_radio"></label>
+	  	  	<input type="radio" name="pet_id" value="3" id="pet3_radio"><label for="pet3_radio"></label>
+	  	  	<input type="radio" name="pet_id" value="4" id="pet4_radio"><label for="pet4_radio"></label>
+	    	<input type="radio" name="pet_id" value="5" id="pet5_radio"><label for="pet5_radio"></label><br>
+		</div>
       	<input type="submit" name="signup_btn" value="新規登録"><br>
       	<p><c:out value="${result.message}" /></p>
       	<a href="/Esan/LoginServlet" id="login">ログイン画面へ</a>
@@ -40,5 +42,13 @@
     	<a href="/Esan/InquiryServlet" id="inquiry">お問い合わせ</a>
     </div>
     <!-- メイン（ここまで） -->
+<script>
+var pass = "password";
+
+//ハッシュ化
+var shaObj = new jsSHA("SHA-256", "TEXT");
+shaObj.update(pass);
+var passhash = shaObj.getHash("HEX");
+</script>
 </body>
 </html>
