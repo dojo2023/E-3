@@ -1,6 +1,7 @@
 let slen = document.getElementById("slength").textContent;
 
 for(let k=0;k<slen;k++){
+    let schedule_id = document.getElementById("schedule_id" + k).textContent;
     let user_name = document.getElementById("user_name" + k).textContent;
 
     let schedule_name = document.getElementById("schedule_name" + k).textContent;
@@ -26,10 +27,12 @@ for(let k=0;k<slen;k++){
                     <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
                     <p>`+content+`</p>
                     <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
-                        <input type="submit" name="edit" value="編集">
+                        <input type="hidden" name="schedule_id" value="`+schedule_id+`">
+                        <input type="submit" name="values" value="編集">
                     </form>
                     <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
-                        <input type="submit" name="delete" value="削除">
+                        <input type="hidden" name="schedule_id" value="`+schedule_id+`">
+                        <input type="submit" name="values" value="削除">
                     </form>
                     </section>`
                     ;
@@ -41,9 +44,11 @@ for(let k=0;k<slen;k++){
                     <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
                     <p>`+content+`</p>
                     <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
+                        <input type="hidden" name="schedule_id" value="`+schedule_id+`">
                         <input type="submit" name="edit" value="編集">
                     </form>
                     <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
+                        <input type="hidden" name="schedule_id" value="`+schedule_id+`">
                         <input type="submit" name="delete" value="削除">
                     </form>
                     </section>`
