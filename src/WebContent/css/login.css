@@ -1,1 +1,32 @@
 @charset "UTF-8";
+
+/*共通部分*/
+/* bodyタグ */
+body {
+	font-size: 26px;
+	background-color: #FFF9EE;
+}
+
+#logo {
+	text-align : left;
+}
+
+h2{
+	border-radius: 5px;
+  	background-color: #8EF1FF;
+ 	padding: 5px;
+  	text-decoration: none;
+  	color: white;
+  	box-shadow: 0px 20px 35px 0px rgba(0, 0, 0, 0.14);
+}
+
+#login_form {
+	text-align : center;
+	margin : auto;
+    background-color: #FFFFFF;
+    width: 700px;
+    height: 350px;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+

@@ -88,16 +88,7 @@ public class SignupServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-/*		//ハッシュ化
-		try {
-			MessageDigest di = MessageDigest.getInstance("SHA-256");
-			byte[] b = di.digest(pw.getBytes());
-			System.out.println(b);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-*/
+
 		// 登録処理を行う
 		SignupDAO logDao = new SignupDAO();
 		if (logDao.insert(new Signup(un, pw, em, pn, pi)).equals("true")) {	// 登録成功
@@ -110,6 +101,10 @@ public class SignupServlet extends HttpServlet {
 			else if(logDao.insert(new Signup(un, pw, em, pn, pi)).equals("dup")) {
 			// リクエストスコープにメッセージ、戻り先を格納する
 			request.setAttribute("result", new Result("そのユーザーネームはすでに使われています！", "/Esan/SignupServlet"));
+		}
+			else if(logDao.insert(new Signup(un, pw, em, pn, pi)).equals("don")) {
+			// リクエストスコープにメッセージ、戻り先を格納する
+			request.setAttribute("result", new Result("そのメールアドレスはすでに使われています！", "/Esan/SignupServlet"));
 		}
 			// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
