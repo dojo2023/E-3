@@ -74,99 +74,157 @@ function createProcess(year, month) {
 }
 
 $(document).on('click', '#days' + 1, function() {
-	document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
-    document.dateform.submit();
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 2, function() {
-	document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
-    document.dateform.submit();
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 3, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 4, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 5, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 6, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 7, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 8, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 9, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 10, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 11, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 12, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 13, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 14, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 15, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 16, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 17, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 18, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 19, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 20, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 21, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 22, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 23, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 24, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 25, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 26, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 27, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 28, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 29, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 30, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });
 $(document).on('click', '#days' + 31, function() {
     console.log(showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.getElementById("daysvalue").setAttribute("value", showDate.getFullYear() + "/" + (showDate.getMonth()+1) + "/" + this.textContent);
+    document.dateform.submit();
 });

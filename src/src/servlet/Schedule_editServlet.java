@@ -57,7 +57,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 			//更新処理
 			Schedule_editDAO editDao = new Schedule_editDAO();
-			if(request.getParameter("submit").equals("更新を完了")) {
+			if(request.getParameter("submit").equals("編集を完了")) {
 				if(editDao.update(new Schedule(
 						user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content))) {
 					//登録成功

@@ -72,11 +72,11 @@ public class InquiryServlet extends HttpServlet {
 		InquiryDAO iqDao = new InquiryDAO();
 		if (iqDao.insertIq(new Inquiry(un, em, co)).equals("true")) {	// 登録成功
 			request.setAttribute("result",
-			new Result("レコードを登録しました。", "/Esan/InquiryServlet"));
+			new Result("お問い合わせ内容を送信しました。", "/Esan/InquiryServlet"));
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",
-			new Result("レコードを登録できませんでした。", "/Esan/InquiryServlet"));
+			new Result("お問い合わせ内容を送信できませんでした。", "/Esan/InquiryServlet"));
 		}
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiry.jsp");

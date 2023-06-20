@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("un", new Login_user(un));
+			session.setAttribute("user_name", un);
 
 		// スケジュール管理画面にリダイレクトする
 		response.sendRedirect("/Esan/Schedule_listServlet");

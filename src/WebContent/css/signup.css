@@ -6,20 +6,20 @@ input[type=radio]+label:before{
     height: 100px;
 }
 
-input[type=radio][value="pet1"]+label:before{
-	background-image: url(/WebContent/img/pet1.png);
+input[type=radio][value="1"]+label:before{
+	background-image: url(../img/pet1.png);
 }
-input[type=radio][value="pet2"]+label:before{
-	background-image: url(/WebContent/img/pet2.png);
+input[type=radio][value="2"]+label:before{
+	background-image: url(../img/pet2.png);
 }
-input[type=radio][value="pet3"]+label:before{
-	background-image: url(/WebContent/img/pet3.png);
+input[type=radio][value="3"]+label:before{
+	background-image: url(../img/pet3.png);
 }
-input[type=radio][value="pet4"]+label:before{
-	background-image: url(/WebContent/img/pet4.png);
+input[type=radio][value="4"]+label:before{
+	background-image: url(../img/pet4.png);
 }
-input[type=radio][value="pet5"]+label:before{
-	background-image: url(/WebContent/img/pet5.png);
+input[type=radio][value="5"]+label:before{
+	background-image: url(../img/pet5.png);
 }
 
 input[type=radio]:checked+label::before{
