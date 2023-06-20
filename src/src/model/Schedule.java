@@ -2,6 +2,7 @@ package model;
 import java.io.Serializable;
 
 public class Schedule implements Serializable {
+	private int schedule_id;
 	private String user_name;
 	private String schedule_name;
 	private String start_date;
@@ -14,7 +15,8 @@ public class Schedule implements Serializable {
 	private String start_hour;
 	private String finish_hour;
 
-	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
+	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
+		this.schedule_id = schedule_id;
 		this.user_name = user_name;
 		this.schedule_name = schedule_name;
 		this.start_date = start_date;
@@ -25,7 +27,8 @@ public class Schedule implements Serializable {
 		this.content = content;
 	}
 
-	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
+	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
+		this.schedule_id = schedule_id;
 		this.user_name = user_name;
 		this.schedule_name = schedule_name;
 		this.start_date = start_date;
@@ -34,6 +37,13 @@ public class Schedule implements Serializable {
 		this.finish_time = finish_time;
 		this.color_code = color_code;
 		this.content = content;
+	}
+
+	public int getSchedule_id() {
+		return schedule_id;
+	}
+	public void setSchedule_id(int schedule_id) {
+		this.schedule_id = schedule_id;
 	}
 
 	public String getUser_name() {

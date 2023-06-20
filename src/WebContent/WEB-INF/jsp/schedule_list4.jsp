@@ -34,7 +34,8 @@
     </nav>
 
     <form method="POST" action="/Esan/Schedule_listServlet" name="dateform">
-        <input type="hidden" name="date" value="" id="daysvalue">
+        <input type="hidden" name="date" id="daysvalue">
+        <input type="hidden" name="values" value="date">
     </form>
     <p>日にちを返す:${date}</p>
 
@@ -83,6 +84,7 @@
 
     <c:set var="i" value="0"/>
     <c:forEach var="e" items="${scheduleList}" >
+    <div class="schedule_data" id="schedule_id${i}" style="display:none">${e.schedule_id}</div>
     <div class="schedule_data" id="user_name${i}" style="display:none">${e.user_name}</div>
     <div class="schedule_data" id="schedule_name${i}" style="display:none">${e.schedule_name}</div>
     <div class="schedule_data" id="start_date${i}" style="display:none">${e.start_date}</div>
