@@ -8,11 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/Esan/css/pet_home.css">
 </head>
 <body>
 <!--背景-->
 <img src="img/bg.png">
 <!--コイン-->
+<class="coin">
 <img src="img/fc.png" width="150" height="150">
 <!-- モーダルウィンドウ -->
 <!DOCTYPE html>
@@ -31,11 +33,7 @@
 <body>
 <main>
     <section>
-<style>
-p {
-margin: 20px 0 0 20px;
-}
-</style>
+
       <p><a href="#info" class="modal-open"><img src="img/closet.png"></a></p>
 
     <section id="info">
