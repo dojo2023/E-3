@@ -12,7 +12,7 @@ html,body{
   margin: 0 ;
   padding: 0 ;
 }
-.contents{
+.content1{
   background-image: url("../img/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,25 +22,22 @@ html,body{
   height: 500px;
   width: 1250px;
 }
-.tori{
-  position:fixed;
-  top: 40px;
-  left: 355px;
-}
 .ouchi{
-  position:fixed;
-  top: 150px;
-  left: 270px;
+	position:absolute;
+	padding-top:125px;
+	padding-left:220px;
 }
-.botan{
-  position:fixed;
-  top: 100px;
-  left:700px;
+.content2{
+	height:100px;
+	width:1250px;
+	text-align:left;
 }
-hureai{
-  width: 100px;
-  height: 100px;
-  padding: 50px;
+.wrapper{
+	position:absolute;
+	height:300px;
+	width:300px;
+	padding-top:80px;
+	padding-left:700px;
 }
 table{
 	margin: 0 auto;
@@ -48,7 +45,21 @@ table{
 th{
   text-align: left;
 }
+.table2{
+	text-align:left;
+}
+.table2 td{
+	width:120px;
+}
 /* リンクの下線を消す */
 a {
   text-decoration: none;
+}
+.container {
+  height: 150px;
+  margin:0;
+  width: 150px;
+  position:absolute;
+  padding-top:50px;
+  padding-left:300px;
 }

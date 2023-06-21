@@ -11,19 +11,29 @@
 <link rel="stylesheet" type="text/css" href="/Esan/css/gacha.css">
 </head>
 <body>
-  <div class="contents">
-      <img src="/Esan/img/chicken.png" class="tori">
+  <div class="content1">
+      <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
       <img src="/Esan/img/chicken_house.png" class="ouchi">
+    <div class="wrapper">
       <!--リンク元のHTMLリンク先は表示させたいエリアのid名を指定します。-->
       <a href="#info" class="modal-open">
-          <button type="button" id="gacha_btn" class="botan">
-          <img src="/Esan/img/gacha_btn.png"></button>
+      <button type="submit" id="gacha_btn" onclick="alertButton()"><img src="img/gacha_btn.png"></button>
       </a>
+    </div>
+  </div>
+  <div class="content2">
+  <table class="table2">
+  <tr><td><a href="/Esan/Pet_homeServlet">ふれあい画面</a></td>
+  <td></td><td></td><td></td>
+  <td><img src="img/fc.png" id="fc"></td><td id="coin_display">30枚</td>
+  <td></td><td></td><td></td><td></td>
+  </tr>
+  </table>
   </div>
     <!--ここからガチャ結果画面-->
     <!--表示エリアのHTML。id 名にリンク先と同じ名前を指定します。※表示エリアはHTML の変更が可能なので、レイアウトを自由に変更できます。-->
     <section id="info">
-    <div class="wrapper">
+    <div class="mordal">
     <table>
     <tr><th>レア度</th><td><img src="/Esan/img/rarity1.png"></td></tr>
     </table>
@@ -39,17 +49,7 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="ano
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <!--自作のJS-->
+<script src="/Esan/js/gacha.js"></script>
 <script src="/Esan/js/modal_gacha_result.js"></script>
-<footer>
-<div class="hureai">
-<a href="/Esan/Pet_homeServlet">ふれあい画面</a>
-</div>
-<table>
-<tr>
-<th><img src="img/fc.png" id="fc"></th>
-<td>30枚</td>
-</tr>
-</table>
-</footer>
 </body>
 </html>
