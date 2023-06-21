@@ -170,3 +170,624 @@ pet_img_path
 1,
 'imgpet1/legs.png'
 ) [42000-200]
+2023-06-21 15:39:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "DELETE FROM TABLE[*] WHERE COLOR_ID=2"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DELETE FROM TABLE[*] WHERE COLOR_ID=2"; expected "identifier"; SQL statement:
+delete from table where color_id=2 [42001-200]
+2023-06-21 16:05:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE SCHEDULE_COLOR(
+COLOR_ID INT PRIMARY KEY,
+COLOR_CODE VARCHAR(7) NOT NULL,
+COLOR_NAME VARCHAR(20)
+)[*]
+
+・インサート
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+1,
+'#ff0000',
+'赤'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+3,
+'#ffff00',
+'黄色'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+5,
+'#00ffff',
+'シアン'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+6,
+'#0000ff',
+'青'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+7,
+'#008000',
+'緑'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+9,
+'#a260bf',
+'紫'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+10,
+'#734e30',
+'茶色'
+)"
+Syntax error in SQL statement "CREATE TABLE SCHEDULE_COLOR(
+COLOR_ID INT PRIMARY KEY,
+COLOR_CODE VARCHAR(7) NOT NULL,
+COLOR_NAME VARCHAR(20)
+)[*]
+
+・インサート
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+1,
+'#ff0000',
+'赤'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+3,
+'#ffff00',
+'黄色'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+5,
+'#00ffff',
+'シアン'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+6,
+'#0000ff',
+'青'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+7,
+'#008000',
+'緑'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+9,
+'#a260bf',
+'紫'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+10,
+'#734e30',
+'茶色'
+)"; SQL statement:
+create table schedule_color(
+color_id int primary key,
+color_code varchar(7) not null,
+color_name varchar(20)
+)
+
+・インサート
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+1,
+'#ff0000',
+'赤'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+3,
+'#ffff00',
+'黄色'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+5,
+'#00ffff',
+'シアン'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+6,
+'#0000ff',
+'青'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+7,
+'#008000',
+'緑'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+9,
+'#a260bf',
+'紫'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+10,
+'#734e30',
+'茶色'
+) [42000-200]
+2023-06-21 16:05:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+1,
+'#ff0000',
+'赤'
+)
+
+INSERT[*] INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+3,
+'#ffff00',
+'黄色'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+5,
+'#00ffff',
+'シアン'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+6,
+'#0000ff',
+'青'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+7,
+'#008000',
+'緑'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+9,
+'#a260bf',
+'紫'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+10,
+'#734e30',
+'茶色'
+)"
+Syntax error in SQL statement "INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+1,
+'#ff0000',
+'赤'
+)
+
+INSERT[*] INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+3,
+'#ffff00',
+'黄色'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+5,
+'#00ffff',
+'シアン'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+6,
+'#0000ff',
+'青'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+7,
+'#008000',
+'緑'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+9,
+'#a260bf',
+'紫'
+)
+
+INSERT INTO SCHEDULE_COLOR(
+COLOR_ID,
+COLOR_CODE,
+COLOR_NAME
+) VALUES(
+10,
+'#734e30',
+'茶色'
+)"; SQL statement:
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+1,
+'#ff0000',
+'赤'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+3,
+'#ffff00',
+'黄色'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+5,
+'#00ffff',
+'シアン'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+6,
+'#0000ff',
+'青'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+7,
+'#008000',
+'緑'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+9,
+'#a260bf',
+'紫'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+10,
+'#734e30',
+'茶色'
+) [42000-200]

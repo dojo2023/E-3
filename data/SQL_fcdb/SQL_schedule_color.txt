@@ -1,0 +1,106 @@
+create table schedule_color(
+color_id int primary key,
+color_code varchar(7) not null,
+color_name varchar(20)
+)
+
+・インサート
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+1,
+'#ff0000',
+'赤'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+2,
+'#ffc0cb',
+'ピンク'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+3,
+'#ffff00',
+'黄色'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+4,
+'#ffa500',
+'オレンジ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+5,
+'#00ffff',
+'シアン'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+6,
+'#0000ff',
+'青'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+7,
+'#008000',
+'緑'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+8,
+'#ff00ff',
+'マゼンタ'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+9,
+'#a260bf',
+'紫'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+10,
+'#734e30',
+'茶色'
+)
