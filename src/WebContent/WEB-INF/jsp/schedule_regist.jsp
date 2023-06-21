@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>スケジュール登録</title>
 <!-- <link rel="stylesheet" href="/Esan/menu.css"> -->
-<script src="/Esan/WebContent/js/error_message_schedule.js"></script>
 </head>
 <body>
 <form action="/Esan/Schedule_registServlet" method="POST" id="regist">
@@ -27,10 +26,12 @@
     </select><br>
     <input type="date" name="start_date"><input type="time" name="start_time"> ～ <input type="date" name="finish_date"><input type="time" name="finish_time"><br>
     <textarea id="content" name="content" cols="30" rows="10" placeholder="内容"></textarea><br>
-    <span id="error_message"></span>
+    <span id="error_message"></span><br>
 
     <input type="submit" id="regist_btn" value="登録">
 </form>
     <button onclick="location.href='/Esan/Schedule_listServlet'">登録せずに戻る</button>
+
+    <script src="js/error_message_schedule.js"></script>
 </body>
 </html>

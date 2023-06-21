@@ -31,9 +31,9 @@ public class Schedule_registServlet extends HttpServlet {
 //			return;
 //		}
 
-		//セッションスコープからユーザ名を取得
-		HttpSession session = request.getSession();
-		session.getAttribute("user_name");
+//		//セッションスコープからユーザ名を取得
+//		HttpSession session = request.getSession();
+//		session.getAttribute("user_name");
 
 		//スケジュール登録画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_regist.jsp");
@@ -57,7 +57,6 @@ public class Schedule_registServlet extends HttpServlet {
 
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-
 		String user_name = (String)session.getAttribute("user_name");
 		String schedule_name = request.getParameter("schedule_name");
 		String start_date = request.getParameter("start_date");

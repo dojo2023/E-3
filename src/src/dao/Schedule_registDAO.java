@@ -80,7 +80,6 @@ public class Schedule_registDAO {
 
 			while(rs.next()) {
 				Schedule sche = new Schedule(
-						rs.getString("schedule_id"),
 						rs. getString("user_name"),
 						rs.getString("schedule_name"),
 						rs.getString("start_date"),

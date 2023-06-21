@@ -30,6 +30,9 @@ public class Schedule_editServlet extends HttpServlet {
 //			return;
 //		}
 
+		//リクエストスコープから取得
+		request.getAttribute("schedule_id");
+
 		//スケジュール編集画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_edit.jsp");
 		dispatcher.forward(request, response);
@@ -46,14 +49,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //	}
 	//リクエストパラメータを取得
 			request.setCharacterEncoding("UTF-8");
-			String user_name = request.getParameter("user_name");
-			String schedule_name = request.getParameter("schedule_name");
-			String start_date = request.getParameter("start_date");
-			String start_time= request.getParameter("start_time");
-			String finish_date = request.getParameter("finish_date");
-			String finish_time= request.getParameter("finish_time");
-			String color_id = request.getParameter("color_id");
-			String content= request.getParameter("content");
+			String user_name = (String)request.getAttribute("user_name");
+			String schedule_name = (String)request.getAttribute("schedule_name");
+			String start_date = (String)request.getAttribute("start_date");
+			String start_time= (String)request.getAttribute("start_time");
+			String finish_date = (String)request.getAttribute("finish_date");
+			String finish_time= (String)request.getAttribute("finish_time");
+			String color_id = (String)request.getAttribute("color_id");
+			String content= (String)request.getAttribute("content");
 
 			//更新処理
 			Schedule_editDAO editDao = new Schedule_editDAO();
