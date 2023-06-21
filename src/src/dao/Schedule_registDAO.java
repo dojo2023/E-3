@@ -25,49 +25,54 @@ public class Schedule_registDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
 
 			//SQL準備
-			String sql = "select user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content from schedule where user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by user_name";
+			String sql = "select schedule_id,user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content from schedule where schedule_id like ? and user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by schedule_id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL完成
-			if(param.getUser_name() != null) {
-				pStmt.setString(1,"%"+ param.getUser_name() +"%");
+			if(param.getSchedule_id() != 0) {
+				pStmt.setInt(1, param.getSchedule_id());
 			}else {
-				pStmt.setString(1,"%");
+				pStmt.setInt(1,0);
 			}
-			if(param.getSchedule_name() != null) {
-				pStmt.setString(2,"%"+ param.getSchedule_name() +"%");
+			if(param.getUser_name() != null) {
+				pStmt.setString(2,"%"+ param.getUser_name() +"%");
 			}else {
 				pStmt.setString(2,"%");
 			}
-			if(param.getStart_date() != null) {
-				pStmt.setString(3,"%"+ param.getStart_date() +"%");
+			if(param.getSchedule_name() != null) {
+				pStmt.setString(3,"%"+ param.getSchedule_name() +"%");
 			}else {
 				pStmt.setString(3,"%");
 			}
-			if(param.getStart_time() != null) {
-				pStmt.setString(4,"%"+ param.getStart_time() +"%");
+			if(param.getStart_date() != null) {
+				pStmt.setString(4,"%"+ param.getStart_date() +"%");
 			}else {
 				pStmt.setString(4,"%");
 			}
-			if(param.getFinish_date() != null) {
-				pStmt.setString(5,"%"+ param.getFinish_date() +"%");
+			if(param.getStart_time() != null) {
+				pStmt.setString(5,"%"+ param.getStart_time() +"%");
 			}else {
 				pStmt.setString(5,"%");
 			}
-			if(param.getFinish_time() != null) {
-				pStmt.setString(6,"%"+ param.getFinish_time() +"%");
+			if(param.getFinish_date() != null) {
+				pStmt.setString(6,"%"+ param.getFinish_date() +"%");
 			}else {
 				pStmt.setString(6,"%");
 			}
-			if(param.getColor_id() != 0) {
-				pStmt.setInt(7, param.getColor_id());
+			if(param.getFinish_time() != null) {
+				pStmt.setString(7,"%"+ param.getFinish_time() +"%");
 			}else {
-				pStmt.setInt(7,0);
+				pStmt.setString(7,"%");
+			}
+			if(param.getColor_id() != 0) {
+				pStmt.setInt(8, param.getColor_id());
+			}else {
+				pStmt.setInt(8,0);
 			}
 			if(param.getContent() != null) {
-				pStmt.setString(8,"%"+ param.getContent() +"%");
+				pStmt.setString(9,"%"+ param.getContent() +"%");
 			}else {
-				pStmt.setString(8,"%");
+				pStmt.setString(9,"%");
 			}
 
 			//実行
@@ -75,6 +80,7 @@ public class Schedule_registDAO {
 
 			while(rs.next()) {
 				Schedule sche = new Schedule(
+						rs.getString("schedule_id"),
 						rs. getString("user_name"),
 						rs.getString("schedule_name"),
 						rs.getString("start_date"),

@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>スケジュール登録</title>
 <!-- <link rel="stylesheet" href="/Esan/menu.css"> -->
-<script src="./error_message_schedule.js"></script>
+<script src="/Esan/WebContent/js/error_message_schedule.js"></script>
 </head>
 <body>
 <form action="/Esan/Schedule_registServlet" method="POST" id="regist">
-	<input type="text" id="user_name" value="${un.user_name}" readonly><br>
-    <input type="text" id="title" placeholder="スケジュール名">
-    <select id="color">
+	<input type="text" id="user_name" value="${user_name}" readonly><br>
+    <input type="text" id="title" name="schedule_name" placeholder="スケジュール名">
+    <select id="color" name="color_id">
         <option value="色">色を選択してください</option>
         <option value="赤" id="red">赤</option>
         <option value="ピンク" id="pink">ピンク</option>
@@ -25,8 +25,8 @@
         <option value="紫" id="purple">紫</option>
         <option value="茶色" id="brown">茶色</option>
     </select><br>
-    <input type="date"><input type="time"> ～ <input type="date"><input type="time"><br>
-    <textarea id="content" cols="30" rows="10" placeholder="内容"></textarea><br>
+    <input type="date" name="start_date"><input type="time" name="start_time"> ～ <input type="date" name="finish_date"><input type="time" name="finish_time"><br>
+    <textarea id="content" name="content" cols="30" rows="10" placeholder="内容"></textarea><br>
     <span id="error_message"></span>
 
     <input type="submit" id="regist_btn" value="登録">
