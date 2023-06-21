@@ -34,9 +34,9 @@
     </nav>
 
     <form method="POST" action="/Esan/Schedule_listServlet" name="dateform">
-        <input type="hidden" name="date" value="" id="daysvalue">
+        <input type="hidden" name="date" id="daysvalue">
+        <input type="hidden" name="values" value="date">
     </form>
-    <p>日にちを返す:${date}</p>
 
     <div class="cal">
         <!-- xxxx年xx月を表示 -->
@@ -51,25 +51,24 @@
         <!-- カレンダー -->
         <div id="calendar"></div>
     </div>
-
-    <!--  -->
+s
     <div>
         <p>現在時刻 <span id="nowtime"></span></p>
     </div>
 
     <div>
-        <img src="img/pet${pet}mini.png"/>
+        <img src="img/pet${userdata.pet_id}.png"/>
         <div class="balloon1">
-            <p>${id} さん、おはよう。</p>
+            <p>${userdata.user_name}さん、おはよう。</p>
           </div>
     </div>
 
     <div>
-        <img src="takahashi/fcmini.png"/>コイン枚数:${coin}
+        <img src="takahashi/fcmini.png"/>コイン枚数:${userdata.coin_cnt}
     </div>
 
     <div>
-        <form method="GET" name="regist" action="Schedule_listServlet">
+        <form method="GET" name="regist" action="Schedule_registServlet">
             <input type="submit" name="regist" value="スケジュール登録">
         </form>
     </div>
@@ -80,15 +79,25 @@
             <input type="submit" name="values" value="スケジュール表示">
         </form>
     </div>
+
+    <c:set var="i" value="0"/>
     <c:forEach var="e" items="${scheduleList}" >
-    <p>${e.user_name} ${e.schedule_name} ${e.start_date} ${e.start_time} ${e.finish_date} ${e.finish_time} ${e.color_code} ${e.content}</p>
+    <div class="schedule_data" id="schedule_id${i}" style="display:none">${e.schedule_id}</div>
+    <div class="schedule_data" id="user_name${i}" style="display:none">${e.user_name}</div>
+    <div class="schedule_data" id="schedule_name${i}" style="display:none">${e.schedule_name}</div>
+    <div class="schedule_data" id="start_date${i}" style="display:none">${e.start_date}</div>
+    <div class="schedule_data" id="start_time${i}" style="display:none">${e.start_time}</div>
+    <div class="schedule_data" id="finish_date${i}" style="display:none">${e.finish_date}</div>
+    <div class="schedule_data" id="finish_time${i}" style="display:none">${e.finish_time}</div>
+    <div class="schedule_data" id="color_code${i}" style="display:none">${e.color_code}</div>
+    <div class="schedule_data" id="content${i}" style="display:none">${e.content}</div>
+    <c:set var="i" value="${i+1}"/>
     </c:forEach>
-    <p>${scheduleList[1].user_name}</p>
 
     <div id="schedule">
-    <c:set var="count" value="0" />
-    <c:set var="colorcount" value="0" />
-    <c:set var="tdcount" value="0"/>
+    <c:set var="tdlength" value="${fn:length(scheduleList)}"/>
+    <div id="slength">${tdlength}</div>
+
         <table border>
         <c:forEach begin="0" end="23" step="1" var="hour">
 	        <c:forEach begin="0" end="5" step="1" var="minutes">
@@ -106,125 +115,19 @@
 	        		<c:otherwise><td class="hiddentime">${time}</td></c:otherwise>
 	        	</c:choose>
 
-
-				<c:choose>
-					<c:when test="${scheduleList[count-1].finish_hour < scheduleList[count].start_hour}">
-						<td></td>
-					</c:when>
-				</c:choose>
-
-				<c:choose>
-	            	<c:when test="${(hour >= scheduleList[colorcount].start_hour && hour < scheduleList[colorcount].finish_hour) || (hour == scheduleList[colorcount].finish_hour && minutes == 0)}">
-	            		<td class="td${colorcount}" bgcolor="${scheduleList[colorcount].color_code}">
-	            	</c:when>
-	            	<c:otherwise>
-	            		<td class="td${colorcount}">
-	            	</c:otherwise>
-	            </c:choose>
-
-		            <c:choose>
-		            	<c:when test="${scheduleList[count-1].finish_hour < scheduleList[count].start_hour || count==0 || scheduleList[count-1].finish_time < time}">
-			            	<c:if test="${time == scheduleList[count].start_time}">
-			            		${scheduleList[count].start_time} - ${scheduleList[count].finish_time}<br>
-			            		<a href="#info${count}" class="modal-open">${scheduleList[count].schedule_name}</a>
-
-			            		<!-- モーダルウィンドウ内 -->
-			            		<section id="info${count}" style="display:none">
-							        <h2>${scheduleList[count].schedule_name} ${scheduleList[count].start_time} - ${scheduleList[count].finish_time}</h2>
-							        <p>${scheduleList[count].content}</p>
-							        <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
-							            <input type="submit" name="edit" value="編集">
-							        </form>
-							        <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
-							            <input type="submit" name="delete" value="削除">
-							        </form>
-							    </section>
-
-							    <c:set var="count" value="${count + 1}" />
-			            	</c:if>
-			            	</td>
-			            	<c:set var="tdcount" value="0"/>
-	            		</c:when>
-
-	            		<c:otherwise>
-							<c:set var="tdcount" value="${tdcount + 1}"/>
-	            		</c:otherwise>
-	            	</c:choose>
-
-	            	<c:if test="${time == scheduleList[colorcount].finish_time}">
-				    	<c:set var="colorcount" value="${colorcount + 1}" />
-				    </c:if>
-
-	            </tr>
+	            <c:forEach begin="0" end="${tdlength}" step="1" var="tdnum">
+	            	<td id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            </c:forEach>
 	        </c:forEach>
         </c:forEach>
-            <tr>
-            <td class="hourtime">00:00</td>
-            <td class="1" bgcolor="#ffff00"><input type="checkbox" value="completion"><span>00:00 - 00:30</span><br><a href="#info" class="modal-open">スケジュール名</a></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td class="10">10</td>
-            <td class="1" bgcolor="#ffff00"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>20</td>
-            <td class="1" bgcolor="#ffff00"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td class="halftime">00:30</td>
-            <td class="1" bgcolor="#ffff00"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>40</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>50</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <td>01:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            </table>
+    	</table>
     </div>
-    <section id="info">
-        <h2>スケジュール名 00:00 - 00:30</h2>
-        <p>スケジュールの内容</p>
-        <form method="POST" name="edit" action="#">
-            <input type="submit" name="edit" value="編集">
-        </form>
-        <form method="POST" name="delete" action="#">
-            <input type="submit" name="delete" value="削除">
-        </form>
-
-    </section>
 
 <script src="takahashi/jquery-3.6.4.min.js"></script>
 <script src="takahashi/calendar.js"></script>
 <script src="takahashi/date.js"></script>
 <script src="takahashi/drawer.js"></script>
+<script src="takahashi/schedule_list.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="takahashi/modal.js"></script>
 </body>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CoinDAO;
 import dao.Schedule_listDAO;
 import model.Schedule;
 import model.ScheduleUser;
@@ -42,8 +43,9 @@ public class Schedule_listServlet extends HttpServlet {
 		session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
-		//スケジュールリストのだお宣言
+		//DAO宣言 スケジュールリスト コイン
 		Schedule_listDAO sDao = new Schedule_listDAO();
+		CoinDAO cDao = new CoinDAO();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
@@ -70,10 +72,13 @@ public class Schedule_listServlet extends HttpServlet {
 			e.setFinish_hour(e.getFinish_time().substring(0, 2));
 		}
 
+		//コインの増加するか確認
+		//if(userdata.)
+
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("scheduleList", scheduleList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -111,7 +116,7 @@ public class Schedule_listServlet extends HttpServlet {
 				request.setAttribute("scheduleList", scheduleList);
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
@@ -127,7 +132,7 @@ public class Schedule_listServlet extends HttpServlet {
 				request.setAttribute("result","レコードを削除できませんでした。");
 			}
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 			dispatcher.forward(request, response);
 		}
 
@@ -148,7 +153,7 @@ public class Schedule_listServlet extends HttpServlet {
 			// 検索結果をリクエストスコープに格納する
 			request.setAttribute("scheduleList", scheduleList);
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list4.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

@@ -31,11 +31,11 @@ user_name varchar(20) primary key,
 password varchar(100) not null,
 email varchar(50) not null,
 pet_name varchar(20) not null,
-pet_id int not null,
-done_cnt int,
+pet_id int not null default 1,
+done_cnt int default 0,
 last_login_date date,
 login_days int,
-coin_cnt int
+coin_cnt int default 0
 )
 
 ・インサート例
@@ -67,6 +67,7 @@ coin_cnt
 
 ・プライマリー,NotNull,デフォルトなし
 create table schedule(
+schedule_id int auto_increment,
 user_name varchar(20),
 schedule_name varchar(20),
 start_date date,
@@ -78,13 +79,14 @@ content varchar(100));
 
 ・プライマリー,NotNull,デフォルトあり
 create table schedule(
-user_name varchar(20) primary key,
+schedule_id int auto_increment primary key,
+user_name varchar(20) not null,
 schedule_name varchar(20) not null,
 start_date date not null,
 start_time time not null,
 finish_date date not null,
 finish_time time not null,
-color_id int not null,
+color_id int not null default 1,
 content varchar(100));
 
 ・インサート例
@@ -100,8 +102,8 @@ content) values(
 'ユーザ名1',
 'スケジュール名1',
 '2023-06-20',
-'00:00',
-'2023-06-21',
+'10:00',
+'2023-06-20',
 '12:00',
 1,
 'スケジュール内容1'
@@ -120,7 +122,7 @@ content) values(
 'スケジュール名2',
 '2023-06-20',
 '12:00',
-'2023-06-21',
+'2023-06-20',
 '13:00',
 2,
 'スケジュール内容2'
@@ -139,52 +141,10 @@ content) values(
 'スケジュール名3',
 '2023-06-20',
 '14:00',
-'2023-06-21',
+'2023-06-20',
 '15:00',
 3,
 'スケジュール内容3'
-)
-
-#===========================================================================
-
-///スケジュール色情報
-
-・プライマリー,NotNull,デフォルトなし
-create table schedule_color(
-color_id int,
-color_code varchar(7),
-color_name varchar(20)
-)
-
-・インサート例
-insert into schedule_color(
-color_id,
-color_code,
-color_name
-) values(
-1,
-'#ff0000',
-'赤'
-)
-
-insert into schedule_color(
-color_id,
-color_code,
-color_name
-) values(
-2,
-'#00ff00',
-'青'
-)
-
-insert into schedule_color(
-color_id,
-color_code,
-color_name
-) values(
-3,
-'#0000ff',
-'緑'
 )
 
 #===========================================================================
@@ -198,6 +158,13 @@ pet_id int,
 pet_img_path varchar(200)
 )
 
+・プライマリー,NotNull,デフォルトあり
+create table pet(
+pet_img_id varchar(10) primary key,
+pet_id int not null default 1,
+pet_img_path varchar(200) not null
+)
+
 ・インサート例
 insert into pet(
 pet_img_id,
@@ -209,16 +176,208 @@ pet_img_path
 'imgpet1/head.png'
 )
 
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'body1',
+1,
+'imgpet1/body.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'right_arm1',
+1,
+'imgpet1/right_arm.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'left1',
+1,
+'imgpet1/left_arm.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'legs1',
+1,
+'imgpet1/legs.png'
+)
+
+
+select pet_img_path from pet inner join user on pet.pet_id = user.pet_id;
+
 #===========================================================================
 
-///
+///ひとことメッセージ
+
+・プライマリー,NotNull,デフォルトなし
+create table message(
+message_id varchar(20) primary key,
+pet_id int not null,
+message_content varchar(30)
+)
+
+・プライマリー,NotNull,デフォルトあり
+create table message(
+message_id varchar(20) primary key,
+pet_id int not null,
+message_content varchar(30)
+)
+
+insert into message(message_id, pet_id, message_content)
+values(
+'pet1-1',
+1,
+'こんにちは～'
+)
+
+#===========================================================================
+
+///スケジュール色情報
+
+・プライマリー,NotNull,デフォルトなし
+create table schedule_color(
+color_id int,
+color_code varchar(7),
+color_name varchar(20)
+)
+
+・プライマリー,NotNull,デフォルトあり
+create table schedule_color(
+color_id int primary key,
+color_code varchar(7) not null,
+color_name varchar(20)
+)
+
+・インサート例
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+1,
+'#ffc0cb',
+'赤'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+2,
+'#87cefa',
+'青'
+)
+
+insert into schedule_color(
+color_id,
+color_code,
+color_name
+) values(
+3,
+'#98fb98',
+'緑'
+)
+
+#===========================================================================
+
+///クローゼット情報
+
+・プライマリー,NotNull,デフォルトなし
+create table closet(
+user_name varchar(20),
+closet_kind_id int,
+closet_img_id int,
+last_closet boolean
+)
+
+・プライマリー,NotNull,デフォルトなし
+create table closet(
+user_name varchar(20) not null,
+closet_kind_id int not null,
+closet_img_id int primary key,
+last_closet boolean default false
+)
+
+insert into closet(user_name, closet_kind_id, closet_img_id)
+values (
+'ユーザ名',
+'1',
+'1'
+)
+
+select closet.closet_img_id, closet.closet_kind_id, gacha.closet_path from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = 'ユーザ名';
+
+#===========================================================================
+
+///ガチャ
+
+・プライマリー,NotNull,デフォルトなし
+create table gacha(
+pet_id int,
+closet_img_id int,
+closet_path varchar(200),
+closet_name varchar(20),
+closet_kind_id int,
+rarity int
+)
+
+・プライマリー,NotNull,デフォルトあり
+create table gacha(
+pet_id int not null,
+closet_img_id int primary key,
+closet_path varchar(200),
+closet_name varchar(20),
+closet_kind_id int not null,
+rarity int not null
+)
+
+insert into gacha(pet_id, closet_img_id, closet_path, closet_name, closet_kind_id, rarity)
+values (
+1,
+1,
+'imgcloset1/hat1.png',
+'黄色い帽子',
+1,
+1
+)
 
 
+#===========================================================================
+
+///お問い合わせ
+
+・プライマリー,NotNull,デフォルトなし
+create table inquiry(
+inquiry_id int,
+user_name varchar(20),
+email varchar(50),
+inquiry_content varchar(200)
+)
+
+・プライマリー,NotNull,デフォルトなし
+create table inquiry(
+inquiry_id int auto_increment primary key,
+user_name varchar(20),
+email varchar(50) not null,
+inquiry_content varchar(200) not null
+)
 
 
+select * from schedule where schedule_id = ?
 
-
-
-
-
-
+accessory
