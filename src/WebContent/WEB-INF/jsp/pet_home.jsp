@@ -14,8 +14,8 @@
 <!--背景-->
 <img src="img/bg.png">
 <!--コイン-->
-<class="coin">
-<img src="img/fc.png" width="150" height="150">
+<div class="coin">
+<img src="img/fc.png" width="150" height="150"></div>
 <!-- モーダルウィンドウ -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -30,11 +30,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
 <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-1/css/9-6-1.css">
 </head>
+
 <body>
 <main>
     <section>
-
-      <p><a href="#info" class="modal-open"><img src="img/closet.png"></a></p>
 
     <section id="info">
     <h2>Sale情報</h2>
@@ -50,7 +49,10 @@
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-1/js/9-6-1.js"></script>
 </body>
 </html>
-
+<!-- きせかえ遷移画像 -->
+<div class="closet">
+      <p><a href="#info" class="modal-open"><img src="img/closet.png"></a></p>
+</div>
 <!--吹き出し-->
 <link rel="stylesheet" href="/Esan/css/pet_home.css">
 <script src="./js/message.js"></script>
@@ -59,16 +61,29 @@
   <br>今日も一日がんばろう！
 </div>
 
-
+<div class="box">
 <c:forEach var="e" items="${petList}" >
 <p>${e.pet_img_id} ${e.pet_img_path}</p>
+
 <c:choose>
 	<c:when test='${fn: contains(e.pet_img_id,"head")}'>
-		<img src ="${e.pet_img_path}">
+		<img src ="${e.pet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${fn: contains(e.pet_img_id,"body")}'>
+		<img src ="${e.pet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${fn: contains(e.pet_img_id,"right_arm")}'>
+		<img src ="${e.pet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${fn: contains(e.pet_img_id,"left")}'>
+		<img src ="${e.pet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${fn: contains(e.pet_img_id,"legs")}'>
+		<img src ="${e.pet_img_path}" class="abs">
 	</c:when>
 </c:choose>
 </c:forEach>
-
+</div>
 
 <!--ペット画像-->
 <img src="imgpet1/head.png">
@@ -76,6 +91,17 @@
 <img src="imgpet1/right_arm.png">
 <img src="imgpet1/left_arm.png">
 <img src="imgpet1/legs.png">
+
+<!--きせかえ画像-->
+<img src=”imgcloset1/hat1.png”>
+<img src=”imgcloset1/dress1.png”>
+<img src=”imgcloset1/shoes1.png”>
+<img src=”imgcloset1/accessory1.png”>
+
+
+
+
+
 <!--画面遷移ボタン-->
 
  <a href="./schedule_list.jsp">スケジュール管理</a>
