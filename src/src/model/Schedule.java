@@ -39,6 +39,28 @@ public class Schedule implements Serializable {
 		this.content = content;
 	}
 
+	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
+		this.user_name = user_name;
+		this.schedule_name = schedule_name;
+		this.start_date = start_date;
+		this.start_time = start_time;
+		this.finish_date = finish_date;
+		this.finish_time = finish_time;
+		this.color_id = color_id;
+		this.content = content;
+	}
+
+	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
+		this.user_name = user_name;
+		this.schedule_name = schedule_name;
+		this.start_date = start_date;
+		this.start_time = start_time;
+		this.finish_date = finish_date;
+		this.finish_time = finish_time;
+		this.color_code = color_code;
+		this.content = content;
+	}
+
 	public int getSchedule_id() {
 		return schedule_id;
 	}
