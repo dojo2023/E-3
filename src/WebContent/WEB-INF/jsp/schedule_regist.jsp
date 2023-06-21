@@ -26,7 +26,7 @@
     </select><br>
     <input type="date" name="start_date"><input type="time" name="start_time"> ～ <input type="date" name="finish_date"><input type="time" name="finish_time"><br>
     <textarea id="content" name="content" cols="30" rows="10" placeholder="内容"></textarea><br>
-    <span id="error_message"></span><br>
+    <span id="error_message" style="color:red"></span><br>
 
     <input type="submit" id="regist_btn" value="登録">
 </form>

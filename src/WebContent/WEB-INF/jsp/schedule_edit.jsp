@@ -9,34 +9,145 @@
 <title>スケジュール編集</title>
 </head>
 <body>
-	<form method="POST" action="/Esan/Schedule_editServlet">
-	<input type="text" id="user_name" value="${sche.user_name}" readonly><br>
+	<form method="POST" action="/Esan/Schedule_editServlet" id="regist">
+	<input type="text" id="user_name" value="${user_name}" readonly><br>
     <input type="text" id="title" name="schedule_name" value="${sche.schedule_name}">
     <select id="color" name="color_id">
         <option value="色">色を選択してください</option>
     <c:choose>
         <c:when test="${sche.color_id == 1}">
         	<option value="赤" id="red" selected>赤</option>
-        </c:when>
-    </c:choose>
-        <option value="赤" id="red">赤</option>
-        <option value="ピンク" id="pink">ピンク</option>
-        <option value="黄色" id="yellow">黄色</option>
-        <option value="オレンジ" id="orange">オレンジ</option>
-        <option value="シアン" id="cyan">シアン</option>
-        <option value="青" id="blue">青</option>
-        <option value="緑" id="green">緑</option>
-        <option value="マゼンタ" id="magenta">マゼンタ</option>
-        <option value="紫" id="purple">紫</option>
-        <option value="茶色" id="brown">茶色</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow">黄色</option>
+	        <option value="オレンジ" id="orange">オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue">青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
 
+        </c:when>
+		<c:when test="${sche.color_id == 2}">
+			<option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink" selected>ピンク</option>
+	        <option value="黄色" id="yellow">黄色</option>
+	        <option value="オレンジ" id="orange">オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue">青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 3}">
+        	<option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange">オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue">青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+
+        </c:when>
+        <c:when test="${sche.color_id == 4}">
+                	<option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue">青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 5}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan" selected>シアン</option>
+	        <option value="青" id="blue">青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 6}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue" selected>青</option>
+	        <option value="緑" id="green">緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 7}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue" selected>青</option>
+	        <option value="緑" id="green" selected>緑</option>
+	        <option value="マゼンタ" id="magenta">マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 8}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue" selected>青</option>
+	        <option value="緑" id="green" selected>緑</option>
+	        <option value="マゼンタ" id="magenta" selected>マゼンタ</option>
+	        <option value="紫" id="purple">紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 9}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue" selected>青</option>
+	        <option value="緑" id="green" selected>緑</option>
+	        <option value="マゼンタ" id="magenta" selected>マゼンタ</option>
+	        <option value="紫" id="purple" selected>紫</option>
+	        <option value="茶色" id="brown">茶色</option>
+        </c:when>
+        <c:when test="${sche.color_id == 10}">
+            <option value="赤" id="red">赤</option>
+	        <option value="ピンク" id="pink">ピンク</option>
+	        <option value="黄色" id="yellow" selected>黄色</option>
+	        <option value="オレンジ" id="orange" selected>オレンジ</option>
+	        <option value="シアン" id="cyan">シアン</option>
+	        <option value="青" id="blue" selected>青</option>
+	        <option value="緑" id="green" selected>緑</option>
+	        <option value="マゼンタ" id="magenta" selected>マゼンタ</option>
+	        <option value="紫" id="purple" selected>紫</option>
+	        <option value="茶色" id="brown" selected>茶色</option>
+        </c:when>
+	</c:choose>
    </select><br>
-    <input type="date" name="start_date"><input type="time" name="start_time"> ～ <input type="date" name="finish_date"><input type="time" name="finish_time"><br>
-    <textarea id="content" name="content" cols="30" rows="10" placeholder="内容"></textarea>
-    <span id="error_message"></span><br>
+    <input type="date" name="start_date" value="${sche.start_date}"><input type="time" name="start_time" value="${sche.start_time}"> ～ <input type="date" name="finish_date" value="${sche.finish_date}"><input type="time" name="finish_time" value="${sche.finish_time}"><br>
+    <textarea id="content" name="content" cols="30" rows="10" placeholder="内容">${sche.content}</textarea><br>
+    <span id="error_message" style="color:red"></span><br>
 
     <input type="submit" id="regist_btn" value="編集を完了">
 </form>
     <button onclick="location.href='/Esan/Schedule_listServlet'">編集せずに戻る</button>
+
+    <script src="js/error_message_schedule.js"></script>
+
 </body>
 </html>
