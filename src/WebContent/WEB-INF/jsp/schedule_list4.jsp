@@ -61,7 +61,7 @@
     <div>
         <img src="img/pet${pet}mini.png"/>
         <div class="balloon1">
-            <p>${id} さん、おはよう。</p>
+            <p>${sessonScope.user_name}さん、おはよう。</p>
           </div>
     </div>
 

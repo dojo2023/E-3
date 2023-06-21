@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.Schedule_listDAO;
 import model.Schedule;
+import model.ScheduleUser;
 
 /**
  * Servlet implementation class Schedule_listServlet
@@ -29,8 +30,8 @@ public class Schedule_listServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/BCM/LoginServlet");
+		if (session.getAttribute("user_name") == null) {
+			response.sendRedirect("/Esan/LoginServlet");
 			return;
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
@@ -38,21 +39,28 @@ public class Schedule_listServlet extends HttpServlet {
 		}*/
 
 		HttpSession session = request.getSession();
-		session.setAttribute("id", "ユーザ名");
-		session.setAttribute("pet", "1");
-		session.setAttribute("coin", "52");
+		String user_name = (String)session.getAttribute("user_name");
 
+		//スケジュールリストのだお宣言
+		Schedule_listDAO sDao = new Schedule_listDAO();
+
+		//ユーザ情報を取得(パスワード、メアドなし)
+		ScheduleUser userdata = sDao.selectuser(user_name);
+		request.setAttribute("userdata", userdata);
+
+
+		//今日の日付を取得
 		Calendar cl = Calendar.getInstance();
-
         //日付をyyyyMMddの形で出力する
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
         String today = sdf1.format(cl.getTime());
         today = today.replace("/", "-");
         System.out.println(today);
 
-        Schedule_listDAO sDao = new Schedule_listDAO();
+        //今日の日付のスケジュールを取得
 		List<Schedule> scheduleList = sDao.selectdate(today);
 
+		//時間の文字列を加工 秒を削除
 		for(Schedule e: scheduleList) {
 			e.setStart_time(e.getStart_time().substring(0, 5));
 			e.setFinish_time(e.getFinish_time().substring(0, 5));
@@ -75,15 +83,20 @@ public class Schedule_listServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String values = request.getParameter("values");
 		System.out.println(values);
-		String user = request.getParameter("userid");
 
 		Schedule_listDAO sDao = new Schedule_listDAO();
+
+		//ユーザ情報を取得(パスワード、メアドなし)
+		HttpSession session = request.getSession();
+		String user_name = (String)session.getAttribute("user_name");
+		ScheduleUser userdata = sDao.selectuser(user_name);
+		request.setAttribute("userdata", userdata);
 
 		//スケジュールをすべて取得
 		if(values != null) {
 			if(values.equals("スケジュール表示")) {
 				// 検索処理を行う
-				List<Schedule> scheduleList = sDao.selectcolor_code();
+				List<Schedule> scheduleList = sDao.selectall();
 				//List<Schedule> scheduleList = sDao.select();
 
 				for(Schedule e: scheduleList) {

@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Schedule;
+import model.ScheduleUser;
 
 public class Schedule_listDAO {
 
 //==============================================================================================
 
 	//スケジュールテーブルからスケジュールをすべて取得する
-	public List<Schedule> selectcolor_code(){
+	public List<Schedule> selectall(){
 		Connection conn = null;
 		List<Schedule> scheduleList = new ArrayList<Schedule>();
 
@@ -132,6 +133,65 @@ public class Schedule_listDAO {
 			// 結果を返す
 			return scheduleList;
 		}
+
+//==============================================================================================
+	//ユーザテーブルからユーザ情報を取得
+	public ScheduleUser selectuser(String user_name){
+		Connection conn = null;
+		ScheduleUser userdata = null;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+
+			// SQL文を準備する
+			String sql = "select user_name, pet_name, pet_id, done_cnt, last_login_date, login_days, coin_cnt from user where user_name = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setString(1, user_name);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				userdata = new ScheduleUser(
+				rs.getString("user_name"),
+				rs.getString("pet_name"),
+				rs.getInt("pet_id"),
+				rs.getInt("done_cnt"),
+				rs.getString("last_login_date"),
+				rs.getInt("login_days"),
+				rs.getInt("coin_cnt"));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			userdata = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			userdata = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					userdata = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return userdata;
+	}
+
 
 //==============================================================================================
 
