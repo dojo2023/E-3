@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,7 +76,7 @@ public class Schedule_listDAO {
 
 //==============================================================================================
 	//スケジュールテーブルからカレンダーで選択した日付のスケジュールを取得,Get時に今日のスケジュールを取得
-		public List<Schedule> selectdate(String date){
+		public List<Schedule> selectdate(Date date){
 			Connection conn = null;
 			List<Schedule> scheduleList = new ArrayList<Schedule>();
 
@@ -90,7 +91,7 @@ public class Schedule_listDAO {
 				String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id where start_date = ? order by start_time";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				pStmt.setString(1, date);
+				pStmt.setDate(1, date);
 
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
@@ -190,6 +191,65 @@ public class Schedule_listDAO {
 
 		// 結果を返す
 		return userdata;
+	}
+
+//==============================================================================================
+
+	//最終ログイン日を更新する
+	public boolean updatelast_login_date(String user_name, Date today) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+
+			// SQL文を準備する
+			String sql = "update user set last_login_date=? where user_name=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (today != null && !today.equals("")) {
+				pStmt.setDate(1, today);
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			if (user_name != null && !user_name.equals("")) {
+				pStmt.setString(2, user_name);
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		// 結果を返す
+		return result;
 	}
 
 //==============================================================================================

@@ -29,7 +29,7 @@ public class CoinDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (user_name != null && user_name.equals("")) {
+			if (user_name != null && !user_name.equals("")) {
 				pStmt.setString(1, user_name);
 			}
 			else {
@@ -85,7 +85,7 @@ public class CoinDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (user_name != null && user_name.equals("")) {
+			if (user_name != null && !user_name.equals("")) {
 				pStmt.setString(1, user_name);
 			}
 			else {
@@ -139,7 +139,7 @@ public class CoinDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (user_name != null && user_name.equals("")) {
+			if (user_name != null && !user_name.equals("")) {
 				pStmt.setString(1, user_name);
 			}
 			else {
@@ -193,7 +193,7 @@ public class CoinDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (user_name != null && user_name.equals("")) {
+			if (user_name != null && !user_name.equals("")) {
 				pStmt.setString(1, user_name);
 			}
 			else {
