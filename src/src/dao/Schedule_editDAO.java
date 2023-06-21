@@ -5,17 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Schedule;
 
 public class Schedule_editDAO {
 
 	//一旦
-	public List<Schedule> select(Schedule param){
+	public Schedule selectschedule(int schedule_id){
 		Connection conn = null;
-		List<Schedule> scheList = new ArrayList<Schedule>();
+		Schedule sche = null;
 
 		try {
 			//JDBCドライバの読み込み
@@ -25,61 +23,22 @@ public class Schedule_editDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
 
 			//SQL準備
-			String sql = "select * from schedule where schedule_id = ? order by schedule_id";
+			String sql = "select * from schedule where schedule_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL完成
-			if(param.getSchedule_id() != 0) {
-				pStmt.setInt(1, param.getSchedule_id());
+			if(schedule_id != 0) {
+				pStmt.setInt(1, schedule_id);
 			}else {
 				pStmt.setInt(1, 0);
 			}
-			if(param.getUser_name() != null) {
-				pStmt.setString(2,"%"+ param.getUser_name() +"%");
-			}else {
-				pStmt.setString(2,"%");
-			}
-			if(param.getSchedule_name() != null) {
-				pStmt.setString(3,"%"+ param.getSchedule_name() +"%");
-			}else {
-				pStmt.setString(3,"%");
-			}
-			if(param.getStart_date() != null) {
-				pStmt.setString(4,"%"+ param.getStart_date() +"%");
-			}else {
-				pStmt.setString(4,"%");
-			}
-			if(param.getStart_time() != null) {
-				pStmt.setString(5,"%"+ param.getStart_time() +"%");
-			}else {
-				pStmt.setString(5,"%");
-			}
-			if(param.getFinish_date() != null) {
-				pStmt.setString(6,"%"+ param.getFinish_date() +"%");
-			}else {
-				pStmt.setString(6,"%");
-			}
-			if(param.getFinish_time() != null) {
-				pStmt.setString(7,"%"+ param.getFinish_time() +"%");
-			}else {
-				pStmt.setString(7,"%");
-			}
-			if(param.getColor_id() != 0) {
-				pStmt.setInt(8, param.getColor_id());
-			}else {
-				pStmt.setInt(8,0);
-			}
-			if(param.getContent() != null) {
-				pStmt.setString(9,"%"+ param.getContent() +"%");
-			}else {
-				pStmt.setString(9,"%");
-			}
+
 
 			//実行
 			ResultSet rs = pStmt.executeQuery();
 
 			while(rs.next()) {
-				Schedule sche = new Schedule(
+				sche = new Schedule(
 						rs.getInt("schedule_id"),
 						rs. getString("user_name"),
 						rs.getString("schedule_name"),
@@ -90,16 +49,13 @@ public class Schedule_editDAO {
 						rs.getInt("color_id"),
 						rs.getString("content")
 						);
-				scheList.add(sche);
 			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-			scheList = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			scheList = null;
 		}
 		finally {
 			if(conn != null) {
@@ -108,11 +64,10 @@ public class Schedule_editDAO {
 				}
 				catch(SQLException e) {
 					e.printStackTrace();
-					scheList = null;
 				}
 			}
 		}
-		return scheList;
+		return sche;
 	}
 
 

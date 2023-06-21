@@ -48,7 +48,17 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //		return;
 //	}
 	//リクエストパラメータを取得
+
 			request.setCharacterEncoding("UTF-8");
+			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
+			request.getAttribute("schedule_id");
+			System.out.println(schedule_id);
+
+			Schedule_editDAO editDao = new Schedule_editDAO();
+			Schedule sche = editDao.selectschedule(schedule_id);
+			System.out.println(sche);
+			request.setAttribute("sche", sche);
+			/*
 			String user_name = (String)request.getAttribute("user_name");
 			String schedule_name = (String)request.getAttribute("schedule_name");
 			String start_date = (String)request.getAttribute("start_date");
@@ -71,5 +81,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					response.sendRedirect("Schedule_editServlet");
 				}
 			}
+			*/
+			//スケジュール編集画面にフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_edit.jsp");
+			dispatcher.forward(request, response);
+
 	}
 }
