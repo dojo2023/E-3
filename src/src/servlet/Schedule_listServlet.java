@@ -39,6 +39,7 @@ public class Schedule_listServlet extends HttpServlet {
 		}*/
 
 		HttpSession session = request.getSession();
+		session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//スケジュールリストのだお宣言
@@ -46,6 +47,7 @@ public class Schedule_listServlet extends HttpServlet {
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
+		System.out.println(userdata);
 		request.setAttribute("userdata", userdata);
 
 

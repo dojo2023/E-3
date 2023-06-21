@@ -37,7 +37,6 @@
         <input type="hidden" name="date" id="daysvalue">
         <input type="hidden" name="values" value="date">
     </form>
-    <p>日にちを返す:${date}</p>
 
     <div class="cal">
         <!-- xxxx年xx月を表示 -->
@@ -52,21 +51,20 @@
         <!-- カレンダー -->
         <div id="calendar"></div>
     </div>
-
-    <!--  -->
+s
     <div>
         <p>現在時刻 <span id="nowtime"></span></p>
     </div>
 
     <div>
-        <img src="img/pet${pet}mini.png"/>
+        <img src="img/pet${userdata.pet_id}.png"/>
         <div class="balloon1">
-            <p>${sessonScope.user_name}さん、おはよう。</p>
+            <p>${userdata.user_name}さん、おはよう。</p>
           </div>
     </div>
 
     <div>
-        <img src="takahashi/fcmini.png"/>コイン枚数:${coin}
+        <img src="takahashi/fcmini.png"/>コイン枚数:${userdata.coin_cnt}
     </div>
 
     <div>

@@ -1,0 +1,172 @@
+2023-06-21 12:46:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "A" が見つかりません
+Column "A" not found; SQL statement:
+insert into bool(boo) values(a) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-21 12:49:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'head1',
+1,
+'imgpet1/head.png'
+)
+
+INSERT[*] INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'body1',
+1,
+'imgpet1/body.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'right_arm1',
+1,
+'imgpet1/right_arm.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'left1',
+1,
+'imgpet1/left_arm.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'legs1',
+1,
+'imgpet1/legs.png'
+)"
+Syntax error in SQL statement "INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'head1',
+1,
+'imgpet1/head.png'
+)
+
+INSERT[*] INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'body1',
+1,
+'imgpet1/body.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'right_arm1',
+1,
+'imgpet1/right_arm.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'left1',
+1,
+'imgpet1/left_arm.png'
+)
+
+INSERT INTO PET(
+PET_IMG_ID,
+PET_ID,
+PET_IMG_PATH
+) VALUES(
+'legs1',
+1,
+'imgpet1/legs.png'
+)"; SQL statement:
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'head1',
+1,
+'imgpet1/head.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'body1',
+1,
+'imgpet1/body.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'right_arm1',
+1,
+'imgpet1/right_arm.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'left1',
+1,
+'imgpet1/left_arm.png'
+)
+
+insert into pet(
+pet_img_id,
+pet_id,
+pet_img_path
+) values(
+'legs1',
+1,
+'imgpet1/legs.png'
+) [42000-200]
