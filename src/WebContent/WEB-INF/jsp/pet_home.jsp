@@ -83,6 +83,26 @@
 	</c:when>
 </c:choose>
 </c:forEach>
+
+<!-- きせかえ -->
+<c:forEach var="e" items="${closetList}" >
+<p>${e.closet_img_id}${e.closet_kind_id} ${e.closet_img_path}</p>
+
+<c:choose>
+	<c:when test='${e.closet_kind_id == 1}'>
+		<img src ="${e.closet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${e.closet_kind_id == 2}'>
+		<img src ="${e.closet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${e.closet_kind_id == 3}'>
+		<img src ="${e.closet_img_path}" class="abs">
+	</c:when>
+	<c:when test='${e.closet_kind_id == 4}'>
+		<img src ="${e.closet_img_path}" class="abs">
+	</c:when>
+</c:choose>
+</c:forEach>
 </div>
 
 <!--ペット画像-->
@@ -93,10 +113,10 @@
 <img src="imgpet1/legs.png">
 
 <!--きせかえ画像-->
-<img src=”imgcloset1/hat1.png”>
-<img src=”imgcloset1/dress1.png”>
-<img src=”imgcloset1/shoes1.png”>
-<img src=”imgcloset1/accessory1.png”>
+<img src="imgcloset1/hat1.png">
+<img src="imgcloset1/dress1.png">
+<img src="imgcloset1/shoes1.png">
+<img src="imgcloset1/accessory1.png">
 
 
 

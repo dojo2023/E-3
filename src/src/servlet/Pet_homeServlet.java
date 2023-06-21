@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Pet_homeDAO;
+import model.Closet;
 import model.Pet;
 
 
@@ -25,9 +27,17 @@ public class Pet_homeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.setAttribute("user_name", "ユーザ名");
+		String user_name = (String)session.getAttribute("user_name");
 		Pet_homeDAO pDao = new Pet_homeDAO();
 		List<Pet> petList = pDao.selectpet();
 		request.setAttribute("petList", petList);
+
+
+		List<Closet> closetList = pDao.selectcloset(user_name);
+		request.setAttribute("closetList", closetList);
+		System.out.println(closetList);
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pet_home.jsp");
