@@ -1,5 +1,62 @@
 @charset "UTF-8";
-    select option[id="red"]{
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    max-width: 600px;
+    margin: 0 auto;
+    /* background-color: #edefea; */
+    background-color:#f4f2f3;
+}
+#user_name{
+    margin-left: 20px;
+    background-color: #cdcccc;
+}
+.container{
+    margin-top:80px;
+}
+input,select,textarea{
+    padding: 10px;
+    border-radius:15px ;
+    margin: 5px;
+    /* border: 1.5px solid #525252; */
+    border: 1.5px solid #6e646d;
+}
+input#title{
+    width: 350px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+.datetime{
+    margin: 0 30px;
+    text-align: center;
+}
+span{
+    margin: 0 20px;
+    font-size: 20px;
+}
+textarea{
+    width: 540px;
+    margin: 10px 20px;
+    font-size: 15px;
+}
+#back_btn,#regist_btn{
+    width: 150px;
+    font-size: 15px;
+}
+.button{
+    margin: 0 50px;
+    position: relative;
+}
+#regist_btn{
+    position: absolute;
+    right: 0;
+}
+p{
+    margin-left: 20px;
+}    select option[id="red"]{
         background: rgba(255, 0, 0, 0.678);
     }
     select option[id="blue"]{
