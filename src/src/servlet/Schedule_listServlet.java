@@ -61,10 +61,15 @@ public class Schedule_listServlet extends HttpServlet {
 
 		//最終ログイン日を確認
 		Date last_login_date = Date.valueOf(userdata.getLast_login_date());
-		if(last_login_date.before(today)) {
-			System.out.println("yes");
+		if(last_login_date != today && last_login_date.before(today)) {
+			boolean coinplus1= cDao.coinplus1(user_name);
+			request.setAttribute("coinplus1", coinplus1);
+			int coin = cDao.selectcoin(user_name);
+			userdata.setCoin_cnt(coin);
+			System.out.println(coinplus1);
 		}
 
+		//最終ログイン日を更新
 		//boolean updateresult = sDao.updatelast_login_date(user_name, today);
 
 		//時間の文字列を加工 秒を削除
@@ -141,6 +146,7 @@ public class Schedule_listServlet extends HttpServlet {
 
 		if(values.equals("date")) {
 			String strdate = request.getParameter("date");
+			strdate = strdate.replaceAll("/", "-");
 			Date date= Date.valueOf(strdate);
 			System.out.println(date);
 
