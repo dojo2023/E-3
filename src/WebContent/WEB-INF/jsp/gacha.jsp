@@ -13,12 +13,13 @@
 <body>
   <div class="content1">
       <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
-      <img src="/Esan/img/chicken_house.png" class="ouchi">
+    <img src="/Esan/img/chicken_house.png" class="ouchi">
     <div class="wrapper">
-      <!--リンク元のHTMLリンク先は表示させたいエリアのid名を指定します。-->
-      <a href="#info" class="modal-open">
-      <button type="submit" id="gacha_btn" onclick="alertButton()"><img src="img/gacha_btn.png"></button>
-      </a>
+    <button type="button" id="gacha_btn" class="gacha_btn">
+    <a href="#info" class="modal-open">
+    <img src="img/gacha_btn.png">
+    </a>
+    </button>
     </div>
   </div>
   <div class="content2">
@@ -31,25 +32,27 @@
   </table>
   </div>
     <!--ここからガチャ結果画面-->
+    <!--ここからガチャ結果画面-->
     <!--表示エリアのHTML。id 名にリンク先と同じ名前を指定します。※表示エリアはHTML の変更が可能なので、レイアウトを自由に変更できます。-->
     <section id="info">
-    <div class="mordal">
+    <div class="modal">
     <table>
     <tr><th>レア度</th><td><img src="/Esan/img/rarity1.png"></td></tr>
     </table>
     <img src="${closet_path}" class="result"><br>
     を手に入れた！<br>
     <hr>
+    <a href="/Esan/GachaServlet">
     <button type="button" id="ok_btn">OK</button>
+    </a>
     </div>
     </section>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <!--自作のJS-->
-<script src="/Esan/js/gacha.js"></script>
 <script src="/Esan/js/modal_gacha_result.js"></script>
+<script src="/Esan/js/gacha.js"></script>
 </body>
 </html>
