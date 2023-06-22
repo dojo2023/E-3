@@ -29,7 +29,7 @@ public class Schedule_listDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id order by start_time";
+			String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content, schedule_done from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id order by start_time";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を実行し、結果表を取得する
@@ -45,7 +45,8 @@ public class Schedule_listDAO {
 				rs.getString("finish_date"),
 				rs.getString("finish_time"),
 				rs.getString("color_code"),
-				rs.getString("content"));
+				rs.getString("content"),
+				rs.getBoolean("schedule_done"));
 				scheduleList.add(list);
 			}
 		}
@@ -88,7 +89,7 @@ public class Schedule_listDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
 
 				// SQL文を準備する
-				String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id where start_date = ? order by start_time";
+				String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content, schedule_done from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id where start_date = ? order by start_time";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				pStmt.setDate(1, date);
@@ -106,7 +107,8 @@ public class Schedule_listDAO {
 					rs.getString("finish_date"),
 					rs.getString("finish_time"),
 					rs.getString("color_code"),
-					rs.getString("content"));
+					rs.getString("content"),
+					rs.getBoolean("schedule_done"));
 					scheduleList.add(list);
 				}
 			}
@@ -216,13 +218,66 @@ public class Schedule_listDAO {
 				pStmt.setDate(1, today);
 			}
 			else {
-				pStmt.setString(1, null);
+				pStmt.setDate(1, null);
 			}
 			if (user_name != null && !user_name.equals("")) {
 				pStmt.setString(2, user_name);
 			}
 			else {
 				pStmt.setString(2, null);
+			}
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		// 結果を返す
+		return result;
+	}
+
+//==============================================================================================
+
+	//スケジュール完了時にschedule_doneをTrueに更新する
+	public boolean updatedone(int schedule_id) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+
+			// SQL文を準備する
+			String sql = "update schedule set schedule_done=true where schedule_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (schedule_id != 0) {
+				pStmt.setInt(1, schedule_id);
+			}
+			else {
+				pStmt.setInt(1,0);
 			}
 
 

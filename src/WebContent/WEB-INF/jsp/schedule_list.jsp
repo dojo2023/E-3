@@ -33,11 +33,25 @@
         </ul>
     </nav>
 
+    <p>日付　：　${date}</p>
+
+	<!-- コインの追加処理 ログイン時、スケジュール完了時 -->
+    <div style="display:none">
+    	<span id="coinresult" style="display:none">${coinplus.coinresult}</span>
+    	<a href="#coinplus" class="modal-open" id="coinbtn"></a>
+    	<section id="coinplus">
+    		<h2>${coinplus.event_name}</h2>
+    		<p>コインが${coinplus.coinnum}枚追加！</p>
+    	</section>
+    </div>
+
+	<!-- カレンダーで選択した日付を送信 -->
     <form method="POST" action="/Esan/Schedule_listServlet" name="dateform">
         <input type="hidden" name="date" id="daysvalue">
         <input type="hidden" name="values" value="date">
     </form>
 
+	<!-- カレンダー表示 -->
     <div class="cal">
         <!-- xxxx年xx月を表示 -->
         <h1 id="header"></h1>
@@ -51,11 +65,13 @@
         <!-- カレンダー -->
         <div id="calendar"></div>
     </div>
-s
+
+	<!-- 現在時刻を表示 -->
     <div>
         <p>現在時刻 <span id="nowtime"></span></p>
     </div>
 
+	<!-- ペットの表示とセリフの変更 -->
     <div>
         <a href="/Esan/Pet_homeServlet"><img src="img/pet${userdata.pet_id}.png"/></a>
         <div class="balloon1">
@@ -63,17 +79,19 @@ s
           </div>
     </div>
 
+	<!-- コインの枚数表示 -->
     <div>
-    	<span id="coinplus" style="display:none">${coinplus1}</span>
         <img src="takahashi/fcmini.png"/>コイン枚数:${userdata.coin_cnt}
     </div>
 
+	<!-- スケジュール登録遷移ボタン -->
     <div>
         <form method="GET" name="regist" action="/Esan/Schedule_registServlet">
             <input type="submit" name="regist" value="スケジュール登録">
         </form>
     </div>
 
+	<!-- 全件表示　なくてもいい -->
     <div>
         <form method="POST" action="/Esan/Schedule_listServlet">
         	<input type="hidden" name="userid" value="ユーザ名">
@@ -92,8 +110,10 @@ s
     <div class="schedule_data" id="finish_time${i}" style="display:none">${e.finish_time}</div>
     <div class="schedule_data" id="color_code${i}" style="display:none">${e.color_code}</div>
     <div class="schedule_data" id="content${i}" style="display:none">${e.content}</div>
+    <div class="schedule_data" id="schedule_done${i}" style="display:none">${e.schedule_done}</div>
     <c:set var="i" value="${i+1}"/>
     </c:forEach>
+    <div class="schedule_data" id="senddate" style="display:none">${date}</div>
 
     <div id="schedule">
     <c:set var="tdlength" value="${fn:length(scheduleList)}"/>
