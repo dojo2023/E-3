@@ -2,25 +2,44 @@
 
 /*共通部分*/
 /* bodyタグ */
-body {
-	font-size: 26px;
-	background-color: #FFF9EE;
-}
 
+
+body {
+    font-size: 26px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #96bbcf;
+    z-index: -1;
+}
+body {
+    background-image:  radial-gradient(#5ca865 2px, transparent 2px), radial-gradient(#07ff6e 2px, #c8f7ff 2px);
+    background-size: 40px 40px;
+    background-position: 0 0,20px 20px;
+}
 
 h2{
-	border-radius: 5px;
-  	background-color: #8EF1FF;
- 	padding: 5px;
-  	text-decoration: none;
-  	color: white;
-  	box-shadow: 0px 20px 35px 0px rgba(0, 0, 0, 0.14);
+    margin-left: 420px;
+    margin-bottom: 0;
 }
+
+.cloud {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    text-align:center;
+    line-height: 80px;
+}
+
 
 #login_form {
 	text-align : center;
 	margin : auto;
-    background-color: #FFFFFF;
+    background-color: #92c79d;
     width: 700px;
     height: 500px;
     border-radius: 1.5em;
@@ -43,6 +62,16 @@ li {
 
 .log_pet{
 	text-align: center;
+	margin : auto;
+    background-color: #efecdf;
+    width: 1000px;
+    height: 230px;
+    border-radius: 1.5em;
+
+    border:solid #bcbc6c 1px; /*borderの指定*/
+
+/*余白の指定*/
+
 }
 
 .box {
@@ -54,6 +83,10 @@ li {
     color: rgb(0, 0, 0);
     font-size: 1em;
     line-height: 1.5em;
+
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 50px;
 }
 
 .box::placeholder {
@@ -73,6 +106,7 @@ li {
     background-color: #fff;
     color: #415d71;
     font-size: 1em;
+    margin-top: 50px;
 }
 
 .submit:focus {
@@ -102,4 +136,9 @@ li {
 
 .submit:focus::after {
     content: none;
+}
+
+#inquiry {
+    text-align: center;
+    margin-bottom: 10px;
 }

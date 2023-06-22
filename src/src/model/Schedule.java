@@ -11,10 +11,13 @@ public class Schedule implements Serializable {
 	private String finish_time;
 	private int color_id;
 	private String content;
-	private String color_code;
-	private String start_hour;
-	private String finish_hour;
+	private boolean schedule_done;
 
+	private String color_code; //カラーコード
+	private String start_hour; //開始時間のみ
+	private String finish_hour; //終了時間のみ
+
+	//カラーIDを取得するバージョン
 	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
 		this.schedule_id = schedule_id;
 		this.user_name = user_name;
@@ -27,6 +30,7 @@ public class Schedule implements Serializable {
 		this.content = content;
 	}
 
+	//カラーコードを取得するバージョン
 	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
 		this.schedule_id = schedule_id;
 		this.user_name = user_name;
@@ -39,6 +43,7 @@ public class Schedule implements Serializable {
 		this.content = content;
 	}
 
+	//スケジュールIDを取得しないでカラーIDを取得
 	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content) {
 		this.user_name = user_name;
 		this.schedule_name = schedule_name;
@@ -50,6 +55,7 @@ public class Schedule implements Serializable {
 		this.content = content;
 	}
 
+	//スケジュールIDを取得しないでカラーコードを取得
 	public Schedule(String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content) {
 		this.user_name = user_name;
 		this.schedule_name = schedule_name;
@@ -59,6 +65,34 @@ public class Schedule implements Serializable {
 		this.finish_time = finish_time;
 		this.color_code = color_code;
 		this.content = content;
+	}
+
+	//スケジュール完了を追加、カラーIDを取得
+	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, int color_id, String content, boolean schedule_done) {
+		this.schedule_id = schedule_id;
+		this.user_name = user_name;
+		this.schedule_name = schedule_name;
+		this.start_date = start_date;
+		this.start_time = start_time;
+		this.finish_date = finish_date;
+		this.finish_time = finish_time;
+		this.color_id = color_id;
+		this.content = content;
+		this.schedule_done = schedule_done;
+	}
+
+	//スケジュール完了を追加、カラーコードを取得
+	public Schedule(int schedule_id, String user_name, String schedule_name, String start_date, String start_time, String finish_date, String finish_time, String color_code, String content, boolean schedule_done) {
+		this.schedule_id = schedule_id;
+		this.user_name = user_name;
+		this.schedule_name = schedule_name;
+		this.start_date = start_date;
+		this.start_time = start_time;
+		this.finish_date = finish_date;
+		this.finish_time = finish_time;
+		this.color_code = color_code;
+		this.content = content;
+		this.schedule_done = schedule_done;
 	}
 
 	public int getSchedule_id() {
@@ -143,5 +177,12 @@ public class Schedule implements Serializable {
 	}
 	public void setFinish_hour(String finish_hour) {
 		this.finish_hour = finish_hour;
+	}
+
+	public boolean getSchedule_done() {
+		return schedule_done;
+	}
+	public void setSchedule_done(boolean schedule_done) {
+		this.schedule_done = schedule_done;
 	}
 }

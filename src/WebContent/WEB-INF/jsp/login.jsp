@@ -21,7 +21,7 @@
 			<li><img src="img/pet5.png" id="log_pet5"></li>
 		</ul>
 		</div>
-		<h2>ログイン</h2>
+		<h2><span class="cloud">ロ</span><span class="cloud">グ</span><span class="cloud">イ</span><span class="cloud">ン</span></h2>
 		<div class="main">
 			<form id="login_form" class="form1" method="POST" action="/Esan/LoginServlet">
 				<input type="text" name="user_name" placeholder="ユーザネーム" class="box"><br>

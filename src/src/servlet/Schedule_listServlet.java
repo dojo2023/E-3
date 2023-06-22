@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CoinDAO;
+import dao.CoinDAO2;
 import dao.Schedule_listDAO;
+import model.Coin;
 import model.Schedule;
 import model.ScheduleUser;
 
@@ -44,7 +45,7 @@ public class Schedule_listServlet extends HttpServlet {
 
 		//DAO宣言 スケジュールリスト コイン
 		Schedule_listDAO sDao = new Schedule_listDAO();
-		CoinDAO cDao = new CoinDAO();
+		CoinDAO2 cDao = new CoinDAO2();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
@@ -54,20 +55,30 @@ public class Schedule_listServlet extends HttpServlet {
 		//今日の日付を取得
 		long miliseconds = System.currentTimeMillis();
         Date today = new Date(miliseconds);
-        System.out.println(today);
 
         //今日の日付のスケジュールを取得
 		List<Schedule> scheduleList = sDao.selectdate(today);
 
-		//最終ログイン日を確認
-		Date last_login_date = Date.valueOf(userdata.getLast_login_date());
-		if(last_login_date != today && last_login_date.before(today)) {
-			boolean coinplus1= cDao.coinplus1(user_name);
-			request.setAttribute("coinplus1", coinplus1);
+		//最終ログイン日を確認 コイン追加1枚
+		Date last_login_date = null;
+		boolean updateresult = false;
+		if(userdata.getLast_login_date() == null) {
+			Coin coinplus = cDao.coinplus50(user_name);
+			request.setAttribute("coinplus", coinplus);
 			int coin = cDao.selectcoin(user_name);
 			userdata.setCoin_cnt(coin);
-			System.out.println(coinplus1);
+			updateresult = sDao.updatelast_login_date(user_name, today);
+		}else {
+			last_login_date = Date.valueOf(userdata.getLast_login_date());
+			if(!last_login_date.toString().equals(today.toString()) && last_login_date.before(today)) {
+				Coin coinplus= cDao.coinplus1(user_name);
+				request.setAttribute("coinplus", coinplus);
+				int coin = cDao.selectcoin(user_name);
+				userdata.setCoin_cnt(coin);
+				updateresult = sDao.updatelast_login_date(user_name, today);
+			}
 		}
+
 
 		//最終ログイン日を更新
 		//boolean updateresult = sDao.updatelast_login_date(user_name, today);
@@ -80,11 +91,9 @@ public class Schedule_listServlet extends HttpServlet {
 			e.setFinish_hour(e.getFinish_time().substring(0, 2));
 		}
 
-		//コインの増加するか確認
-		//if(userdata.)
-
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("scheduleList", scheduleList);
+		request.setAttribute("date", today);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 		dispatcher.forward(request, response);
@@ -100,6 +109,7 @@ public class Schedule_listServlet extends HttpServlet {
 		System.out.println(values);
 
 		Schedule_listDAO sDao = new Schedule_listDAO();
+		CoinDAO2 cDao = new CoinDAO2();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		HttpSession session = request.getSession();
@@ -129,26 +139,11 @@ public class Schedule_listServlet extends HttpServlet {
 			}
 		}
 
-		//削除処理
-		if(values.equals("削除")) {
-			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
-
-			if (sDao.delete(schedule_id)) {	// 削除成功
-				request.setAttribute("result","レコードを削除しました。");
-			}
-			else {						// 削除失敗
-				request.setAttribute("result","レコードを削除できませんでした。");
-			}
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
-			dispatcher.forward(request, response);
-		}
-
+		//カレンダーで選択した日付のスケジュールを取得
 		if(values.equals("date")) {
 			String strdate = request.getParameter("date");
 			strdate = strdate.replaceAll("/", "-");
 			Date date= Date.valueOf(strdate);
-			System.out.println(date);
 
 			List<Schedule> scheduleList = sDao.selectdate(date);
 
@@ -159,8 +154,57 @@ public class Schedule_listServlet extends HttpServlet {
 				e.setFinish_hour(e.getFinish_time().substring(0, 2));
 			}
 
-			// 検索結果をリクエストスコープに格納する
+			// スケジュールの検索結果と表示する日付をリクエストスコープに格納する
 			request.setAttribute("scheduleList", scheduleList);
+			request.setAttribute("date", date);
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+			dispatcher.forward(request, response);
+		}
+
+		//削除処理
+		if(values.equals("削除")) {
+			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
+
+			if (sDao.delete(schedule_id)) {	// 削除成功
+				request.setAttribute("result","スケジュールを削除しました。");
+			}
+			else {						// 削除失敗
+				request.setAttribute("result","スケジュールを削除できませんでした。");
+			}
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
+			dispatcher.forward(request, response);
+		}
+
+		//タスク完了処理
+		if(values.equals("完了")) {
+			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
+
+			sDao.updatedone(schedule_id);
+
+			String strdate = request.getParameter("senddate");
+			strdate = strdate.replaceAll("/", "-");
+			Date date= Date.valueOf(strdate);
+
+			List<Schedule> scheduleList = sDao.selectdate(date);
+
+			for(Schedule e: scheduleList) {
+				e.setStart_time(e.getStart_time().substring(0, 5));
+				e.setFinish_time(e.getFinish_time().substring(0, 5));
+				e.setStart_hour(e.getStart_time().substring(0, 2));
+				e.setFinish_hour(e.getFinish_time().substring(0, 2));
+			}
+
+			Coin coinplus= cDao.coinplus1(user_name);
+			request.setAttribute("coinplus", coinplus);
+			int coin = cDao.selectcoin(user_name);
+			userdata.setCoin_cnt(coin);
+
+			// スケジュールの検索結果と表示する日付をリクエストスコープに格納する
+			request.setAttribute("scheduleList", scheduleList);
+			request.setAttribute("date", date);
+
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 			dispatcher.forward(request, response);

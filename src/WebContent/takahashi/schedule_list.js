@@ -1,4 +1,5 @@
 let slen = document.getElementById("slength").textContent;
+let senddate = document.getElementById("senddate").textContent;
 
 for(let k=0;k<slen;k++){
     let schedule_id = document.getElementById("schedule_id" + k).textContent;
@@ -18,11 +19,20 @@ for(let k=0;k<slen;k++){
 
     let content = document.getElementById("content" + k).textContent;
 
+    let schedule_done = document.getElementById("schedule_done" + k).textContent;
+
     for(let i=0; i<24;i++){
         for(let j=0; j<=5;j++){
             if(i<10){
                 if(start_time == "0"+i+":"+j+"0"){
-                    document.getElementById("0"+i+":"+j+"0" + "-" + k).innerHTML = `<input type="checkbox" value="completion"><span>`+start_time+`- `+finish_time+`</span><br><a href="#info`+k+`" class="modal-open">`+schedule_name+`</a>` + 
+                    document.getElementById("0"+i+":"+j+"0" + "-" + k).innerHTML = `
+                    <form method="POST" action="/Esan/Schedule_listServlet" name="checkform">
+                        <input type="hidden" name="schedule_id" value=`+schedule_id+`>
+                        <input type="hidden" name="senddate" value=`+senddate+`>
+                        <input type="submit" name="values" value="完了">
+                    </form>
+                    <span>`+start_time+`- `+finish_time+`</span><br>
+                    <a href="#info`+k+`" class="modal-open">`+schedule_name+`</a>` +
                     `<section id="info`+k+`" style="display:none">
                     <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
                     <p>`+content+`</p>
@@ -39,7 +49,14 @@ for(let k=0;k<slen;k++){
                 }
             }else{
                 if(start_time == i+":"+j+"0"){
-                    document.getElementById(i+":"+j+"0" + "-" + k).innerHTML = `<input type="checkbox" value="completion"><span>`+start_time+`- `+finish_time+`</span><br><a href="#info` +k+`" class="modal-open">`+schedule_name+`</a>`+
+                    document.getElementById(i+":"+j+"0" + "-" + k).innerHTML = `
+                    <form method="POST" action="/Esan/Schedule_listServlet" name="checkform">
+                        <input type="hidden" name="schedule_id" value=`+schedule_id+`>
+                        <input type="hidden" name="senddate" value=`+senddate+`>
+                        <input type="submit" name="values" value="完了">
+                    </form>
+                    <span>`+start_time+`- `+finish_time+`</span><br>
+                    <a href="#info` +k+`" class="modal-open">`+schedule_name+`</a>`+
                     `<section id="info`+k+`" style="display:none">
                     <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
                     <p>`+content+`</p>

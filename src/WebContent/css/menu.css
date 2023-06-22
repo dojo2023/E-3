@@ -1,1 +1,103 @@
 @charset "UTF-8";
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            position: relative;
+        }
+        .header{
+            position: relative;
+            background: #f4f2f3;
+            width: 300px;
+            height: 100vh;
+            text-align: right;
+            /* padding-right:50px ; */
+        }
+        .nav_list{
+            padding-top: 150px;
+            list-style: none;   /*リストの点を消す*/
+            background-color: #dfdfdf;
+            width: 300px;
+            height: 100vh;
+        }
+        .container{
+            position: absolute;
+            right: 0;
+            /* padding-top: 50px; */
+        }
+        a{
+            text-decoration: none;
+        }
+        a:visited{
+          color: black;
+        }
+        a:hover{
+          color: white;
+        }
+        li{
+            margin-top: 20px;
+            margin-right: 100px;
+        }
+        /* チェックボックスを非表示にする */
+        .drawer_hidden {
+            display: none;
+        }
+        .drawer_open{
+            position: absolute;
+            display: flex;
+            top: 30px;
+            width:60px;
+            height:60px;
+            z-index: 100;/* 重なり順を一番上にする */
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            right: 40px;
+        }
+        /* ハンバーガーメニューのアイコン */
+        .drawer_open span,
+        .drawer_open span:before,
+        .drawer_open span:after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            background: #333;
+            transition: 0.5s;
+            position: absolute;
+        }
+        /* 三本線の一番上の棒の位置調整 */
+        .drawer_open span:before {
+            bottom: 8px;
+        }
+        /* 三本線の一番下の棒の位置調整 */
+        .drawer_open span:after {
+            top: 8px;
+        }
+        /* アイコンがクリックされたら真ん中の線を透明にする */
+        #drawer_input:checked ~ .drawer_open span {
+            background: rgba(255, 255, 255, 0);
+        }
+        /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+        #drawer_input:checked ~ .drawer_open span::before {
+            bottom: 0;
+            transform: rotate(45deg);
+        }
+        #drawer_input:checked ~ .drawer_open span::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        .nav_content{
+            position: fixed;
+            width: 200px;
+            left: 100%;
+            z-index: 99;
+            /* background:  rgba(200, 200, 215, 0.604); */
+            transition: .5s;
+            /* left: 100%; メニューを画面の外に飛ばす */
+        }
+        #drawer_input:checked ~ .nav_content {
+            left: 80%;
+        }
