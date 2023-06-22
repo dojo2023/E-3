@@ -1,8 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -49,20 +48,29 @@ public class Schedule_listServlet extends HttpServlet {
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
-		System.out.println(userdata);
 		request.setAttribute("userdata", userdata);
 
 
 		//今日の日付を取得
-		Calendar cl = Calendar.getInstance();
-        //日付をyyyyMMddの形で出力する
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
-        String today = sdf1.format(cl.getTime());
-        today = today.replace("/", "-");
+		long miliseconds = System.currentTimeMillis();
+        Date today = new Date(miliseconds);
         System.out.println(today);
 
         //今日の日付のスケジュールを取得
 		List<Schedule> scheduleList = sDao.selectdate(today);
+
+		//最終ログイン日を確認
+		Date last_login_date = Date.valueOf(userdata.getLast_login_date());
+		if(last_login_date != today && last_login_date.before(today)) {
+			boolean coinplus1= cDao.coinplus1(user_name);
+			request.setAttribute("coinplus1", coinplus1);
+			int coin = cDao.selectcoin(user_name);
+			userdata.setCoin_cnt(coin);
+			System.out.println(coinplus1);
+		}
+
+		//最終ログイン日を更新
+		//boolean updateresult = sDao.updatelast_login_date(user_name, today);
 
 		//時間の文字列を加工 秒を削除
 		for(Schedule e: scheduleList) {
@@ -137,8 +145,9 @@ public class Schedule_listServlet extends HttpServlet {
 		}
 
 		if(values.equals("date")) {
-			String date = request.getParameter("date");
-			date = date.replaceAll("/", "-");
+			String strdate = request.getParameter("date");
+			strdate = strdate.replaceAll("/", "-");
+			Date date= Date.valueOf(strdate);
 			System.out.println(date);
 
 			List<Schedule> scheduleList = sDao.selectdate(date);

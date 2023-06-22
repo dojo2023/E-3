@@ -57,18 +57,19 @@ s
     </div>
 
     <div>
-        <img src="img/pet${userdata.pet_id}.png"/>
+        <a href="/Esan/Pet_homeServlet"><img src="img/pet${userdata.pet_id}.png"/></a>
         <div class="balloon1">
             <p>${userdata.user_name}さん、おはよう。</p>
           </div>
     </div>
 
     <div>
+    	<span id="coinplus" style="display:none">${coinplus1}</span>
         <img src="takahashi/fcmini.png"/>コイン枚数:${userdata.coin_cnt}
     </div>
 
     <div>
-        <form method="GET" name="regist" action="Schedule_registServlet">
+        <form method="GET" name="regist" action="/Esan/Schedule_registServlet">
             <input type="submit" name="regist" value="スケジュール登録">
         </form>
     </div>
