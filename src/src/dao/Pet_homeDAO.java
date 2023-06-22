@@ -25,7 +25,7 @@ public class Pet_homeDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_飯泉/fcdb4", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select  pet_img_id,pet_img_path from pet where pet_id = ?";
@@ -78,9 +78,7 @@ public class Pet_homeDAO {
 
 
 
-
-
-public List<Closet> selectcloset(String user_name){
+	public List<Closet> selectcloset(String user_name){
 
 	Connection conn = null;
 	List<Closet> closetList = new ArrayList<Closet>();
@@ -91,10 +89,10 @@ public List<Closet> selectcloset(String user_name){
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_飯泉/fcdb4", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 		// SQL文を準備する
-		String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_path from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ?";
+		String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_path,closet.last_closet from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ?";
 
 
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -114,7 +112,8 @@ public List<Closet> selectcloset(String user_name){
 
             rs.getInt("closet_img_id"),
             rs.getInt("closet_kind_id"),
-            rs.getString("closet_path")
+            rs.getString("closet_path"),
+            rs.getBoolean("last_closet")
 
             );
             closetList.add(closetimg);
@@ -145,6 +144,8 @@ public List<Closet> selectcloset(String user_name){
 	return closetList;
 }
 }
+
+
 
 
 
