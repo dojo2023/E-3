@@ -24,20 +24,40 @@
 
 <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
 
+<section id="info">
 
-
-
-
-
-    <section id="info">
-    <h2>Sale情報</h2>
-    <p>11月1日～12月31日まで年末セールを開催！</p>
-    </section>
-
-
-
-
-
+    <h2>きせかえ</h2>
+    <table>
+    <c:forEach var="e" items="${closetList}" >
+    <tr>
+        <td>
+            <table class="border">
+                <tr>
+                  <td><img src ="${e.closet_img_path}"></td>
+                  <td><img src ="${e.closet_img_path}"></td>
+                </tr>
+                <tr>
+                  <td><img src ="${e.closet_img_path}"></td>
+                  <td><img src ="${e.closet_img_path}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="border">
+                <tr>
+                  <td>${e.closet_img_path}</td>
+                  <td>${e.closet_img_path}</td>
+                </tr>
+                <tr>
+                  <td>${e.closet_img_path}</td>
+                  <td>${e.closet_img_path}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+	</table>
+	</c:forEach>
+</section>
 
 <!-- きせかえ遷移画像 -->
 <div class="closet">

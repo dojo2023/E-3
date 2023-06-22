@@ -110,7 +110,7 @@ public class Pet_homeDAO {
 		while (rs.next()) {
 		    Closet closetimg = new Closet(
 
-            rs.getInt("closet_img_id"),
+            rs.getString("closet_img_id"),
             rs.getInt("closet_kind_id"),
             rs.getString("closet_path"),
             rs.getBoolean("last_closet")

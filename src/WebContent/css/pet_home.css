@@ -57,3 +57,14 @@
     left: 50%;
     transform: translate(-50%, 0%);
 }
+
+table{
+	border: 1px solid #000;
+
+}
+
+#info {
+	height: 500px;
+
+
+}

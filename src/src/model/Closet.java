@@ -2,21 +2,21 @@ package model;
 import java.io.Serializable;
 
 public class Closet implements Serializable {
-	private int closet_img_id;
+	private String closet_img_id;
 	private int closet_kind_id;
 	private String closet_img_path;
 	private boolean last_closet;
 
-	public Closet(int closet_img_id, int closet_kind_id, String closet_img_path, boolean last_closet) {
+	public Closet(String closet_img_id, int closet_kind_id, String closet_img_path, boolean last_closet) {
 		this.closet_img_id = closet_img_id;
 		this.closet_kind_id = closet_kind_id;
 		this.closet_img_path = closet_img_path;
 		this.last_closet = last_closet;
 	}
-	public int getCloset_img_id() {
+	public String getCloset_img_id() {
 		return closet_img_id;
 	}
-	public void setCloset_img_id(int closet_img_id) {
+	public void setCloset_img_id(String closet_img_id) {
 		this.closet_img_id = closet_img_id;
 	}
 
