@@ -12,12 +12,13 @@
             <!-- メニュー -->
             <nav class="nav_content">
               <ul class="nav_list">
-                <li class="nav_item"><a href="">スケジュールを見る</a></li>
-                <li class="nav_item"><a href="">ペットの様子を見る</a></li>
-                <li class="nav_item"><a href="">お問い合わせ</a></li>
-                <li><button>ログアウト</button></li>
+                <li class="nav_item"><a href="/Esan/Schedule_listServlet">スケジュールを見る</a></li>
+                <li class="nav_item"><a href="/Esan/Pet_homeServlet">ペットの様子を見る</a></li>
+                <li class="nav_item"><a href="/Esan/InquiryServlet">お問い合わせ</a></li>
+                <li><input type="button" id="logout" value="ログアウト"></li>
               </ul>
             </nav>
           </div>
+          <script type="text/javascript" src="js/menu.js"></script>
         </header>
     </div>

@@ -22,7 +22,8 @@ public class Schedule_registDAO {
 			Class.forName("org.h2.Driver");
 
 			//DB接続
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQL準備
 			String sql = "select schedule_id,user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content from schedule where schedule_id like ? and user_name like ? and schedule_name like ? and start_date like ? and start_time like ? and finish_date like ? and finish_time like ? and color_id like ? and content like ? order by schedule_id";
