@@ -147,15 +147,16 @@
 	</div>
     <textarea id="content" name="content" cols="30" rows="10" placeholder="内容">${sche.content}</textarea><br>
     <span id="error_message" style="color:red"></span><br>
-    <div class="button">
-	    <input type="submit" id="regist_btn" value="編集を完了">
-	</div>
-</form>
-	<div class="button">
+<div class="box1">
+    <div class="button1">
     	<input type="button" id="back_btn" onclick="location.href='/Esan/Schedule_listServlet'" value="編集せずに戻る">
 	</div>
-
+	<div class="button2">
+		<input type="submit" id="regist_btn" value="編集を完了">
+	</div>
+</div>
     <script src="js/error_message_schedule.js"></script>
+</form>
 </div>
 </body>
 </html>
