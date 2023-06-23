@@ -47,13 +47,18 @@ textarea{
     width: 150px;
     font-size: 15px;
 }
-.button{
+/*.button{
     margin: 0 50px;
     position: relative;
 }
 #regist_btn{
     position: absolute;
     right: 0;
+}*/
+.box1{
+	display:flex;
+	gap:150px;
+	margin-left:70px
 }
 p{
     margin-left: 20px;
