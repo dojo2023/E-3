@@ -33,29 +33,41 @@
         <td>
             <table class="border">
                 <tr>
-                  <td><img src ="${e.closet_img_path}"></td>
-                  <td><img src ="${e.closet_img_path}"></td>
-                </tr>
-                <tr>
-                  <td><img src ="${e.closet_img_path}"></td>
-                  <td><img src ="${e.closet_img_path}"></td>
-                </tr>
+                	<td>
+                		<c:choose>
+                			<c:when test='${e.closet_kind_id == 1}'>
+							<img src ="${e.closet_img_path}" class="abs">
+							</c:when>
+							<c:when test='${e.closet_kind_id == 2}'>
+								<img src ="${e.closet_img_path}" class="abs">
+							</c:when>
+							<c:when test='${e.closet_kind_id == 3}'>
+								<img src ="${e.closet_img_path}" class="abs">
+							</c:when>
+							<c:when test='${e.closet_kind_id == 3}'>
+								<img src ="${e.closet_img_path}" class="abs">
+							</c:when>
+							<c:when test='${e.closet_kind_id == 4}'>
+								<img src ="${e.closet_img_path}" class="abs">
+							</c:when>
+						</c:choose>
+					</td>
+				</tr>
             </table>
         </td>
         <td>
             <table class="border">
                 <tr>
-                  <td>${e.closet_img_path}</td>
-                  <td>${e.closet_img_path}</td>
-                </tr>
-                <tr>
-                  <td>${e.closet_img_path}</td>
-                  <td>${e.closet_img_path}</td>
+                	<td><!--<c:when test='${e.closet_kind_id == 5}'>-->
+							<img src ="${e.closet_img_path}" class="abs">
+						<!--</c:when>-->
+					</td>
                 </tr>
             </table>
         </td>
     </tr>
 	</table>
+
 	</c:forEach>
 </section>
 
@@ -134,8 +146,8 @@
 
 <!--画面遷移ボタン-->
 
- <a href="./schedule_list.jsp">スケジュール管理</a>
-<a href="./gacha.jsp">ガチャ</a>
+ <a href="/Esan/Schedule_listServlet">スケジュール管理</a>
+<a href="/Esan/GachaServlet">ガチャ</a>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
