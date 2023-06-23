@@ -16,10 +16,20 @@ public class CoinDAO2 {
 
 
 	// コイン獲得 1枚
-	public Coin coinplus1(String user_name, String ) {
+	public Coin coinplus1(String user_name, String event_id) {
 		Connection conn = null;
 		int coinnum = 1;
-		String event_name = "ログインボーナス！";
+
+		//イベントの文字を表示させる
+		String event_name = "";
+		if(event_id.equals("login")) {
+			event_name = "ログインボーナス！";
+		}else if(event_id.equals("done")) {
+			event_name = "スケジュール完了！";
+		}else if(event_id.equals("regist")) {
+			event_name = "スケジュール登録！";
+		}
+
 		boolean coinresult = false;
 		Coin coindata = null;
 

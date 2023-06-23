@@ -59,29 +59,29 @@ public class Schedule_listServlet extends HttpServlet {
         //今日の日付のスケジュールを取得
 		List<Schedule> scheduleList = sDao.selectdate(today);
 
-		//最終ログイン日を確認 コイン追加1枚
+		//最終ログイン日を確認 コイン追加1枚 コインを50枚追加
 		Date last_login_date = null;
 		boolean updateresult = false;
-		if(userdata.getLast_login_date() == null) {
+		if(userdata.getLast_login_date() == null) { 			//新規登録後の初ログインを確認
 			Coin coinplus = cDao.coinplus50(user_name);
 			request.setAttribute("coinplus", coinplus);
 			int coin = cDao.selectcoin(user_name);
 			userdata.setCoin_cnt(coin);
 			updateresult = sDao.updatelast_login_date(user_name, today);
-		}else {
+		}else {													//毎日の初ログインを確認
 			last_login_date = Date.valueOf(userdata.getLast_login_date());
 			if(!last_login_date.toString().equals(today.toString()) && last_login_date.before(today)) {
-				Coin coinplus= cDao.coinplus1(user_name);
+				String event_id = "login";
+				Coin coinplus= cDao.coinplus1(user_name, event_id);
 				request.setAttribute("coinplus", coinplus);
 				int coin = cDao.selectcoin(user_name);
 				userdata.setCoin_cnt(coin);
-				updateresult = sDao.updatelast_login_date(user_name, today);
+				updateresult = sDao.updatelast_login_date(user_name, today); //最終ログイン日を更新
 			}
 		}
-
-
-		//最終ログイン日を更新
-		//boolean updateresult = sDao.updatelast_login_date(user_name, today);
+		if(updateresult == false) {
+			System.out.println("最終ログイン日を更新できませんでした。");
+		}
 
 		//時間の文字列を加工 秒を削除
 		for(Schedule e: scheduleList) {
@@ -177,12 +177,13 @@ public class Schedule_listServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 
-		//タスク完了処理
+		//スケジュール完了処理
 		if(values.equals("完了")) {
 			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
 
 			sDao.updatedone(schedule_id);
 
+			//日付を受け取り、その日のスケジュールを表示
 			String strdate = request.getParameter("senddate");
 			strdate = strdate.replaceAll("/", "-");
 			Date date= Date.valueOf(strdate);
@@ -196,7 +197,9 @@ public class Schedule_listServlet extends HttpServlet {
 				e.setFinish_hour(e.getFinish_time().substring(0, 2));
 			}
 
-			Coin coinplus= cDao.coinplus1(user_name);
+			//スケジュール完了のコイン1枚追加処理
+			String event_id = "done";
+			Coin coinplus= cDao.coinplus1(user_name, event_id);
 			request.setAttribute("coinplus", coinplus);
 			int coin = cDao.selectcoin(user_name);
 			userdata.setCoin_cnt(coin);

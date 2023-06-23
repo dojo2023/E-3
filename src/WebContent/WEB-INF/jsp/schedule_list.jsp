@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -137,7 +138,14 @@
 	        	</c:choose>
 
 	            <c:forEach begin="0" end="${tdlength}" step="1" var="tdnum">
-	            	<td id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            	<c:choose>
+	            		<c:when test="${scheduleList[tdnum].schedule_done}">
+	            			<td class="true" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            		</c:when>
+	            		<c:otherwise>
+	            			<td class="false" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            		</c:otherwise>
+	            	</c:choose>
 	            </c:forEach>
 	        </c:forEach>
         </c:forEach>
