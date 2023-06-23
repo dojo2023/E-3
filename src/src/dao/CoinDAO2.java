@@ -38,8 +38,8 @@ public class CoinDAO2 {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
-
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 			// SQL文を準備する
 			String sql = "update user set coin_cnt=coin_cnt + 1 where user_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -99,8 +99,8 @@ public class CoinDAO2 {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
-
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 			// SQL文を準備する
 			String sql = "update user set coin_cnt=coin_cnt + 5 where user_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -157,8 +157,8 @@ public class CoinDAO2 {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
-
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 			// SQL文を準備する
 			String sql = "update user set coin_cnt=coin_cnt + 50 where user_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -212,8 +212,8 @@ public class CoinDAO2 {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
-
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 			// SQL文を準備する
 			String sql = "update user set coin_cnt=coin_cnt - 10 where user_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -264,8 +264,8 @@ public class CoinDAO2 {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
-
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高橋/fcdb1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 			// SQL文を準備する
 			String sql = "select coin_cnt from user where user_name = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
