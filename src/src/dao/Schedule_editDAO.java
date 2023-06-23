@@ -20,7 +20,8 @@ public class Schedule_editDAO {
 			Class.forName("org.h2.Driver");
 
 			//DB接続
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQL準備
 			String sql = "select * from schedule where schedule_id = ?";
