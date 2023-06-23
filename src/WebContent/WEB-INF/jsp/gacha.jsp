@@ -20,7 +20,7 @@
 
 	    <div class="wrapper">
 		    <form method="post" action="/Esan/GachaServlet">
-		    	input type="submit" id="gacha_btn" class="gacha_btn">
+		    	<input type="submit" id="gacha_btn" class="gacha_btn">
 	    	</form>
 		    <a href="#info" class="modal-open"><img src="img/gacha_btn.png"></a>
 	    </div>
