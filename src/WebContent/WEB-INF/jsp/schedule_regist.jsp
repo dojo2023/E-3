@@ -38,7 +38,6 @@
     <div class="button1">
         <input type="button" id="back_btn" value="登録せずに戻る" onclick="location.href='/Esan/Schedule_listServlet'">
 	</div>
-
 	<div class="button2">
 		    <input type="submit" id="regist_btn" value="登録">
     </div>

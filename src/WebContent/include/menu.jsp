@@ -15,7 +15,7 @@
                 <li class="nav_item"><a href="/Esan/Schedule_listServlet">スケジュールを見る</a></li>
                 <li class="nav_item"><a href="/Esan/Pet_homeServlet">ペットの様子を見る</a></li>
                 <li class="nav_item"><a href="/Esan/InquiryServlet">お問い合わせ</a></li>
-                <li><input type="button" id="logout" value="ログアウト"></li>
+                <li><input type="button" id="logout" value="ログアウト" onclick="/Esan/LogoutServlet"></li>
               </ul>
             </nav>
           </div>

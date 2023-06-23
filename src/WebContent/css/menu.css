@@ -15,6 +15,7 @@
             /* padding-right:50px ; */
         }
         .nav_list{
+        	margin:0;
             padding-top: 150px;
             list-style: none;   /*リストの点を消す*/
             background-color: #dfdfdf;
@@ -29,6 +30,7 @@
         }
         a{
             text-decoration: none;
+            color:black;
         }
         a:visited{
           color: black;
