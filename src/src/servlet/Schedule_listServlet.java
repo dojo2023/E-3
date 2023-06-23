@@ -40,7 +40,7 @@ public class Schedule_listServlet extends HttpServlet {
 		}*/
 
 		HttpSession session = request.getSession();
-		session.setAttribute("user_name", "ユーザ名");
+		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//DAO宣言 スケジュールリスト コイン
