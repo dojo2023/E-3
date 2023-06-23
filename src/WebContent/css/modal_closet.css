@@ -12,6 +12,7 @@
 /*モーダルの横幅を変更したい場合*/
 .modaal-container{
     max-width: 600px;
+    max-height: 80vh;
 }
 
 /*モーダルのボタンの色を変更したい場合*/

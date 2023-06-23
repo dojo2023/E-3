@@ -68,3 +68,8 @@ table{
 
 
 }
+
+.box1{
+	display: flex;
+}
+

@@ -92,7 +92,7 @@ public class Pet_homeDAO {
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 		// SQL文を準備する
-		String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_path,closet.last_closet from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ?";
+		String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_img_path,closet.last_closet from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ?";
 
 
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class Pet_homeDAO {
 
             rs.getString("closet_img_id"),
             rs.getInt("closet_kind_id"),
-            rs.getString("closet_path"),
+            rs.getString("closet_img_path"),
             rs.getBoolean("last_closet")
 
             );

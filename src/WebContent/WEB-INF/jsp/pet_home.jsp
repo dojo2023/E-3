@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="/Esan/css/pet_home.css">
 </head>
 <body>
+<%@include file="/include/menu.jsp"%>
+<c:set var="closetlen" value="${fn:length(closetList)}"/>
 <!--背景-->
 <img src="img/bg.png">
 <!--コイン-->
@@ -27,21 +29,21 @@
 <section id="info">
 
     <h2>きせかえ</h2>
-    <table>
-    <c:forEach var="e" items="${closetList}" >
-    <tr>
-        <td>
+
+<div class = "box1">
+<div class = "grl">
             <table class="border">
+            <c:forEach var="e" items="${closetList}" >
+
+
                 <tr>
                 	<td>
-                		<c:choose>
+
+                  		<c:choose>
                 			<c:when test='${e.closet_kind_id == 1}'>
-							<img src ="${e.closet_img_path}" class="abs">
+           						<img src ="${e.closet_img_path}" class="abs" width="50" height="50">
 							</c:when>
 							<c:when test='${e.closet_kind_id == 2}'>
-								<img src ="${e.closet_img_path}" class="abs">
-							</c:when>
-							<c:when test='${e.closet_kind_id == 3}'>
 								<img src ="${e.closet_img_path}" class="abs">
 							</c:when>
 							<c:when test='${e.closet_kind_id == 3}'>
@@ -51,24 +53,32 @@
 								<img src ="${e.closet_img_path}" class="abs">
 							</c:when>
 						</c:choose>
+
 					</td>
 				</tr>
-            </table>
-        </td>
-        <td>
-            <table class="border">
-                <tr>
-                	<td><!--<c:when test='${e.closet_kind_id == 5}'>-->
-							<img src ="${e.closet_img_path}" class="abs">
-						<!--</c:when>-->
-					</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-	</table>
 
-	</c:forEach>
+		</c:forEach>
+			</table>
+</div>
+<div class="grl2">
+ 		<table>
+			<c:forEach var="e" items="${closetList}" >
+
+                <tr>
+                	<td>
+                		<c:choose>
+                			<c:when test='${e.closet_kind_id == 5}'>
+							<img src ="${e.closet_img_path}" class="abs" width="50" height="50">
+							</c:when>
+						</c:choose>
+					</td>
+				</tr>
+
+			</c:forEach>
+			</table>
+</div>
+</div>
+
 </section>
 
 <!-- きせかえ遷移画像 -->
@@ -85,7 +95,6 @@
 
 <div class="box">
 <c:forEach var="e" items="${petList}" >
-<p>${e.pet_img_id} ${e.pet_img_path}</p>
 
 <c:choose>
 	<c:when test='${fn: contains(e.pet_img_id,"head")}'>
@@ -108,7 +117,7 @@
 
 <!-- きせかえ -->
 <c:forEach var="e" items="${closetList}" >
-<p>${e.closet_img_id}${e.closet_kind_id} ${e.closet_img_path}</p>
+
 
 <c:choose>
 	<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
@@ -127,28 +136,29 @@
 </c:forEach>
 </div>
 
-<!--ペット画像-->
+<!--ペット画像
 <img src="imgpet1/head.png">
 <img src="imgpet1/body.png">
 <img src="imgpet1/right_arm.png">
 <img src="imgpet1/left_arm.png">
 <img src="imgpet1/legs.png">
+-->
 
-<!--きせかえ画像-->
+<!--きせかえ画像
 <img src="imgcloset1/hat1.png">
 <img src="imgcloset1/dress1.png">
 <img src="imgcloset1/shoes1.png">
 <img src="imgcloset1/accessory1.png">
-
+-->
 
 
 
 
 <!--画面遷移ボタン-->
-
+<div class = "btn">
  <a href="/Esan/Schedule_listServlet">スケジュール管理</a>
 <a href="/Esan/GachaServlet">ガチャ</a>
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>

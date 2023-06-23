@@ -19,7 +19,7 @@ public class LoginDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高川/fcdb2", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			// SELECT文を準備する
 			String sql = "select count(*) from user where user_name = ? and password = ?";
