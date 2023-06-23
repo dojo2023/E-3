@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="takahashi/drawer.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
     <link rel="stylesheet" href="takahashi/modal.css">
+    <link rel="stylesheet" href= "takahashi/balloon.css">
 </head>
 
 <body>
@@ -34,8 +35,6 @@
         </ul>
     </nav>
 
-    <p>日付　：　${date}</p>
-
 	<!-- コインの追加処理 ログイン時、スケジュール完了時 -->
     <div style="display:none">
     	<span id="coinresult" style="display:none">${coinplus.coinresult}</span>
@@ -52,44 +51,55 @@
         <input type="hidden" name="values" value="date">
     </form>
 
-	<!-- カレンダー表示 -->
-    <div class="cal">
-        <!-- xxxx年xx月を表示 -->
-        <h1 id="header"></h1>
+	<div id="flexparent">
+    <div id="flexchild">
+        <!-- カレンダー表示 -->
+        <div id="flexcal">
+            <div id="cal">
+                <!-- xxxx年xx月を表示 -->
+                <h1 id="header"></h1>
 
-        <!-- ボタンクリックで月移動 -->
-        <div id="next-prev-button">
-            <button id="prev" onclick="prev()">‹</button>
-            <button id="next" onclick="next()">›</button>
+                <!-- ボタンクリックで月移動 -->
+                <div id="next-prev-button">
+                    <button id="prev" onclick="prev()">‹</button>
+                    <button id="next" onclick="next()">›</button>
+                </div>
+
+                <!-- カレンダー -->
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+	<div id="flexchild1">
+        <!-- 現在時刻を表示 -->
+        <div id="flexnowdate">
+            <p><span id="nowtime"></span></p>
         </div>
 
-        <!-- カレンダー -->
-        <div id="calendar"></div>
+        <!-- ペットの表示とセリフの変更 -->
+        <div id="flexpet">
+            <a href="/Esan/Pet_homeServlet"><img src="imgpet${userdata.pet_id}/pet${userdata.pet_id}.png" style="width:200px" id="petimg"/></a>
+            <div class="balloon1-left" id="balloon-p">
+            	<p>${userdata.user_name}さん<br><span>おはようございます</span></p>
+          	</div>
+    	</div>
     </div>
 
-	<!-- 現在時刻を表示 -->
-    <div>
-        <p>現在時刻 <span id="nowtime"></span></p>
-    </div>
+	<div id="flexchild2">
+        <!-- コインの枚数表示 -->
+        <div id="flexcoin">
+            <img src="img/fc.png" style="width:100px" id="fcimg"/>
+        	<span id="coinnum">${userdata.coin_cnt}</span>
+    	</div>
 
-	<!-- ペットの表示とセリフの変更 -->
-    <div>
-        <a href="/Esan/Pet_homeServlet"><img src="img/pet${userdata.pet_id}.png"/></a>
-        <div class="balloon1">
-            <p>${userdata.user_name}さん、おはよう。</p>
-          </div>
+		<!-- スケジュール登録遷移ボタン -->
+        <div id="flexregist">
+            <form method="GET" name="regist" action="/Esan/Schedule_registServlet" id="registform">
+                <input type="submit" name="regist" value="スケジュール登録" id="registbtn">
+            </form>
+        </div>
     </div>
-
-	<!-- コインの枚数表示 -->
-    <div>
-        <img src="takahashi/fcmini.png"/>コイン枚数:${userdata.coin_cnt}
-    </div>
-
-	<!-- スケジュール登録遷移ボタン -->
-    <div>
-        <form method="GET" name="regist" action="/Esan/Schedule_registServlet">
-            <input type="submit" name="regist" value="スケジュール登録">
-        </form>
     </div>
 
 	<!-- 全件表示　なくてもいい -->
@@ -99,6 +109,8 @@
             <input type="submit" name="values" value="スケジュール表示">
         </form>
     </div>
+
+    <p>${date}のスケジュール</p>
 
     <c:set var="i" value="0"/>
     <c:forEach var="e" items="${scheduleList}" >
