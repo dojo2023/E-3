@@ -11,15 +11,17 @@
 <link rel="stylesheet" type="text/css" href="/Esan/css/gacha.css">
 </head>
 <body>
+  <p>${gachadata.closet_img_path}</p>
   <div class="content1">
       <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
     <img src="/Esan/img/chicken_house.png" class="ouchi">
     <div class="wrapper">
-    <button type="button" id="gacha_btn" class="gacha_btn">
+    <form method="post" action="/Esan/GachaServlet">
+    <input type="submit" id="gacha_btn" class="gacha_btn">
+    </form>
     <a href="#info" class="modal-open">
     <img src="img/gacha_btn.png">
     </a>
-    </button>
     </div>
   </div>
   <div class="content2">
@@ -31,7 +33,6 @@
   </tr>
   </table>
   </div>
-    <!--ここからガチャ結果画面-->
     <!--ここからガチャ結果画面-->
     <!--表示エリアのHTML。id 名にリンク先と同じ名前を指定します。※表示エリアはHTML の変更が可能なので、レイアウトを自由に変更できます。-->
     <section id="info">

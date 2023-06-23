@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.GachaDAO;
+import model.Gacha;
+
 /**
  * Servlet implementation class GachaServlet
  */
@@ -28,8 +31,15 @@ public class GachaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String gacharesult = "hat1-1";
+
+		GachaDAO gDao = new GachaDAO();
+		Gacha gachadata = gDao.selectgacha(gacharesult);
+		request.setAttribute("gachadata", gachadata);
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gacha.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
