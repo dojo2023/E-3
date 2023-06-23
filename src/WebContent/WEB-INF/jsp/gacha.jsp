@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ガチャ</title>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
-<link rel="stylesheet" type="text/css" href="/Esan/css/modal_gacha_result.css">
-<link rel="stylesheet" type="text/css" href="/Esan/css/gacha.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ガチャ</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+	<link rel="stylesheet" type="text/css" href="/Esan/css/modal_gacha_result.css">
+	<link rel="stylesheet" type="text/css" href="/Esan/css/gacha.css">
 </head>
 
 <body>
 	<p>${gachadata.closet_img_path}</p>
+	<p>${alert}</p>
 
 	<div class="content1">
 	    <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
@@ -31,7 +34,7 @@
 			<tr>
 				<td><a href="/Esan/Pet_homeServlet">ふれあい画面</a></td>
 				<td></td><td></td><td></td>
-				<td><img src="img/fc.png" id="fc"></td><td id="coin_display">30枚</td>
+				<td><img src="img/fc.png" id="fc"></td><td id="coin_display">${userdata.coin_cnt}枚</td>
 				<td></td><td></td><td></td><td></td>
 			</tr>
 		</table>
