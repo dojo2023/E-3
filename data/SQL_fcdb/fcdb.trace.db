@@ -1642,3 +1642,85 @@ select count(*) from user where user_name = ? and password = ? [42102-199]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USER" が見つかりません
 Table "USER" not found; SQL statement:
 select count(*) from user where user_name = ? and password = ? [42102-199]
+2023-06-23 11:01:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "ALTER TABLE GACHA CHANGE[*] COLUMN CLOSET_PATH CLOSET_IMG_PATH VERCHAR(200)"; 期待されるステートメント "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE GACHA CHANGE[*] COLUMN CLOSET_PATH CLOSET_IMG_PATH VERCHAR(200)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+alter table gacha change column closet_path closet_img_path verchar(200) [42001-200]
+2023-06-23 11:01:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "ALTER TABLE GACHA CHANGE[*] COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; 期待されるステートメント "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE GACHA CHANGE[*] COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+alter table gacha change column 'closet_path' 'closet_img_path' verchar(200) [42001-200]
+2023-06-23 11:02:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "ALTER TABLE GACHA CHANGE[*] COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; 期待されるステートメント "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE GACHA CHANGE[*] COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+alter table gacha change column 'closet_path' 'closet_img_path' verchar(200) [42001-200]
+2023-06-23 11:02:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "RENAME[*] TABLE GACHA CHANGE COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; 期待されるステートメント "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE"
+Syntax error in SQL statement "RENAME[*] TABLE GACHA CHANGE COLUMN 'closet_path' 'closet_img_path' VERCHAR(200)"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE"; SQL statement:
+rename table gacha change column 'closet_path' 'closet_img_path' verchar(200) [42001-200]
+2023-06-23 11:06:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "ALTER TABLE GACHA RENAME COLUMN 'closet_path'[*] TO 'closet_img_path'"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "ALTER TABLE GACHA RENAME COLUMN 'closet_path'[*] TO 'closet_img_path'"; expected "identifier"; SQL statement:
+alter table gacha rename column 'closet_path' to 'closet_img_path' [42001-200]
+2023-06-23 11:18:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 不明なデータ型: "VERCHAR"
+Unknown data type: "VERCHAR"; SQL statement:
+alter table gacha alter column closet_img_id verchar(20) [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5971)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5697)
+	at org.h2.command.Parser.parseAlterTableAlterColumnType(Parser.java:8065)
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:7811)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7698)
+	at org.h2.command.Parser.parseAlter(Parser.java:6983)
+	at org.h2.command.Parser.parsePrepared(Parser.java:887)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-23 11:25:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "BG0" が見つかりません
+Column "BG0" not found; SQL statement:
+insert into gacha(pet_id, closet_img_id, closet_img_path, closet_name, closet_kind_id, rarity)
+values (
+1,
+bg0,
+'img/bg.png',
+'初期背景',
+5,
+1
+) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Insert.prepare(Insert.java:327)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
