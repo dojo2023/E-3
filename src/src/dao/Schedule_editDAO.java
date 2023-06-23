@@ -47,7 +47,8 @@ public class Schedule_editDAO {
 						rs.getString("finish_date"),
 						rs.getString("finish_time"),
 						rs.getInt("color_id"),
-						rs.getString("content")
+						rs.getString("content"),
+						rs.getBoolean("schedule_done")
 						);
 			}
 		}

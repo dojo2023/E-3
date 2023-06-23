@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="css/menu.css">
-    <div class="container">
+    <div class="menu">
         <header class="header">
           <!-- ハンバーガーメニュー部分 -->
           <div class="nav">

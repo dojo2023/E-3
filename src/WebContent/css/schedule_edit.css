@@ -1,1 +1,89 @@
 @charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    max-width: 600px;
+    margin: 0 auto;
+    /* background-color: #edefea; */
+    background-color:#f4f2f3;
+}
+#user_name{
+    margin-left: 20px;
+    background-color: #cdcccc;
+}
+.container{
+    margin-top:80px;
+    position:absolute;
+}
+input,select,textarea{
+    padding: 10px;
+    border-radius:15px ;
+    margin: 5px;
+    /* border: 1.5px solid #525252; */
+    border: 1.5px solid #6e646d;
+}
+input#title{
+    width: 350px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+.datetime{
+    margin: 0 30px;
+    text-align: center;
+}
+span{
+    margin: 0 20px;
+    font-size: 20px;
+}
+textarea{
+    width: 540px;
+    margin: 10px 20px;
+    font-size: 15px;
+}
+#back_btn,#regist_btn{
+    width: 150px;
+    font-size: 15px;
+}
+.button{
+    margin: 0 50px;
+    position: relative;
+}
+#regist_btn{
+    position: absolute;
+    right: 0;
+}
+p{
+    margin-left: 20px;
+}    select option[id="red"]{
+        background: rgba(255, 0, 0, 0.678);
+    }
+    select option[id="blue"]{
+        background: rgba(108, 108, 255, 0.589);
+    }
+    select option[id="yellow"]{
+        background: rgba(247, 247, 80, 0.701);
+    }
+    select option[id="green"]{
+        background:rgba(0, 128, 0, 0.587);
+    }
+    select option[id="purple"]{
+        background:rgba(128, 0, 128, 0.587);
+    }
+    select option[id="orange"]{
+        background:rgba(255, 166, 0, 0.674);
+    }
+    select option[id="brown"]{
+        background:rgba(148, 43, 43, 0.6);
+    }
+    select option[id="magenta"]{
+        background:rgba(255, 0, 255, 0.664);
+    }
+    select option[id="cyan"]{
+        background:rgba(0, 255, 255, 0.605);
+    }
+    select option[id="pink"]{
+        background:rgba(255, 122, 144, 0.737);
+    }

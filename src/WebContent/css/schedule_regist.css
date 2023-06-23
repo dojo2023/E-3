@@ -8,6 +8,7 @@ body{
     margin: 0 auto;
     /* background-color: #edefea; */
     background-color:#f4f2f3;
+    position:relative;
 }
 #user_name{
     margin-left: 20px;
@@ -15,6 +16,7 @@ body{
 }
 .container{
     margin-top:80px;
+    position:absolute;
 }
 input,select,textarea{
     padding: 10px;

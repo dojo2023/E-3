@@ -7,11 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>スケジュール編集</title>
+<link rel="stylesheet" href="css/schedule_edit.css">
 </head>
 <body>
+<%@include file="/include/menu.jsp"%>
+<div class="container">
 	<form method="POST" action="/Esan/Schedule_editServlet" id="regist">
-	<input type="text" id="user_name" value="${user_name}" readonly><br>
-    <input type="text" id="title" name="schedule_name" value="${sche.schedule_name}">
+	<input type="text" id="user_name" value="${user_name}" placeholder="ユーザー名" readonly><br>
+    <input type="text" id="title" name="schedule_name" value="${sche.schedule_name}" placeholder="スケジュール名">
     <select id="color" name="color_id">
         <option value="色">色を選択してください</option>
     <c:choose>
@@ -139,15 +142,20 @@
         </c:when>
 	</c:choose>
    </select><br>
-    <input type="date" name="start_date" value="${sche.start_date}"><input type="time" name="start_time" value="${sche.start_time}"> ～ <input type="date" name="finish_date" value="${sche.finish_date}"><input type="time" name="finish_time" value="${sche.finish_time}"><br>
+    <div class="datetime">
+	    <input type="date" name="start_date" value="${sche.start_date}"><input type="time" name="start_time" value="${sche.start_time}"> ～ <input type="date" name="finish_date" value="${sche.finish_date}"><input type="time" name="finish_time" value="${sche.finish_time}"><br>
+	</div>
     <textarea id="content" name="content" cols="30" rows="10" placeholder="内容">${sche.content}</textarea><br>
     <span id="error_message" style="color:red"></span><br>
-
-    <input type="submit" id="regist_btn" value="編集を完了">
+    <div class="button">
+	    <input type="submit" id="regist_btn" value="編集を完了">
+	</div>
 </form>
-    <button onclick="location.href='/Esan/Schedule_listServlet'">編集せずに戻る</button>
+	<div class="button">
+    	<input type="button" id="back_btn" onclick="location.href='/Esan/Schedule_listServlet'" value="編集せずに戻る">
+	</div>
 
     <script src="js/error_message_schedule.js"></script>
-
+</div>
 </body>
 </html>
