@@ -6,7 +6,6 @@
         .menu{
             position: absolute;
         }
-
         .header{
             position: relative;
             background: #f4f2f3;
@@ -19,7 +18,7 @@
             padding-top: 150px;
             list-style: none;   /*リストの点を消す*/
             background-color: #dfdfdf;
-            width: 300px;
+            width: 400px;
             height: 100vh;
         }
         .container1{
@@ -32,16 +31,37 @@
             text-decoration: none;
             color:black;
         }
-        a:visited{
+        a#link:visited{
           color: black;
         }
-        a:hover{
-          color: white;
+/*        a#link:hover{
+          color: rgb(192, 192, 192);
         }
-        li{
-            margin-top: 20px;
-            margin-right: 100px;
+*/
+        .nav ul li a,li#logout{
+        padding: 10px 200px 10px 10px;
         }
+        li.nav_item{
+            padding:10px
+/*            margin-right: 200px;*/
+        }
+        li.nav_item:hover{
+        background-color:#f0f0f0;
+        transition:0.4s;
+        }
+		li#button{
+			margin-right:200px;
+			margin-top:10px;
+		}
+		input#logout:hover{
+			background-color:rgb(192, 192, 192);
+			transition:0.4s;
+		}
+		input#logout{
+			margin:0;
+    		border-radius:15px;
+    		padding:10px;
+		}
         /* チェックボックスを非表示にする */
         .drawer_hidden {
             display: none;
