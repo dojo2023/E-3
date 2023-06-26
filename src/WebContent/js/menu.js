@@ -8,7 +8,7 @@ logout.onclick = function(){
 		//ログアウト処理
 		console.log('ログアウト処理');
 		/*sessionStorage.removeItem('user_name');*/
-		location.href="/Esan/LoginServlet";
+		location.href="/Esan/LogoutServlet";
 
 	}else{
 		//ログアウトキャンセル処理
