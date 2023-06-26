@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,12 +41,13 @@ public class Schedule_listServlet extends HttpServlet {
 		}*/
 
 		HttpSession session = request.getSession();
-		//session.setAttribute("user_name", "ユーザ名");
+		session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//DAO宣言 スケジュールリスト コイン
 		Schedule_listDAO sDao = new Schedule_listDAO();
 		CoinDAO2 cDao = new CoinDAO2();
+
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
@@ -80,7 +82,7 @@ public class Schedule_listServlet extends HttpServlet {
 			}
 		}
 		if(updateresult == false) {
-			System.out.println("最終ログイン日を更新できませんでした。");
+			System.out.println("最終ログイン日は当日です。ログインボーナスなし");
 		}
 
 		//時間の文字列を加工 秒を削除
@@ -95,6 +97,21 @@ public class Schedule_listServlet extends HttpServlet {
 		request.setAttribute("scheduleList", scheduleList);
 		request.setAttribute("date", today);
 
+		//プッシュ通知用、今日のスケジュールをセッションスコープに格納
+		session.setAttribute("sessionscheduleList", scheduleList);
+		session.setAttribute("sessionuserdata", userdata);
+
+
+		//スケジュール登録時のコインを追加するか否か
+		String registOK = (String)session.getAttribute("registOK");
+		if(registOK != null && registOK.equals("registOK")) {
+			String event_id = "regist";
+			Coin coinplusregist = cDao.coinplus1(user_name, event_id);
+			request.setAttribute("coinplus", coinplusregist);
+			int coin = cDao.selectcoin(user_name);
+			userdata.setCoin_cnt(coin);
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -104,12 +121,17 @@ public class Schedule_listServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//valuesの値で処理を決める
 		request.setCharacterEncoding("UTF-8");
 		String values = request.getParameter("values");
 		System.out.println(values);
 
+		//DAOの宣言
 		Schedule_listDAO sDao = new Schedule_listDAO();
 		CoinDAO2 cDao = new CoinDAO2();
+
+		//アプリケーションスコープの宣言
+		ServletContext application = this.getServletContext();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		HttpSession session = request.getSession();
@@ -117,7 +139,8 @@ public class Schedule_listServlet extends HttpServlet {
 		ScheduleUser userdata = sDao.selectuser(user_name);
 		request.setAttribute("userdata", userdata);
 
-		//スケジュールをすべて取得
+
+		//スケジュールをすべて取得 いらない
 		if(values != null) {
 			if(values.equals("スケジュール表示")) {
 				// 検索処理を行う
@@ -138,6 +161,8 @@ public class Schedule_listServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
+
+///
 
 		//カレンダーで選択した日付のスケジュールを取得
 		if(values.equals("date")) {
@@ -162,6 +187,8 @@ public class Schedule_listServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 
+///
+
 		//削除処理
 		if(values.equals("削除")) {
 			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
@@ -176,6 +203,8 @@ public class Schedule_listServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 			dispatcher.forward(request, response);
 		}
+
+///
 
 		//スケジュール完了処理
 		if(values.equals("完了")) {
@@ -207,6 +236,7 @@ public class Schedule_listServlet extends HttpServlet {
 			// スケジュールの検索結果と表示する日付をリクエストスコープに格納する
 			request.setAttribute("scheduleList", scheduleList);
 			request.setAttribute("date", date);
+
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");

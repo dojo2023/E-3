@@ -81,7 +81,7 @@
         <div id="flexpet">
             <a href="/Esan/Pet_homeServlet"><img src="imgpet${userdata.pet_id}/pet${userdata.pet_id}.png" style="width:200px" id="petimg"/></a>
             <div class="balloon1-left" id="balloon-p">
-            	<p>${userdata.user_name}さん<br><span>おはようございます</span></p>
+            	<p>${userdata.user_name}さん<br><span id="message"></span></p>
           	</div>
     	</div>
     </div>
@@ -126,6 +126,7 @@
     <div class="schedule_data" id="schedule_done${i}" style="display:none">${e.schedule_done}</div>
     <c:set var="i" value="${i+1}"/>
     </c:forEach>
+    <%@include file="/include/push.jsp"%>
     <div class="schedule_data" id="senddate" style="display:none">${date}</div>
 
     <div id="schedule">
@@ -159,6 +160,7 @@
 	            		</c:otherwise>
 	            	</c:choose>
 	            </c:forEach>
+	            </tr>
 	        </c:forEach>
         </c:forEach>
     	</table>
@@ -171,5 +173,7 @@
 <script src="takahashi/schedule_list.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="takahashi/modal.js"></script>
+<script src="takahashi/speech_bubble.js"></script>
+<%@include file="/include/includeJS.jsp"%>
 </body>
 </html>
