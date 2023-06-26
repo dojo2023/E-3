@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.Pet_homeDAO;
 import model.Closet;
+import model.Dressup;
 import model.Pet;
+import model.Result;
 import model.User;
 
 
@@ -53,9 +55,24 @@ public class Pet_homeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 
+		request.setCharacterEncoding("UTF-8");
+		//変更するきせかえ画像IDを取得
+		String closet_img_id  = request.getParameter("closet_img_id");
+		request.getAttribute("closet_img_id");
+
+		Pet_homeDAO clDao = new Pet_homeDAO();
+		if (clDao.insertcl(new Dressup(closet_img_id)).equals("true")) {	// 登録成功
+			request.setAttribute("result", new Result("変更しました。", "/Esan/Pet_homeServlet"));
+		}
+			else if(clDao.insertcl(new Dressup(closet_img_id)).equals("false")) {
+			// リクエストスコープにメッセージ、戻り先を格納する
+			request.setAttribute("result", new Result("変更できませんでした。", "/Esan/Pet_homeServlet"));
+		}
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
+		dispatcher.forward(request, response);
+		return;
 	}
 
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Closet;
+import model.Dressup;
 import model.Pet;
 import model.User;
 
@@ -199,6 +200,86 @@ public User selectuser(String user_name){
 	// 結果を返す
 	return userdata;
 }
+
+//クローゼットテーブルからきせかえ画像ID,最終きせかえ情報を取得
+public Dressup insertcl(String closet_img_id){
+	Connection conn = null;
+	Dressup closetdata = null;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+		// SQL文を準備する
+		String selectcl = "select * from closet where closet_img_id = ?";
+		PreparedStatement selectpStmt_cl = conn.prepareStatement(selectcl);
+
+		//SQL文を完成させる
+		if(closet_img_id != null) {
+			selectpStmt_cl.setString(1, closet_img_id);
+		}else {
+			selectpStmt_cl.setString(1, null);
+
+
+		// SQL文を実行し、結果表を取得する
+		ResultSet rs = selectpStmt_cl.executeQuery();
+
+		while (rs.next()) {
+			closetdata = new Dressup(
+			rs.getString("closet_img_id"),
+			rs.getBoolean("last_closet")
+			);
+		}
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+		closetdata = null;
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		closetdata = null;
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				closetdata = null;
+			}
+		}
+	}
+
+	// 結果を返す
+	return closetdata;
+}
+
+public boolean update(Dressup dressup) {
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		//JDBCドライバの読み込み
+		Class.forName("org.h2.Driver");
+
+		//DB接続
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+		//SQLの準備
+		String updatecl = "update closet set last_closet=? where closet_img_id=?";
+		PreparedStatement pStmt = conn.prepareStatement(updatecl);
+
+
+
+	}
+}
+
 }
 
 
