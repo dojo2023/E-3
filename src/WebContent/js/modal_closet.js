@@ -20,3 +20,5 @@
     $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
   }
   });
+
+  imgcloset1/hat1-1.png
