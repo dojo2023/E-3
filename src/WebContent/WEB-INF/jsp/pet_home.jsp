@@ -41,16 +41,16 @@
 
                   		<c:choose>
                 			<c:when test='${e.closet_kind_id == 1}'>
-           						<img src ="${e.closet_img_path}" class="abs" width="50" height="50">
+           						<img src ="${e.closet_img_path}"  width="200" height="200">
 							</c:when>
 							<c:when test='${e.closet_kind_id == 2}'>
-								<img src ="${e.closet_img_path}" class="abs">
+								<img src ="${e.closet_img_path}" >
 							</c:when>
 							<c:when test='${e.closet_kind_id == 3}'>
-								<img src ="${e.closet_img_path}" class="abs">
+								<img src ="${e.closet_img_path}" >
 							</c:when>
 							<c:when test='${e.closet_kind_id == 4}'>
-								<img src ="${e.closet_img_path}" class="abs">
+								<img src ="${e.closet_img_path}" >
 							</c:when>
 						</c:choose>
 
@@ -68,7 +68,7 @@
                 	<td>
                 		<c:choose>
                 			<c:when test='${e.closet_kind_id == 5}'>
-							<img src ="${e.closet_img_path}" class="abs" width="50" height="50">
+							<img src ="${e.closet_img_path}"  width="50" height="50">
 							</c:when>
 						</c:choose>
 					</td>
@@ -85,6 +85,12 @@
 <div class="closet">
       <p><a href="#info" class="modal-open"><img src="img/closet.png"></a></p>
 </div>
+<!-- ペットの名前 -->
+<label>
+${pet_name}
+</label>
+
+
 <!--吹き出し-->
 
 
