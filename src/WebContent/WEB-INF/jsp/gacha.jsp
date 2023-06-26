@@ -16,16 +16,19 @@
 <body>
 	<p>${gachadata.closet_img_path}</p>
 	<p>${alert}</p>
+	<p id="result">${result}</p>
+
 
 	<div class="content1">
 	    <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
+	    	<a href="#info" class="modal-open">
 	    	<img src="/Esan/img/chicken_house.png" class="ouchi">
+	    	</a>
 
 	    <div class="wrapper">
 		    <form method="post" action="/Esan/GachaServlet">
-		    	<input type="submit" id="gacha_btn" class="gacha_btn">
-	    	</form>
-		    <a href="#info" class="modal-open"><img src="img/gacha_btn.png"></a>
+		    <input type="submit" id="gacha_btn" class="gacha_btn" value="">
+		    </form>
 	    </div>
   	</div>
 
@@ -47,8 +50,8 @@
 	    <table>
 	    <tr><th>レア度</th><td><img src="/Esan/img/rarity1.png"></td></tr>
 	    </table>
-	    <img src="${closet_path}" class="result"><br>
-	    を手に入れた！<br>
+	    <img src="${gachadata.closet_img_path}" class="result"><br>
+	    ${gachadata.closet_name}を手に入れた！<br>
 	    <hr>
 	    <a href="/Esan/GachaServlet">
 	    <button type="button" id="ok_btn">OK</button>

@@ -112,6 +112,7 @@ public class GachaServlet extends HttpServlet {
 
 		//データベースに送るcloset_img_id
 		String gacharesult = closet_id + closetnum + "-" + rarity;
+		String result = "OK";
 
 		GachaDAO gDao = new GachaDAO();
 		Gacha gachadata = gDao.selectgacha(gacharesult);
@@ -127,6 +128,7 @@ public class GachaServlet extends HttpServlet {
 
 		request.setAttribute("gachadata", gachadata);
 		request.setAttribute("userdata", userdata);
+		request.setAttribute("result", result);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gacha.jsp");

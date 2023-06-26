@@ -558,3 +558,43 @@ update gacha set rerity=1 [42122-200]
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-26 15:15:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+1,
+'hat2-2',
+'imgcloset1/hat2.png',
+'ピンクの帽子',
+1,
+2CLOSET[*] )"; 期待されるステートメント "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+1,
+'hat2-2',
+'imgcloset1/hat2.png',
+'ピンクの帽子',
+1,
+2CLOSET[*] )"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO gacha(
+pet_id,
+closet_img_id,
+closet_img_path,
+closet_name,
+closet_kind_id,
+rarity) values(
+1,
+'hat2-2',
+'imgcloset1/hat2.png',
+'ピンクの帽子',
+1,
+2CLOSET ) [42001-200]
