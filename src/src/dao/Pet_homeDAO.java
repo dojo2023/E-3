@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Closet;
 import model.Pet;
+import model.User;
 
 public class Pet_homeDAO {
 
@@ -28,7 +29,7 @@ public class Pet_homeDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select  pet_img_id,pet_img_path from pet where pet_id = ?";
+			String sql = "select pet_img_id,pet_img_path from pet where pet_id = ?";
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -143,10 +144,62 @@ public class Pet_homeDAO {
 	// 結果を返す
 	return closetList;
 }
+
+//ユーザテーブルからユーザ情報を取得
+public User selectuser(String user_name){
+	Connection conn = null;
+	User userdata = null;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+		// SQL文を準備する
+		String sql = "select user_name, pet_name, pet_id, coin_cnt from user where user_name = ?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		pStmt.setString(1, user_name);
+
+		// SQL文を実行し、結果表を取得する
+		ResultSet rs = pStmt.executeQuery();
+
+		while (rs.next()) {
+			userdata = new User(
+			rs.getString("user_name"),
+			rs.getString("pet_name"),
+			rs.getInt("pet_id"),
+			rs.getInt("coin_cnt")
+			);
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+		userdata = null;
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		userdata = null;
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				userdata = null;
+			}
+		}
+	}
+
+	// 結果を返す
+	return userdata;
 }
-
-
-
+}
 
 
 

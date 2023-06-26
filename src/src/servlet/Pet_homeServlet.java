@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.Pet_homeDAO;
 import model.Closet;
 import model.Pet;
+import model.User;
 
 
 /**
@@ -28,11 +29,15 @@ public class Pet_homeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("user_name", "ユーザ名");
+		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 		Pet_homeDAO pDao = new Pet_homeDAO();
 		List<Pet> petList = pDao.selectpet();
 		request.setAttribute("petList", petList);
+
+		//ユーザ情報を取得(パスワード、メアドなし)
+		User userdata = pDao.selectuser(user_name);
+		request.setAttribute("userdata", userdata);
 
 
 		List<Closet> closetList = pDao.selectcloset(user_name);
