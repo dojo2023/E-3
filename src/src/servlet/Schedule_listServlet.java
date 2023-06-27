@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,17 +30,12 @@ public class Schedule_listServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		if (session.getAttribute("user_name") == null) {
 			response.sendRedirect("/Esan/LoginServlet");
 			return;
-		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
-			dispatcher.forward(request, response);
-		}*/
+		}
 
-		HttpSession session = request.getSession();
-		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//DAO宣言 スケジュールリスト コイン
@@ -133,9 +127,6 @@ public class Schedule_listServlet extends HttpServlet {
 		//DAOの宣言
 		Schedule_listDAO sDao = new Schedule_listDAO();
 		CoinDAO2 cDao = new CoinDAO2();
-
-		//アプリケーションスコープの宣言
-		ServletContext application = this.getServletContext();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		String user_name = (String)session.getAttribute("user_name");
