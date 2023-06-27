@@ -26,6 +26,7 @@
 <section id="info">
 
 <h2>きせかえ</h2>
+<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 
 <div class = "box1">
 <div class = "grl">
@@ -78,6 +79,7 @@
 </div>
 </div>
 <button type="submit" name="dress_up" value="決定" class="submit">決定</button><br>
+</form>
 </section>
 
 <!-- ペットの名前 -->
@@ -114,6 +116,13 @@
 	</c:when>
 </c:choose>
 </c:forEach>
+
+<!-- モーション -->
+<div class="pet mot4">
+	<img class="image" src="imgpet4/head.png" />
+	<img class="image" src="imgmotion4/face1.png" />
+	<img class="image" src="imgmotion4/face2.png" />
+</div>
 
 <!-- きせかえ -->
 <c:forEach var="e" items="${closetList}" >
