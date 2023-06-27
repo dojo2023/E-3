@@ -202,7 +202,7 @@ public User selectuser(String user_name){
 }
 
 //クローゼットテーブルからきせかえ画像ID,最終きせかえ情報を取得
-public Dressup insertcl(String closet_img_id){
+public Dressup selectcl(String closet_img_id){
 	Connection conn = null;
 	Dressup closetdata = null;
 
@@ -275,11 +275,38 @@ public boolean update(Dressup dressup) {
 		String updatecl = "update closet set last_closet=? where closet_img_id=?";
 		PreparedStatement pStmt = conn.prepareStatement(updatecl);
 
+		if(dressup.getLast_closet() == false) {
+			pStmt.setBoolean(1, dressup.getLast_closet());
+		}else {
+			pStmt.setBoolean(1,false);
+		}
+		pStmt.setString(2, dressup.getCloset_img_id());
 
-
+		//SQL文の実行
+		if(pStmt.executeUpdate() == 1) {
+			result = true;
+		}
 	}
+	catch(SQLException e) {
+		e.printStackTrace();
+	}
+	catch(ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		//DB切断
+		if(conn != null) {
+			try {
+				conn.close();
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	//結果を返す
+	return result;
 }
-
 }
 
 

@@ -15,7 +15,6 @@ import dao.Pet_homeDAO;
 import model.Closet;
 import model.Dressup;
 import model.Pet;
-import model.Result;
 import model.User;
 
 
@@ -37,7 +36,7 @@ public class Pet_homeServlet extends HttpServlet {
 		List<Pet> petList = pDao.selectpet();
 		request.setAttribute("petList", petList);
 
-		//ユーザ情報を取得(パスワード、メアドなし)
+		//ユーザ情報を取得
 		User userdata = pDao.selectuser(user_name);
 		request.setAttribute("userdata", userdata);
 
@@ -62,15 +61,12 @@ public class Pet_homeServlet extends HttpServlet {
 		request.getAttribute("closet_img_id");
 
 		Pet_homeDAO clDao = new Pet_homeDAO();
-		if (clDao.insertcl(new Dressup(closet_img_id)).equals("true")) {	// 登録成功
-			request.setAttribute("result", new Result("変更しました。", "/Esan/Pet_homeServlet"));
-		}
-			else if(clDao.insertcl(new Dressup(closet_img_id)).equals("false")) {
-			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("変更できませんでした。", "/Esan/Pet_homeServlet"));
-		}
+		Dressup dressup = clDao.selectcl(closet_img_id);
+		System.out.println(dressup);
+		request.setAttribute("dressup", dressup);
+
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pet_home.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
