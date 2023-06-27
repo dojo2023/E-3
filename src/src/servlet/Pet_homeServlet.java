@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.Pet_homeDAO;
 import model.Closet;
-import model.Dressup;
 import model.Pet;
 import model.User;
 
@@ -37,10 +36,11 @@ public class Pet_homeServlet extends HttpServlet {
 		User userdata = pDao.selectuser(user_name);
 		request.setAttribute("userdata", userdata);
 
+		//ペットの画像を取得
 		List<Pet> petList = pDao.selectpet(userdata);
 		request.setAttribute("petList", petList);
 
-
+		//きせかえ画像を取得
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
 		//System.out.println(closetList);
@@ -59,16 +59,49 @@ public class Pet_homeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		String user_name = (String)session.getAttribute("user_name");
+
 		request.setCharacterEncoding("UTF-8");
 		//変更するきせかえ画像IDを取得
-		String closet_img_id  = request.getParameter("image");
-		System.out.println(closet_img_id);
+		String hatcloset_img_id  = request.getParameter("hatimg");
+		String dresscloset_img_id  = request.getParameter("dressimg");
+		String shoescloset_img_id  = request.getParameter("shoesimg");
+		String accessorycloset_img_id  = request.getParameter("accessoryimg");
+
 		//request.getAttribute("closet_img_id");
 
 		Pet_homeDAO pDao = new Pet_homeDAO();
-		Dressup dressup = pDao.selectcl(closet_img_id);
-		System.out.println(dressup);
-		request.setAttribute("dressup", dressup);
+		//Dressup dressup = pDao.selectcl(closet_img_id);
+		//System.out.println(dressup);
+		//request.setAttribute("dressup", dressup);
+
+		//最終きせかえをすべて消す last_closet=false
+		boolean dellast = pDao.updatedeletelastcloset(user_name);
+
+		//最終きせかえの登録
+		boolean truelast = pDao.updatetrue(hatcloset_img_id, user_name);
+		System.out.println(truelast);
+		truelast = pDao.updatetrue(dresscloset_img_id, user_name);
+		System.out.println(truelast);
+		truelast = pDao.updatetrue(shoescloset_img_id, user_name);
+		System.out.println(truelast);
+		truelast = pDao.updatetrue(accessorycloset_img_id, user_name);
+		System.out.println(truelast);
+
+
+		//ユーザ情報を取得
+		User userdata = pDao.selectuser(user_name);
+		request.setAttribute("userdata", userdata);
+
+		//ペットの画像を取得
+		List<Pet> petList = pDao.selectpet(userdata);
+		request.setAttribute("petList", petList);
+
+		//きせかえ画像を取得
+		List<Closet> closetList = pDao.selectcloset(user_name);
+		request.setAttribute("closetList", closetList);
+
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pet_home.jsp");

@@ -43,19 +43,19 @@
 			               	<div class="radio_closet">
 							<c:choose>
 								<c:when test='${e.closet_kind_id == 1}'>
-									<input id="hat_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+									<input id="hat_radio${i}" type="radio" value="${e.closet_img_id}" name="hatimg">
 									<label for="hat_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 2}'>
-									<input id="dress_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+									<input id="dress_radio${i}" type="radio" value="${e.closet_img_id}" name="dressimg">
 									<label for="dress_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 3}'>
-									<input id="shoes_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+									<input id="shoes_radio${i}" type="radio" value="${e.closet_img_id}" name="shoesimg">
 									<label for="shoes_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 4}'>
-									<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+									<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="accessoryimg">
 									<label for="accesorry_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
 								</c:when>
 							</c:choose>
@@ -86,11 +86,11 @@
 				</table>
 			</div>
 
-		</div>
-	</div>
 		<button type="submit" name="dress_up" value="決定" class="submit">決定</button><br>
 
 	</form>
+	</div>
+	</div>
 	</section>
 
 	<!--吹き出し-->
