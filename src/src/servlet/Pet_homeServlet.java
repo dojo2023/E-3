@@ -41,10 +41,12 @@ public class Pet_homeServlet extends HttpServlet {
 		request.setAttribute("petList", petList);
 
 
-
-
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
+		//System.out.println(closetList);
+
+		//List<Closet> lastclosetList = pDao.selectlastcloset(user_name);
+		//request.setAttribute("closetList", lastclosetList);
 		//System.out.println(closetList);
 
 
@@ -63,9 +65,9 @@ public class Pet_homeServlet extends HttpServlet {
 		System.out.println(closet_img_id);
 		//request.getAttribute("closet_img_id");
 
-		Pet_homeDAO clDao = new Pet_homeDAO();
-		Dressup dressup = clDao.selectcl(closet_img_id);
-		//System.out.println(dressup);
+		Pet_homeDAO pDao = new Pet_homeDAO();
+		Dressup dressup = pDao.selectcl(closet_img_id);
+		System.out.println(dressup);
 		request.setAttribute("dressup", dressup);
 
 		// 結果ページにフォワードする

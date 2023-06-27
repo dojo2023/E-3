@@ -14,14 +14,15 @@
 </head>
 <body>
 <div class="all">
+
 <%@include file="/include/menu.jsp"%>
+
 <c:set var="closetlen" value="${fn:length(closetList)}"/>
+
 <!--背景-->
 <img src="img/bg.png">
 
-<!-- モーダルウィンドウ -->
-
-<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<!--==============モーダルウィンドウきせかえ===============-->
 
 <section id="info">
 
@@ -29,37 +30,40 @@
 <form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 
 <div class = "box1">
-<div class = "grl">
-            <table class="border">
-            <c:forEach var="e" items="${closetList}" >
-				<tr>
-                	<td>
-                	<div class="radio_closet">
-                  		<c:choose>
-                			<c:when test='${e.closet_kind_id == 1}'>
-                				<input id="hat_radio" type="radio" value="${e.closet_img_id}" name="image">
-  								<label for="hat_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
-           					</c:when>
-							<c:when test='${e.closet_kind_id == 2}'>
-                				<input id="dress_radio" type="radio" value="${e.closet_img_id}" name="image">
-  								<label for="dress_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
-           					</c:when>
-							<c:when test='${e.closet_kind_id == 3}'>
-                				<input id="shoes_radio" type="radio" value="${e.closet_img_id}" name="image">
-  								<label for="shoes_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
-           					</c:when>
-							<c:when test='${e.closet_kind_id == 4}'>
-                				<input id="accessory_radio" type="radio" value="${e.closet_img_id}" name="image">
-  								<label for="accesorry_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
-           					</c:when>
-						</c:choose>
+	<div class = "grl">
+		<table class="border">
+		<c:set var="i" value="0"/>
+		<c:forEach var="e" items="${closetList}" >
+			<tr>
+				<td>
+	               	<div class="radio_closet">
+					<c:choose>
+						<c:when test='${e.closet_kind_id == 1}'>
+							<input id="hat_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+							<label for="hat_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+						</c:when>
+						<c:when test='${e.closet_kind_id == 2}'>
+							<input id="dress_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+							<label for="dress_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+						</c:when>
+						<c:when test='${e.closet_kind_id == 3}'>
+							<input id="shoes_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+							<label for="shoes_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+						</c:when>
+						<c:when test='${e.closet_kind_id == 4}'>
+							<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="image">
+							<label for="accesorry_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+						</c:when>
+					</c:choose>
 					</div>
-                  </td>
-				</tr>
- 			</c:forEach>
-			</table>
-</div>
-<div class="grl2">
+				</td>
+			</tr>
+			<c:set var="i" value="${i + 1}"/>
+		</c:forEach>
+		</table>
+	</div>
+
+	<div class="grl2">
  		<table>
 			<c:forEach var="e" items="${closetList}" >
 				<tr>
@@ -76,46 +80,66 @@
 				</tr>
 			</c:forEach>
 		</table>
+	</div>
+
 </div>
-</div>
+
 <button type="submit" name="dress_up" value="決定" class="submit">決定</button><br>
+
 </form>
 </section>
 
 <!-- ペットの名前 -->
-<label id="pet_name">${userdata.pet_name}
-</label>
+<label id="pet_name">${userdata.pet_name}</label>
 
 
 <!--吹き出し-->
-
-
 <div class="balloon">
-  おはようございます！
-  <br>今日も一日がんばろう！
+	おはようございます！
+	<br>今日も一日がんばろう！
 </div>
 
-<div class="box">
-<c:forEach var="e" items="${petList}" >
 
-<c:choose>
-	<c:when test='${fn: contains(e.pet_img_id,"head")}'>
-		<img src ="${e.pet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${fn: contains(e.pet_img_id,"body")}'>
-		<img src ="${e.pet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${fn: contains(e.pet_img_id,"right_arm")}'>
-		<img src ="${e.pet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${fn: contains(e.pet_img_id,"left")}'>
-		<img src ="${e.pet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${fn: contains(e.pet_img_id,"legs")}'>
-		<img src ="${e.pet_img_path}" class="abs">
-	</c:when>
-</c:choose>
-</c:forEach>
+<!-- ペットの画像 -->
+<div class="box">
+	<c:forEach var="e" items="${petList}" >
+	<c:choose>
+		<c:when test='${fn: contains(e.pet_img_id,"head")}'>
+			<img src ="${e.pet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${fn: contains(e.pet_img_id,"body")}'>
+			<img src ="${e.pet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${fn: contains(e.pet_img_id,"right_arm")}'>
+			<img src ="${e.pet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${fn: contains(e.pet_img_id,"left")}'>
+			<img src ="${e.pet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${fn: contains(e.pet_img_id,"legs")}'>
+			<img src ="${e.pet_img_path}" class="abs">
+		</c:when>
+	</c:choose>
+	</c:forEach>
+
+	<!-- ペットのきせかえ画像 -->
+	<c:forEach var="e" items="${closetList}" >
+	<c:choose>
+		<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+			<img src ="${e.closet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+			<img src ="${e.closet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+			<img src ="${e.closet_img_path}" class="abs">
+		</c:when>
+		<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+			<img src ="${e.closet_img_path}" class="abs">
+		</c:when>
+	</c:choose>
+	</c:forEach>
+</div>
 
 <!-- モーション
 <div class="pet mot4">
@@ -123,30 +147,14 @@
 	<img class="image" src="imgmotion4/face1.png" />
 	<img class="image" src="imgmotion4/face2.png" />
 </div>
--->
+
 <div class="pet mot">
   <img src="imgpet1/left0.png" alt="水滴画像" />
 </div>
-<!-- きせかえ -->
-<c:forEach var="e" items="${closetList}" >
 
 
-<c:choose>
-	<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
-		<img src ="${e.closet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
-		<img src ="${e.closet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
-		<img src ="${e.closet_img_path}" class="abs">
-	</c:when>
-	<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
-		<img src ="${e.closet_img_path}" class="abs">
-	</c:when>
-</c:choose>
-</c:forEach>
 </div>
+-->
 
 <!--ペット画像
 <img src="imgpet1/head.png">
@@ -162,7 +170,6 @@
 <img src="imgcloset1/shoes1.png">
 <img src="imgcloset1/accessory1.png">
 -->
-
 
 
 <div class="box2">
