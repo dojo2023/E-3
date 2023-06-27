@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+/*全体*/
+#cal{
+    max-width: 300px;
+    /*margin: 0 auto;*/
+    margin-top: 1em;
+    margin-left: 1em;
+    color: #666;
+}
+#cal #header {
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+
+/*カレンダー*/
+#cal #calendar {
+    text-align: center;
+    width: 100%;
+}
+#cal table {
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+#cal th {
+    color: #000;
+}
+#cal th, #cal td {
+    outline: 1px solid #ddd;
+    /*padding-top: 10px;
+    padding-bottom: 10px;
+    */
+    text-align: center;
+}
+/*日曜日*/
+#cal td:first-child {
+    color: red;
+}
+/*土曜日*/
+#cal td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+#cal td.disabled {
+    color: #ccc;
+}
+/*本日*/
+#cal td.today {
+    background-color: #D65E72;
+    color: #fff;
+}
+
+#cal tr td:hover{
+    background-color: #b4edff;
+    color: #fff;
+}
+
+/*ボタン*/
+#cal #next-prev-button {
+    position: relative;
+}
+#cal #next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.1rem 1rem;
+    margin: 1rem 0;
+}
+#cal #next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#cal #prev {
+    float: left;
+}
+#cal #next {
+    float: right;
+}

@@ -1,1 +1,125 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+#flexparent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* カレンダーの位置 */
+
+#flexchild{
+  width: 300px;
+  height:300px;
+}
+
+#flexcal{
+  width: 300px;
+  height: 300px;
+}
+
+/* 現在時刻とペットの画像とふきだしメッセージ */
+
+#flexchild1{
+  width: 600px;
+  height:300px;
+}
+
+#flexnowdate{
+  font-family: 'Share Tech Mono', monospace;
+  color: #000000;
+  text-shadow: 0 0 10px #d6f5ff;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 30px;
+}
+
+#flexpet{
+  display: flex;
+  width: 400px;
+}
+
+#petimg{
+}
+
+#balloon-p{
+}
+
+/* コインとスケジュール登録 */
+
+#flexchild2{
+  width: 300px;
+  height:300px;
+}
+
+#flexcoin{
+  width: 300px;
+}
+
+#fcimg{
+  position: relative;
+}
+
+#coinnum{
+  position: absolute;
+  font-family: 'Itim', cursive;
+  font-size: 50px;
+  padding-top: 1%;
+}
+
+#flexregist{
+  width: 300px;
+}
+
+#registform{
+  text-align: center;
+  height:200px;
+  position: relative;
+}
+
+#registbtn{
+  position: absolute;
+  transform: translate(-50%, 0%);
+  margin-top: 20%;
+  padding: 30px;
+  font-size: large;
+
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+}
+
+#registbtn:hover{
+  color: #fff;
+  background: #000;
+}
+
+
+/* ---------- 終 ---------- */
+
+#schedule table {
+  width: 1000px;
+  height: 500px;
+  table-layout: fixed;
+}
+
+#schedule td {
+  width: 10rem;
+  /* border: none !important; */
+  text-align: center;
+  padding: 0px;
+}
+
+#schedule {
+  /* height: 300px; */
+  overflow: scroll;
+}
+
+#none {
+  display:none;
+}
+
+.true{
+	pointer-events: none;
+}

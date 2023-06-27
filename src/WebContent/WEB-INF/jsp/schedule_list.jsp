@@ -9,31 +9,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>スケジュール閲覧</title>
-    <link rel="stylesheet" href="takahashi/schedule_list.css">
-    <link rel="stylesheet" href="takahashi/calendar.css">
-    <link rel="stylesheet" href="takahashi/drawer.css">
+    <link rel="stylesheet" href="css/schedule_list.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/drawer.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
-    <link rel="stylesheet" href="takahashi/modal.css">
-    <link rel="stylesheet" href= "takahashi/balloon.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href= "css/balloon.css">
 </head>
 
 <body>
-    <div class="overlay"></div>
-    <nav class="nav">
-        <div class="toggle">
-        <span id="deleteconpo" class="toggler"></span>
-        </div>
-        <div class="logo">
-        <a href="#">LOGO</a>
-        </div>
-        <ul class="linkList">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
 
 	<!-- コインの追加処理 ログイン時、スケジュール完了時 -->
     <div style="display:none">
@@ -151,14 +135,7 @@
 	        	</c:choose>
 
 	            <c:forEach begin="0" end="${tdlength}" step="1" var="tdnum">
-	            	<c:choose>
-	            		<c:when test="${scheduleList[tdnum].schedule_done}">
-	            			<td class="true" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
-	            		</c:when>
-	            		<c:otherwise>
-	            			<td class="false" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
-	            		</c:otherwise>
-	            	</c:choose>
+	            	<td class="true" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
 	            </c:forEach>
 	            </tr>
 	        </c:forEach>
@@ -166,14 +143,14 @@
     	</table>
     </div>
 
-<script src="takahashi/jquery-3.6.4.min.js"></script>
-<script src="takahashi/calendar.js"></script>
-<script src="takahashi/date.js"></script>
-<script src="takahashi/drawer.js"></script>
-<script src="takahashi/schedule_list.js"></script>
+<script src="js/jquery-3.6.4.min.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/date.js"></script>
+<script src="js/drawer.js"></script>
+<script src="js/schedule_list.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
-<script src="takahashi/modal.js"></script>
-<script src="takahashi/speech_bubble.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/speech_bubble.js"></script>
 <%@include file="/include/includeJS.jsp"%>
 </body>
 </html>
