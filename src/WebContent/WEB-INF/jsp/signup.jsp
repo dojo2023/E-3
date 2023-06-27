@@ -17,9 +17,9 @@
 		<img src="img/logo.png" alt="ScheZoole">
 	</h1>
 	<!-- ヘッダー（ここまで） -->
+	<div class="main">
 	<!-- メイン（ここから） -->
 	<h2><span class="cloud">新</span><span class="cloud">規</span><span class="cloud">登</span><span class="cloud">録</span></h2>
-	<div>
 	<form class="signup_form" method="POST" action="/Esan/SignupServlet">
 		<table>
 			<tr>
@@ -62,8 +62,8 @@
 				</td>
 			</tr>
 		</table>
-      	<input type="submit" name="signup_btn" value="新規登録"><br>
-      	<p><c:out value="${result.message}" /></p>
+		<p><c:out value="${result.message}" /></p>
+      	<input type="submit" name="signup_btn" class="submit" value="新規登録"><br>
       	<a href="/Esan/LoginServlet" id="login">ログイン画面へ</a>
     </form>
     	<a href="/Esan/InquiryServlet" id="inquiry">お問い合わせ</a>

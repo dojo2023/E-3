@@ -48,33 +48,46 @@ body {
     background-position: 0 0,20px 20px;
 }
 
+.main {
+    margin-top: 10px;
+}
+
 h2{
-    margin-left: 420px;
+    text-align: center;
     margin-bottom: 0;
+    margin-top: 10px;
+    position: relative;
 }
 
 .cloud {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background: rgb(255, 255, 255);
     text-align:center;
     line-height: 80px;
+    margin: auto;
 }
 
-
-table {
-    text-align: center;
-    margin-left: 300px;
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
 }
+
+#logo {
+    position: absolute;
+	width: 100px;
+	height: 100px;
+}
+
 
 .signup_form {
 	text-align : center;
 	margin : auto;
-    background-color: #FFFFFF;
-    width: 1500px;
-    height: 800px;
+    background-color: #92c79df4;
+    width: 950px;
+    height: 460px;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
@@ -86,12 +99,10 @@ table {
     border-radius: 10px;
     background: #eaeff1;
     color: rgb(0, 0, 0);
-    font-size: 1em;
-    line-height: 1.5em;
+    font-size: 20px;
 
     box-sizing: border-box;
-    margin-bottom: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .box::placeholder {
@@ -104,6 +115,7 @@ table {
     align-items: center;
     position: relative;
     width: 250px;
+    height: 80px;
     margin: 0 auto;
     padding: .9em 2em;
     border: 1px solid #415d71;
@@ -111,7 +123,7 @@ table {
     background-color: #fff;
     color: #415d71;
     font-size: 1em;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .submit:focus {
@@ -141,4 +153,17 @@ table {
 
 .submit:focus::after {
     content: none;
+}
+
+#login {
+    line-height: 1px;
+}
+
+#inquiry {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+	color: #ff0000;
 }

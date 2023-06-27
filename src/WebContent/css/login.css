@@ -21,27 +21,30 @@ body {
 }
 
 h2{
-    margin-left: 420px;
+    text-align: center;
     margin-bottom: 0;
+    margin-top: 10px;
+    position: relative;
 }
 
 .cloud {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background: rgb(255, 255, 255);
     text-align:center;
     line-height: 80px;
+    margin: auto;
 }
 
 
 #login_form {
 	text-align : center;
 	margin : auto;
-    background-color: #92c79d;
-    width: 700px;
-    height: 500px;
+    background-color: #92c79df4;
+    width: 600px;
+    height: 360px;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
@@ -50,22 +53,57 @@ h2{
 	width: 700px;
 }
 
+
+ul {
+    margin-top: 0;
+}
+
 #logo {
-	width: 200px;
-	height: 200px;
+	width: 100px;
+	height: 100px;
+    margin-bottom: 50px;
+}
+#log_pet1 {
+    width: 80px;
+	height: 80px;
+    margin-bottom: 50px;
+}
+#log_pet2 {
+    width: 80px;
+	height: 80px;
+    margin-bottom: 50px;
+}
+#log_pet3 {
+    width: 80px;
+	height: 80px;
+    margin-bottom: 50px;
+}
+#log_pet4 {
+    width: 80px;
+	height:80px;
+    margin-bottom: 50px;
+}
+#log_pet5 {
+    width: 80px;
+	height: 80px;
+    margin-bottom: 50px;
+}
+.pet_li{
+    margin-top: 0;
 }
 
 li {
 	list-style-type: none;
 	display: inline;
+    margin-top: 0;
 }
 
 .log_pet{
 	text-align: center;
 	margin : auto;
-    background-color: #efecdf;
-    width: 1000px;
-    height: 230px;
+    background-color: #efecdfd2;
+    width: 700px;
+    height: 100px;
     border-radius: 1.5em;
 
     border:solid #bcbc6c 1px; /*borderの指定*/
@@ -81,12 +119,11 @@ li {
     border-radius: 10px;
     background: #eaeff1;
     color: rgb(0, 0, 0);
-    font-size: 1em;
-    line-height: 1.5em;
+    font-size: 20px;
+
 
     box-sizing: border-box;
-    margin-bottom: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .box::placeholder {
@@ -136,6 +173,10 @@ li {
 
 .submit:focus::after {
     content: none;
+}
+
+p {
+	color: #ff0000;
 }
 
 #inquiry {

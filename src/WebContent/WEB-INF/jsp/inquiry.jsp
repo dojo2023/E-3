@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>お問い合わせ画面</title>
+<link rel="stylesheet" href="css/inquiry.css">
 </head>
 <body>
 <!-- <div class="wrapper"> -->
@@ -18,12 +19,12 @@
 	<!-- メイン（ここから） -->
 	<h2>お問い合わせ</h2>
 	<div>
-	<form id="inquiry_form", method="POST" action="/Esan/InquiryServlet">
-		<input type="text" name="user_name" placeholder="ユーザネーム"><br>
-      	<input type="text" name="email" placeholder="メールアドレス"><br>
-      	<input type="text" name="inquiry_content" placeholder="お問い合わせ内容"><br>
+	<form id="inquiry_form" method="POST" action="/Esan/InquiryServlet">
+		<input type="text" name="user_name" placeholder="ユーザネーム" class="box"><br>
+      	<input type="text" name="email" placeholder="メールアドレス" class="box"><br>
+      	<textarea name="inquiry_content" placeholder="お問い合わせ内容" class="box" rows="5" cols="30"></textarea>
       	<p><c:out value="${result.message}" /></p>
-      	<input type="submit" name="send_inquiry" value="送信"><br>
+      	<input type="submit" name="send_inquiry" value="送信"  class="submit"><br>
       	<a href="/Esan/LoginServlet" id="login">ログイン画面へ</a>
     </form>
     </div>
