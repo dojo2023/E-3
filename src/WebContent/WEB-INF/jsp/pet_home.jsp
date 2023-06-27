@@ -117,13 +117,16 @@
 </c:choose>
 </c:forEach>
 
-<!-- モーション -->
+<!-- モーション
 <div class="pet mot4">
 	<img class="image" src="imgpet4/head.png" />
 	<img class="image" src="imgmotion4/face1.png" />
 	<img class="image" src="imgmotion4/face2.png" />
 </div>
-
+-->
+<div class="pet mot">
+  <img src="" alt="水滴画像" />
+</div>
 <!-- きせかえ -->
 <c:forEach var="e" items="${closetList}" >
 

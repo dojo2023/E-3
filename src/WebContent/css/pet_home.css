@@ -129,7 +129,7 @@ label img {
 }
 
   /*モーション*/
-.image {
+/*.image {
 	position: absolute;
 	width: 100%;
 	opacity: 0;
@@ -152,3 +152,4 @@ label img {
 	90%{ opacity: 1;}
 	100%{ opacity: 0;}
 }
+*/
