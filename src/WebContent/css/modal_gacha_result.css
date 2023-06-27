@@ -28,3 +28,15 @@
 .result{
 	border: 9px solid #00cc00;
 }
+#star{
+	height:60px;
+	width:60px;
+	margin: 0 ;
+    padding: 0 ;
+}
+#broken_egg{
+	height:100px;
+	width:100px;
+	margin: 0 ;
+    padding: 0 ;
+}

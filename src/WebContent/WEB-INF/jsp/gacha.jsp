@@ -14,31 +14,28 @@
 </head>
 
 <body>
-	<p>${gachadata.closet_img_path}</p>
-	<p>${alert}</p>
-	<p id="result">${result}</p>
-
 
 	<div class="content1">
-	    <div class="container"><div class="item rotateY"><img src="/Esan/img/chicken.png"></div></div><br>
-	    	<a href="#info" class="modal-open">
+	    <div class="container"><div class="rotate_chicken"><img src="/Esan/img/chicken.png"></div></div><br>
 	    	<img src="/Esan/img/chicken_house.png" class="ouchi">
-	    	</a>
 
 	    <div class="wrapper">
 		    <form method="post" action="/Esan/GachaServlet">
-		    <input type="submit" id="gacha_btn" class="gacha_btn" value="">
+		    <input type="submit" id="gacha_btn" class="gacha_btn" value="ガチャをまわす">
 		    </form>
 	    </div>
+	    <a href="#info" class="modal-open">
+	    <div class="rotate_egg"><img id="egg"></div>
+	    </a>
   	</div>
 
 	<div class="content2">
 		<table class="table2">
 			<tr>
 				<td><a href="/Esan/Pet_homeServlet">ふれあい画面</a></td>
-				<td></td><td></td><td></td>
+				<td id="closet_img_path">${gachadata.closet_img_path}</td><td></td><td></td><td></td>
 				<td><img src="img/fc.png" id="fc"></td><td id="coin_display">${userdata.coin_cnt}枚</td>
-				<td></td><td></td><td></td><td></td>
+				<td id="alert">${alert}</td><td id="result">${result}</td><td id="rarity">${gachadata.rarity}</td><td></td><td></td><td></td>
 			</tr>
 		</table>
 	</div>
@@ -48,7 +45,7 @@
 	<section id="info">
 	    <div class="modal">
 	    <table>
-	    <tr><th>レア度</th><td><img src="/Esan/img/rarity1.png"></td></tr>
+	    <tr><td><img id="broken_egg"></td><td>レア度</td><td><img id="star"></td></tr>
 	    </table>
 	    <img src="${gachadata.closet_img_path}" class="result"><br>
 	    ${gachadata.closet_name}を手に入れた！<br>
