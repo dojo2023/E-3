@@ -17,7 +17,7 @@ public class InquiryDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_高川/fcdb2", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			// insert文を準備する
 			String sql = "insert into inquiry(user_name, email, inquiry_content) values(?, ?, ?)";
