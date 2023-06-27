@@ -83,10 +83,11 @@ public class Schedule_editDAO {
 			Class.forName("org.h2.Driver");
 
 			//DB接続
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQLの準備
-			String sql = "update schedule set schedule_name=?,start_date=?,start_time=?,finish_date=?,finish_time=?,color_id=?,content=? where user_name=?";
+			String sql = "update schedule set schedule_name=?,start_date=?,start_time=?,finish_date=?,finish_time=?,color_id=?,content=? where user_name=? and schedule_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQLの完成
@@ -126,6 +127,7 @@ public class Schedule_editDAO {
 				pStmt.setString(7,null);
 			}
 				pStmt.setString(8, dule.getUser_name());
+				pStmt.setInt(9, dule.getSchedule_id());
 
 			//SQL文の実行
 			if(pStmt.executeUpdate() == 1) {

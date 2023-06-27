@@ -63,12 +63,15 @@ public class Schedule_registServlet extends HttpServlet {
 		String start_time= request.getParameter("start_time");
 		String finish_date = request.getParameter("finish_date");
 		String finish_time= request.getParameter("finish_time");
-		String color_id = request.getParameter("color_id");
+		int color_id = Integer.parseInt(request.getParameter("color_id"));
 		String content= request.getParameter("content");
 
 		//登録処理
 		Schedule_registDAO registDAO = new Schedule_registDAO();
 		if(registDAO.insert(new Schedule(user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content))) {
+			//登録時のコイン追加用のデータ送信
+			session.setAttribute("registOK", "registOK");
+
 			//登録成功
 			response.sendRedirect("Schedule_listServlet");
 			return;
