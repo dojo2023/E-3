@@ -30,20 +30,22 @@ public class Pet_homeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//session.setAttribute("user_name", "ユーザ名");
-		String user_name = (String)session.getAttribute("user_name");
 		Pet_homeDAO pDao = new Pet_homeDAO();
-		List<Pet> petList = pDao.selectpet();
-		request.setAttribute("petList", petList);
-
+		session.setAttribute("user_name", "ユーザ名");
+		String user_name = (String)session.getAttribute("user_name");
 		//ユーザ情報を取得
 		User userdata = pDao.selectuser(user_name);
 		request.setAttribute("userdata", userdata);
 
+		List<Pet> petList = pDao.selectpet(userdata);
+		request.setAttribute("petList", petList);
+
+
+
 
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
-		System.out.println(closetList);
+		//System.out.println(closetList);
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pet_home.jsp");
@@ -57,12 +59,13 @@ public class Pet_homeServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		//変更するきせかえ画像IDを取得
-		String closet_img_id  = request.getParameter("closet_img_id");
-		request.getAttribute("closet_img_id");
+		String closet_img_id  = request.getParameter("image");
+		System.out.println(closet_img_id);
+		//request.getAttribute("closet_img_id");
 
 		Pet_homeDAO clDao = new Pet_homeDAO();
 		Dressup dressup = clDao.selectcl(closet_img_id);
-		System.out.println(dressup);
+		//System.out.println(dressup);
 		request.setAttribute("dressup", dressup);
 
 		// 結果ページにフォワードする

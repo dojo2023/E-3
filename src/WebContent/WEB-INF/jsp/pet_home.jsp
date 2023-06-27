@@ -37,19 +37,19 @@
                 	<div class="radio_closet">
                   		<c:choose>
                 			<c:when test='${e.closet_kind_id == 1}'>
-                				<input id="hat_radio" type="radio" value="1" name="image">
+                				<input id="hat_radio" type="radio" value="${e.closet_img_id}" name="image">
   								<label for="hat_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
            					</c:when>
 							<c:when test='${e.closet_kind_id == 2}'>
-                				<input id="dress_radio" type="radio" value="2" name="image">
+                				<input id="dress_radio" type="radio" value="${e.closet_img_id}" name="image">
   								<label for="dress_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
            					</c:when>
 							<c:when test='${e.closet_kind_id == 3}'>
-                				<input id="shoes_radio" type="radio" value="3" name="image">
+                				<input id="shoes_radio" type="radio" value="${e.closet_img_id}" name="image">
   								<label for="shoes_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
            					</c:when>
 							<c:when test='${e.closet_kind_id == 4}'>
-                				<input id="accessory_radio" type="radio" value="4" name="image">
+                				<input id="accessory_radio" type="radio" value="${e.closet_img_id}" name="image">
   								<label for="accesorry_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
            					</c:when>
 						</c:choose>
@@ -125,7 +125,7 @@
 </div>
 -->
 <div class="pet mot">
-  <img src="" alt="水滴画像" />
+  <img src="imgpet1/left0.png" alt="水滴画像" />
 </div>
 <!-- きせかえ -->
 <c:forEach var="e" items="${closetList}" >

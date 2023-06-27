@@ -16,7 +16,7 @@ import model.User;
 public class Pet_homeDAO {
 
 
-	public List<Pet> selectpet(){
+	public List<Pet> selectpet(User userdata){
 
 		Connection conn = null;
 		List<Pet> petList = new ArrayList<Pet>();
@@ -34,13 +34,12 @@ public class Pet_homeDAO {
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setInt(1, 1);
 
-			/*if (pet.getPet_id() != null) {
-				pStmt.setString(1, pet.getPet_id());
+			if (userdata.getPet_id() != 0) {
+				pStmt.setInt(1, userdata.getPet_id());
 				}else {
 					pStmt.setInt(1, 1);
-				}*/
+				}
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
@@ -100,11 +99,6 @@ public class Pet_homeDAO {
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setString(1, user_name);
 
-		/*if (pet.getPet_id() != null) {
-			pStmt.setString(1, pet.getPet_id());
-			}else {
-				pStmt.setInt(1, 1);
-			}*/
 		// SQL文を実行し、結果表を取得する
 		ResultSet rs = pStmt.executeQuery();
 
@@ -202,7 +196,7 @@ public User selectuser(String user_name){
 }
 
 //クローゼットテーブルからきせかえ画像ID,最終きせかえ情報を取得
-public Dressup selectcl(String closet_img_id){
+public String selectcl(String closet_img_id){
 	Connection conn = null;
 	Dressup closetdata = null;
 
@@ -214,7 +208,7 @@ public Dressup selectcl(String closet_img_id){
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 		// SQL文を準備する
-		String selectcl = "select * from closet where closet_img_id = ?";
+		String selectcl = "select last_closet from closet where closet_img_id = ?";
 		PreparedStatement selectpStmt_cl = conn.prepareStatement(selectcl);
 
 		//SQL文を完成させる
