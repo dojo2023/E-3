@@ -125,7 +125,8 @@ public class Schedule_registDAO {
 			Class.forName("org.h2.Driver");
 
 			//DB接続
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQLの準備
 			String sql = "insert into schedule(user_name,schedule_name,start_date,start_time,finish_date,finish_time,color_id,content) values(?, ?, ?, ?, ?, ?, ?, ?)";
