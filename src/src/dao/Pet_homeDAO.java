@@ -324,7 +324,9 @@ public class Pet_homeDAO {
 		return closetdata;
 	}
 
-	public boolean update(Dressup dressup) {
+//#--------------------------------------------------------------
+
+	public boolean updatetrue(String closet_img_id, String user_name) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -336,15 +338,56 @@ public class Pet_homeDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQLの準備
-			String updatecl = "update closet set last_closet=? where closet_img_id=?";
+			String updatecl = "update closet set last_closet=true where closet_img_id=? and user_name= ?";
 			PreparedStatement pStmt = conn.prepareStatement(updatecl);
 
-			if(dressup.getLast_closet() == false) {
-				pStmt.setBoolean(1, dressup.getLast_closet());
-			}else {
-				pStmt.setBoolean(1,false);
+			pStmt.setString(1, closet_img_id);
+			pStmt.setString(2, user_name);
+
+			//SQL文の実行
+			if(pStmt.executeUpdate() == 1) {
+				result = true;
 			}
-			pStmt.setString(2, dressup.getCloset_img_id());
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			//DB切断
+			if(conn != null) {
+				try {
+					conn.close();
+				}
+				catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		//結果を返す
+		return result;
+	}
+
+//#--------------------------------------------------------------
+
+	public boolean updatedeletelastcloset(String user_name) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			//JDBCドライバの読み込み
+			Class.forName("org.h2.Driver");
+
+			//DB接続
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+			//SQLの準備
+			String updatecl = "update closet set last_closet=false where user_name = ?";
+			PreparedStatement pStmt = conn.prepareStatement(updatecl);
+
+			pStmt.setString(1, user_name);
 
 			//SQL文の実行
 			if(pStmt.executeUpdate() == 1) {

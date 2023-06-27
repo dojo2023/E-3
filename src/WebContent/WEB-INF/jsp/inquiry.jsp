@@ -25,7 +25,7 @@
       	<textarea name="inquiry_content" placeholder="お問い合わせ内容" class="box" rows="5" cols="30"></textarea>
       	<p><c:out value="${result.message}" /></p>
       	<input type="submit" name="send_inquiry" value="送信"  class="submit"><br>
-      	<a href="/Esan/LoginServlet" id="login">ログイン画面へ</a>
+      	<a href="/Esan/Schedule_listServlet" id="login">戻る</a>
     </form>
     </div>
     <!-- メイン（ここまで） -->

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+<%@include file="/include/menu.jsp"%>
 	<div class="content1">
 	    <div class="container"><div class="rotate_chicken"><img src="/Esan/img/chicken.png"></div></div><br>
 	    	<img src="/Esan/img/chicken_house.png" class="ouchi">
