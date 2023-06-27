@@ -11,9 +11,9 @@
     <title>スケジュール閲覧</title>
     <link rel="stylesheet" href="css/schedule_list.css">
     <link rel="stylesheet" href="css/calendar.css">
-    <link rel="stylesheet" href="css/drawer.css">
+    <link rel="stylesheet" href="takahashi/drawer.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
-    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/modal_detail.css">
     <link rel="stylesheet" href= "css/balloon.css">
 </head>
 
@@ -65,7 +65,9 @@
         <div id="flexpet">
             <a href="/Esan/Pet_homeServlet"><img src="imgpet${userdata.pet_id}/pet${userdata.pet_id}.png" style="width:200px" id="petimg"/></a>
             <div class="balloon1-left" id="balloon-p">
-            	<p>${userdata.user_name}さん<br><span id="message"></span></p>
+            	<p>${userdata.user_name}さん<br><span id="message"><br></span>
+            		<span>${sessionresultmessage}</span>
+            	</p>
           	</div>
     	</div>
     </div>
@@ -135,7 +137,7 @@
 	        	</c:choose>
 
 	            <c:forEach begin="0" end="${tdlength}" step="1" var="tdnum">
-	            	<td class="true" id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            	<td id="${zero}${hour}:${minutes}0-${tdnum}"></td>
 	            </c:forEach>
 	            </tr>
 	        </c:forEach>
@@ -146,10 +148,10 @@
 <script src="js/jquery-3.6.4.min.js"></script>
 <script src="js/calendar.js"></script>
 <script src="js/date.js"></script>
-<script src="js/drawer.js"></script>
+<script src="takahashi/drawer.js"></script>
 <script src="js/schedule_list.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
-<script src="js/modal.js"></script>
+<script src="js/modal_detail.js"></script>
 <script src="js/speech_bubble.js"></script>
 <%@include file="/include/includeJS.jsp"%>
 </body>

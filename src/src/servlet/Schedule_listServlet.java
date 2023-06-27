@@ -41,7 +41,7 @@ public class Schedule_listServlet extends HttpServlet {
 		}*/
 
 		HttpSession session = request.getSession();
-		session.setAttribute("user_name", "ユーザ名");
+		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//DAO宣言 スケジュールリスト コイン
@@ -59,7 +59,7 @@ public class Schedule_listServlet extends HttpServlet {
         Date today = new Date(miliseconds);
 
         //今日の日付のスケジュールを取得
-		List<Schedule> scheduleList = sDao.selectdate(today);
+		List<Schedule> scheduleList = sDao.selectdate(today, user_name);
 
 		//最終ログイン日を確認 コイン追加1枚 コインを50枚追加
 		Date last_login_date = null;
@@ -121,6 +121,10 @@ public class Schedule_listServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		//sessionresultmessageを削除する
+		session.removeAttribute("sessionresultmessage");
+
 		//valuesの値で処理を決める
 		request.setCharacterEncoding("UTF-8");
 		String values = request.getParameter("values");
@@ -134,7 +138,6 @@ public class Schedule_listServlet extends HttpServlet {
 		ServletContext application = this.getServletContext();
 
 		//ユーザ情報を取得(パスワード、メアドなし)
-		HttpSession session = request.getSession();
 		String user_name = (String)session.getAttribute("user_name");
 		ScheduleUser userdata = sDao.selectuser(user_name);
 		request.setAttribute("userdata", userdata);
@@ -170,7 +173,7 @@ public class Schedule_listServlet extends HttpServlet {
 			strdate = strdate.replaceAll("/", "-");
 			Date date= Date.valueOf(strdate);
 
-			List<Schedule> scheduleList = sDao.selectdate(date);
+			List<Schedule> scheduleList = sDao.selectdate(date, user_name);
 
 			for(Schedule e: scheduleList) {
 				e.setStart_time(e.getStart_time().substring(0, 5));
@@ -217,7 +220,7 @@ public class Schedule_listServlet extends HttpServlet {
 			strdate = strdate.replaceAll("/", "-");
 			Date date= Date.valueOf(strdate);
 
-			List<Schedule> scheduleList = sDao.selectdate(date);
+			List<Schedule> scheduleList = sDao.selectdate(date, user_name);
 
 			for(Schedule e: scheduleList) {
 				e.setStart_time(e.getStart_time().substring(0, 5));

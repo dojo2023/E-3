@@ -78,7 +78,7 @@ public class Schedule_listDAO {
 
 //==============================================================================================
 	//スケジュールテーブルからカレンダーで選択した日付のスケジュールを取得,Get時に今日のスケジュールを取得
-		public List<Schedule> selectdate(Date date){
+		public List<Schedule> selectdate(Date date, String user_name){
 			Connection conn = null;
 			List<Schedule> scheduleList = new ArrayList<Schedule>();
 
@@ -91,10 +91,11 @@ public class Schedule_listDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 				// SQL文を準備する
-				String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content, schedule_done from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id where start_date = ? order by start_time";
+				String sql = "select schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_code, content, schedule_done from schedule inner join schedule_color on schedule.color_id = schedule_color.color_id where start_date = ? and user_name = ? order by start_time";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				pStmt.setDate(1, date);
+				pStmt.setString(2, user_name);
 
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
