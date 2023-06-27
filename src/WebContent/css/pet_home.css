@@ -1,9 +1,12 @@
 @charset "UTF-8";
-
 .all{
 	position: relative;
 	height: 100vh;
-
+/*	display:flex;
+	flex-flow: column;*/
+}
+.main{
+	position:relative;
 }
 /* 吹き出し本体 */
 .balloon{
@@ -12,8 +15,9 @@
   padding: 20px;
   background-color: #8080ff;
   color: #ffffff;
-  border-radius: 10px;
-  margin: -400px 0 0 800px
+  border-radius: 50px;
+  margin: -500px 0 0 800px;
+  top:150px;
 }
 /* 色付きの半円 */
 .balloon::before{
@@ -25,7 +29,7 @@
   border-radius: 50%;
   transform: rotate(150deg);
   left: 10px;
-  bottom: -20px;
+  bottom: -15px;
   border-left: 20px solid #8080ff;
   border-top: 20px solid #8080ff;
   border-right: 20px solid transparent;
@@ -39,67 +43,44 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  transform: rotate(223deg);
-  left: -4px;
-  bottom: -20px;
+  transform: rotate(110deg);
+  left: -5px;
+  bottom: -60px;
   border-left: 20px solid #ffffff;
   border-top: 20px solid #ffffff;
   border-right: 20px solid transparent;
   border-bottom: 20px solid transparent;
 }
-
 .box2{
 	display: flex;
 	position: absolute;
-	bottom: 0;
-	gap: 100px;
-
+	bottom: 0px;
+	gap: 150px;
+	height:80px;
+	margin-left:100px;
+	margin-right:100px;
 }
-/*
-.coin{
- margin:-50px 0 0 450px;
-}
-
-.closet{
-	margin: -160px 0 0 800px;
-}
-
-.btn1{
-	margin: 450px 0 0 100px;
-}
-
-.btn2{
-	margin: -30px 0 0 1000px;
-}
-*/
 .box {
     position: relative;
-    margin: -110px 0 0 -250px;
+/*    margin: -100px 0 0 -100px;
+    margin: -50px 0 0 -100px;*/
+    right:10px;
 }
-
-
 .abs {
     position:absolute;
     top: 25%;
     left: 50%;
     transform: translate(-50%, 0%);
 }
-
 table{
-	border: 1px solid #000;
-
+	border: 1px solid #000
 }
-
 #info {
 	height: 500px;
-
-
 }
-
 .box1{
 	display: flex;
 }
-
 input[type=radio]+label:before{
     content: "";
     display: inline-block;
@@ -108,48 +89,73 @@ input[type=radio]+label:before{
     height: 100px;
     margin: -160px 0 0 800px;
 }
-
-
 .radio_closet input[type="radio"] {
   display: none;
 }
-
 label img {
   margin: 3px;
   padding: 8px;
 }
-
 .radio_closet input[type=radio]:checked+label::before{
     border: 3px solid #000;
     box-sizing: border-box;
 }
-
 .radio_closet input[type="radio"]:checked + label img {
   background: #c0c0c0;
 }
-
-  /*モーション*/
-/*.image {
-	position: absolute;
-	width: 100%;
-	opacity: 0;
-	animation: change-img-anim 30s infinite;
+.btn1,.btn2{
+	margin:40px 0 10px 0;
+	width:150px;
+	text-align:center;
 }
-
-.image:nth-of-type(1) {
-	animation-delay: 0s;
+.btn2{
+	text-align:center;
 }
-.image:nth-of-type(2) {
-	animation-delay: 1s;
+.main{
+	height:80vh;
 }
-.image:nth-of-type(3) {
-	animation-delay: 2s;
+label#coin{
+	font-size:30px;
 }
-
-@keyframes change-img-anim {
-	0%{ opacity: 0;}
-	10%{ opacity: 1;}
-	90%{ opacity: 1;}
-	100%{ opacity: 0;}
+.coin{
+	display:flex;
 }
-*/
+.coinCnt{
+	margin-top:26px;
+}
+/*ペットの名前表示*/
+#pet_name{
+	display: inline-block;
+  height: 50px;/*リボンの高さ*/
+  line-height: 50px;/*リボンの高さ*/
+  text-align: center;
+  padding: 0 30px;/*横の大きさ*/
+  font-size: 18px;/*文字の大きさ*/
+  background: #f57a78;/*塗りつぶし色*/
+  color: #FFF;/*文字色*/
+  box-sizing: border-box;
+}
+h3{
+	position:absolute;
+	right:200px;
+	top:50px;
+}
+#pet_name:before,#pet_name:after{
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}#pet_name:before{
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}#pet_name:after{
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
