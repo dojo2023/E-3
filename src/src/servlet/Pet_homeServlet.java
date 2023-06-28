@@ -48,10 +48,10 @@ public class Pet_homeServlet extends HttpServlet {
 
 		List<Closet> closetList_1234 = pDao.selectcloset_1234(user_name);
 		request.setAttribute("closetList_1234", closetList_1234);
-		
+
 		List<Closet> closetList_5 = pDao.selectcloset_5(user_name);
 		request.setAttribute("closetList_5", closetList_5);
-		
+
 		//メッセージを取得
 		List<Message> messageList = pDao.selectmessage(userdata);
 		request.setAttribute("messageList", messageList);
@@ -115,6 +115,12 @@ public class Pet_homeServlet extends HttpServlet {
 		//きせかえ画像を取得
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
+
+		List<Closet> closetList_1234 = pDao.selectcloset_1234(user_name);
+		request.setAttribute("closetList_1234", closetList_1234);
+
+		List<Closet> closetList_5 = pDao.selectcloset_5(user_name);
+		request.setAttribute("closetList_5", closetList_5);
 
 		//メッセージを取得
 		List<Message> messageList = pDao.selectmessage(userdata);
