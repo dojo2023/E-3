@@ -143,6 +143,133 @@ public class Pet_homeDAO {
 		return closetList;
 	}
 
+	//#--------------------------------------------------------------
+	//クローゼットにあるすべてのきせかえ服を取得
+	public List<Closet> selectcloset_1234(String user_name){
+
+	Connection conn = null;
+	List<Closet> closetList_1234 = new ArrayList<Closet>();
+
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+		// SQL文を準備する
+		String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_img_path,closet.last_closet from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ? and (closet.closet_kind_id = 1 or closet.closet_kind_id = 2 or closet.closet_kind_id = 3 or closet.closet_kind_id = 4)";
+
+
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		pStmt.setString(1, user_name);
+
+		// SQL文を実行し、結果表を取得する
+		ResultSet rs = pStmt.executeQuery();
+
+		// 結果表をコレクションにコピーする
+		while (rs.next()) {
+		    Closet closetimg = new Closet(
+
+            rs.getString("closet_img_id"),
+            rs.getInt("closet_kind_id"),
+            rs.getString("closet_img_path"),
+            rs.getBoolean("last_closet")
+
+            );
+            closetList_1234.add(closetimg);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			closetList_1234 = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			closetList_1234 = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					closetList_1234 = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return closetList_1234;
+	}
+
+
+	//#--------------------------------------------------------------
+		//クローゼットにあるすべてのきせかえ背景を取得
+		public List<Closet> selectcloset_5(String user_name){
+
+		Connection conn = null;
+		List<Closet> closetList_5 = new ArrayList<Closet>();
+
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+			// SQL文を準備する
+			String sql = "select closet.closet_img_id, closet.closet_kind_id, gacha.closet_img_path,closet.last_closet from closet inner join gacha on closet.closet_img_id = gacha.closet_img_id where user_name = ? and closet.closet_kind_id = 5";
+
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user_name);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+			    Closet closetimg = new Closet(
+
+	            rs.getString("closet_img_id"),
+	            rs.getInt("closet_kind_id"),
+	            rs.getString("closet_img_path"),
+	            rs.getBoolean("last_closet")
+
+	            );
+	            closetList_5.add(closetimg);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				closetList_5 = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				closetList_5 = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						closetList_5 = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return closetList_5;
+		}
+
 
 //#--------------------------------------------------------------
 	//クローゼットにある依然来ていたきせかえを取得

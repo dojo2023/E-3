@@ -31,7 +31,7 @@ public class Pet_homeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Pet_homeDAO pDao = new Pet_homeDAO();
-		session.setAttribute("user_name", "ユーザ名");
+		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 		//ユーザ情報を取得
 		User userdata = pDao.selectuser(user_name);
@@ -46,6 +46,12 @@ public class Pet_homeServlet extends HttpServlet {
 		request.setAttribute("closetList", closetList);
 		//System.out.println(closetList);
 
+		List<Closet> closetList_1234 = pDao.selectcloset_1234(user_name);
+		request.setAttribute("closetList_1234", closetList_1234);
+		
+		List<Closet> closetList_5 = pDao.selectcloset_5(user_name);
+		request.setAttribute("closetList_5", closetList_5);
+		
 		//メッセージを取得
 		List<Message> messageList = pDao.selectmessage(userdata);
 		request.setAttribute("messageList", messageList);

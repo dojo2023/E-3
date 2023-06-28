@@ -53,12 +53,12 @@
 	<section id="info">
 
 	<h2>きせかえ</h2>
+	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 		<div class = "box1">
 			<div class = "grl">
-	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 				<table class="border">
 				<c:set var="i" value="0"/>
-				<c:forEach var="e" items="${closetList}" >
+				<c:forEach var="e" items="${closetList_1234}" >
 					<tr>
 						<td>
 			               	<div class="radio_closet">
@@ -90,7 +90,7 @@
 			<div class="grl2">
 		 		<table>
 		 			<c:set var="i" value="0"/>
-					<c:forEach var="e" items="${closetList}" >
+					<c:forEach var="e" items="${closetList_5}" >
 						<tr>
 		                	<td>
 		                	<div class="radio_closet">
@@ -110,7 +110,6 @@
 
 	</div>
 		<button type="submit" name="dress_up" value="決定" class="submit">決定</button><br>
-
 	</form>
 	</section>
 <div class="nonScroll"></div>
