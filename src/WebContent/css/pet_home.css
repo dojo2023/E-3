@@ -1,5 +1,9 @@
 @charset "UTF-8";
+body{
+	overflow:hidden;
+}
 .all{
+	padding-left:50px;
 	position: relative;
 	height: 100vh;
 /*	display:flex;
@@ -7,6 +11,10 @@
 }
 .main{
 	position:relative;
+}
+img.abs{
+  max-width: 100%;
+  height: auto;
 }
 /* 吹き出し本体 */
 .balloon{
@@ -62,8 +70,8 @@
 }
 .box {
     position: relative;
-/*    margin: -100px 0 0 -100px;
-    margin: -50px 0 0 -100px;*/
+/*  margin: -100px 0 0 -100px;*/
+    margin: 0 100px 0 0;
     right:10px;
 }
 .abs {
@@ -73,13 +81,16 @@
     transform: translate(-50%, 0%);
 }
 table{
-	border: 1px solid #000
+	display:inline-block;
+	width:100%;
 }
 #info {
 	height: 500px;
 }
 .box1{
 	display: flex;
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 input[type=radio]+label:before{
     content: "";
