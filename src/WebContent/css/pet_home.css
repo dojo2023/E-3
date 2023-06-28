@@ -91,6 +91,7 @@ table{
 	display: flex;
 	overflow-y: hidden;
 	overflow-x: hidden;
+	border-radius:50px;
 }
 input[type=radio]+label:before{
     content: "";

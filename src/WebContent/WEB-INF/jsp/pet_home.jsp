@@ -97,7 +97,7 @@
 		                		<c:choose>
 		                			<c:when test='${e.closet_kind_id == 5}'>
 									<input id="bg_radio${i}" type="radio" value="${e.closet_img_id}" name="backgroundimg">
-									<label id="closet" for="bg_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="background" for="bg_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 									</c:when>
 								</c:choose>
 							</div>
