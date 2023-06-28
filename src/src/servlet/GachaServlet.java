@@ -111,7 +111,7 @@ public class GachaServlet extends HttpServlet {
 		int closetnum = (int)Math.ceil(Math.random() * 3);
 
 		//データベースに送るcloset_img_id
-		String gacharesult = closet_id + closetnum + "-" + rarity;
+		String gacharesult = closet_id + userdata.getPet_id() + "-" + closetnum;
 		String result = "OK";
 
 		GachaDAO gDao = new GachaDAO();
@@ -119,11 +119,15 @@ public class GachaServlet extends HttpServlet {
 
 
 		//クローゼットテーブルにインサートする
-		boolean insertOK = gDao.insertcloset(gachadata, user_name);
-		if(insertOK) {
-			System.out.println("インサート完了");
+		if(gachadata != null) {
+			boolean insertOK = gDao.insertcloset(gachadata, user_name);
+			if(insertOK) {
+				System.out.println("インサート完了");
+			}else {
+				System.out.println("インサートできませんでした");
+			}
 		}else {
-			System.out.println("インサートできませんでした");
+			System.out.println("そのきせかえは存在しません");
 		}
 
 		request.setAttribute("gachadata", gachadata);

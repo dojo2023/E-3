@@ -124,7 +124,7 @@
 }
 
 /* スケジュール完了ボタンを使えなくする */
-.true{
+#true{
 	pointer-events: none;
 }
 

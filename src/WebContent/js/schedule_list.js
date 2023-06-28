@@ -56,7 +56,7 @@ for(let k=0;k<slen;k++){
                         <form method="POST" action="/Esan/Schedule_listServlet" name="checkform">
                             <input type="hidden" name="schedule_id" value=`+schedule_id+`>
                             <input type="hidden" name="senddate" value=`+senddate+`>
-                            <input type="submit" name="values" value="完了">
+                            <input type="submit" name="values" value="完了" id="`+schedule_done+`">
                         </form>
                         <span>`+start_time+`- `+finish_time+`</span><br>
                         <a href="#info` +k+`" class="modal-open">`+schedule_name+`</a>`+
