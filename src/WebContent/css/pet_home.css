@@ -53,7 +53,7 @@
 }
 .box2{
 	display: flex;
-	position: absolute;
+	/*position: absolute;*/
 	bottom: 0px;
 	gap: 150px;
 	height:80px;
@@ -104,7 +104,7 @@ label img {
   background: #c0c0c0;
 }
 .btn1,.btn2{
-	margin:40px 0 10px 0;
+	margin:30px 0 20px 0;
 	width:150px;
 	text-align:center;
 }
@@ -146,16 +146,55 @@ h3{
   width: 0px;
   height: 0px;
   z-index: 1;
-}#pet_name:before{
+}
+#pet_name:before{
   top: 0;
   left: 0;
   border-width: 25px 0px 25px 15px;
   border-color: transparent transparent transparent #fff;
   border-style: solid;
-}#pet_name:after{
+}
+#pet_name:after{
   top: 0;
   right: 0;
   border-width: 25px 15px 25px 0px;
   border-color: transparent #fff transparent transparent;
   border-style: solid;
+}.btn1 a, .btn2 a{
+	position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #543618;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #eeee;
+    border-radius: 50px;
+    border: 0.2rem solid #543618;
+    box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
+}
+.btn1 a:hover, .btn2 a:hover{
+  transform: translate3d(0.2rem, 0.2rem, 0);
+  box-shadow: none;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.btn1 a:after, btn2 a:after{
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #543618;
+    border-right: 3px solid #543618;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+a#btn1, a#btn2{
+	width:150px;
 }

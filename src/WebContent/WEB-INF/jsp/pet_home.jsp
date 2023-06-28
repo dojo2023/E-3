@@ -169,12 +169,13 @@
 	<img src="imgcloset1/shoes1.png">
 	<img src="imgcloset1/accessory1.png">
 	-->
+	</div>
 
 
 	<div class="box2">
 	<!--画面遷移ボタン-->
 	<div class = "btn1">
-		<a href="/Esan/Schedule_listServlet">< スケジュール管理</a>
+		<a href="/Esan/Schedule_listServlet" id="btn1">スケジュール管理</a>
 	</div>
 	 <!--コイン-->
 	<div class="coin">
@@ -183,11 +184,10 @@
 	</div>
 	<!-- きせかえ遷移画像 -->
 	<div class="closet">
-	      <p><a href="#info" class="modal-open"><img src="img/closet.png" width="80" height="80"></a></p>
+	      <a href="#info" class="modal-open"><img src="img/closet.png" width="80" height="80"></a>
 	</div>
 	<div class = "btn2">
-		<a href="/Esan/GachaServlet">ガチャを引く></a>
-	</div>
+		<a href="/Esan/GachaServlet" id="btn2">ガチャを引く></a>
 	</div>
 	</div>
 </div>
