@@ -5,7 +5,7 @@ let rand = 0;
 
 target.addEventListener('mouseover', () =>{
     judge = true;
-    rand = Math.floor(Math.random() * 3) + 1;
+    rand = Math.floor(Math.random() * 4) + 1;
 });
 target.addEventListener('mouseleave', () =>{
     judge = false;
@@ -28,6 +28,10 @@ $(function () {
             }else if(rand == 2){
                 right.attr({src: 'imgpet'+pet_id+'/right'+num+'.png'});
             }else if(rand == 3){
+                left.attr({src: 'imgpet'+pet_id+'/left'+num+'.png'});
+            }else if(rand == 4){
+            	head.attr({src: 'imgpet'+pet_id+'/head'+num+'.png'});
+            	right.attr({src: 'imgpet'+pet_id+'/right'+num+'.png'});
                 left.attr({src: 'imgpet'+pet_id+'/left'+num+'.png'});
             }
                 // アニメーションを繰り返さない場合は ↓の一行を削除してね！
