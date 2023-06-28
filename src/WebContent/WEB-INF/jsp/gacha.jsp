@@ -37,7 +37,7 @@
 
 	<div class="content2">
 				<div class="btn1">
-				  <a href="/Esan/Pet_homeServlet" id="btn1"><ふれあい画面</a>
+				  <a href="/Esan/Pet_homeServlet" id="btn1">&lt;&nbsp;ふれあい画面</a>
 				</div>
 				<div class="coin">
 		           <div class="coinImg"><img src="img/fc.png" width="100" height="100"></div>
