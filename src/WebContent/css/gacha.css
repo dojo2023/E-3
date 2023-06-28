@@ -6,12 +6,6 @@ html,body{
   width: 1250px;
   overflow: hidden;
 }
-#fc{
-  width: 80px;
-  height: 80px;
-  margin: 0 ;
-  padding: 0 ;
-}
 .content1{
   background-image: url("../img/bg.png");
   background-repeat: no-repeat;
@@ -27,10 +21,15 @@ html,body{
 	padding-top:125px;
 	padding-left:220px;
 }
+/*変更済み*/
 .content2{
-	height:100px;
-	width:1250px;
-	text-align:left;
+	display: flex;
+	/*position: absolute;*/
+	bottom: 0px;
+	gap: 150px;
+	height:80px;
+	margin-left:100px;
+	margin-right:100px;
 }
 .wrapper{
 	position:absolute;
@@ -45,12 +44,6 @@ table{
 th{
   text-align: left;
 }
-.table2{
-	text-align:left;
-}
-.table2 td{
-	width:120px;
-}
 /* リンクの下線を消す */
 a {
   text-decoration: none;
@@ -63,25 +56,13 @@ a {
   padding-top:50px;
   padding-left:300px;
 }
-.gacha_btn{
-	width:300px;
-	height:300px;
-	background-image:url("../img/gacha_btn.png");
-	background-color:#ee82ee;
-	border-radius:50%;
-	color:white;
-	font-size:40px;
-	font-family:Meiryo;
-}
 #egg{
 	position:fixed;
 	width:95px;
 	height:95px;
 	top: 310px;
     left: 325px;
-}
-#alert{
-	color:red;
+    border-style:none;
 }
 /*非表示*/
 #result{
@@ -92,4 +73,88 @@ a {
 }
 #closet_img_path{
 	display:none;
+}
+#alert{
+	display:none;
+}
+/*ボタン*/
+.btn1,.ok_btn{
+	margin:20px 0 30px 0;
+	width:150px;
+	text-align:center;
+}
+.btn1 a,.ok_btn a{
+	position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #543618;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #eeee;
+    border-radius: 50px;
+    border: 0.2rem solid #543618;
+    box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
+}
+.btn1 a:hover,.ok_btn a:hover{
+  transform: translate3d(0.2rem, 0.2rem, 0);
+  box-shadow: none;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.btn1 a:after .ok_btn a:after{
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #543618;
+    border-right: 3px solid #543618;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+a#btn1,a#ok_btn{
+	width:150px;
+}
+.ok_btn{
+	margin:auto;
+}
+/*コイン*/
+.coin{
+	display:flex;
+	padding-left:130px;
+}
+.coinCnt{
+	margin-top:26px;
+}
+label#coin{
+	font-size:30px;
+}
+/*ガチャボタン*/
+.gacha_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
+    background-image: linear-gradient(0, #ddd, #fff);
+    transition: transform .3s, box-shadow .3s;
+    background-image: url("../img/gacha_btn.png");
+    background-color:#ee82ee;
+	color:white;
+	font-size:40px;
+	font-family:Meiryo;
+}
+
+.gacha_btn:hover {
+    transform: scale(.99);
+    box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
 }

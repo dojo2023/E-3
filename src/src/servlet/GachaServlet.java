@@ -34,9 +34,9 @@ public class GachaServlet extends HttpServlet {
 
 		//DAO宣言 スケジュールリスト コイン
 		Schedule_listDAO sDao = new Schedule_listDAO();
-		CoinDAO2 cDao = new CoinDAO2(); //後で消す
+		//CoinDAO2 cDao = new CoinDAO2(); //後で消す
 		//後で消す
-		cDao.coinplus50(user_name);
+		//cDao.coinplus50(user_name);
 
 		//ユーザ情報を取得(パスワード、メアドなし)
 		ScheduleUser userdata = sDao.selectuser(user_name);
@@ -68,7 +68,7 @@ public class GachaServlet extends HttpServlet {
 		ScheduleUser userdata = sDao.selectuser(user_name);
 
 		if(userdata.getCoin_cnt() < 10) {
-			request.setAttribute("alert", "コインが足りません！10枚必要です！");
+			request.setAttribute("alert", 1);
 			request.setAttribute("userdata", userdata);
 
 			// 結果ページにフォワードする
@@ -108,7 +108,7 @@ public class GachaServlet extends HttpServlet {
 		}
 
 		//きせかえ種類の中のどれかを決める
-		int closetnum = (int)Math.ceil(Math.random() * 1);//後で3にする
+		int closetnum = (int)Math.ceil(Math.random() * 3);
 
 		//データベースに送るcloset_img_id
 		String gacharesult = closet_id + closetnum + "-" + rarity;

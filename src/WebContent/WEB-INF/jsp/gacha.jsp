@@ -15,6 +15,10 @@
 
 <body>
 <%@include file="/include/menu.jsp"%>
+<p id="closet_img_path">${gachadata.closet_img_path}</p>
+<p id="result">${result}</p>
+<p id="rarity">${gachadata.rarity}</p>
+<p id="alert">${alert}</p>
 	<div class="content1">
 	    <div class="container"><div class="rotate_chicken"><img src="/Esan/img/chicken.png"></div></div><br>
 	    	<img src="/Esan/img/chicken_house.png" class="ouchi">
@@ -25,19 +29,20 @@
 		    </form>
 	    </div>
 	    <a href="#info" class="modal-open">
-	    <div class="rotate_egg"><img id="egg"></div>
+	    <div class="rotate_egg">
+	    <img id="egg">
+	    </div>
 	    </a>
   	</div>
 
 	<div class="content2">
-		<table class="table2">
-			<tr>
-				<td><a href="/Esan/Pet_homeServlet">ふれあい画面</a></td>
-				<td id="closet_img_path">${gachadata.closet_img_path}</td><td></td><td></td><td></td>
-				<td><img src="img/fc.png" id="fc"></td><td id="coin_display">${userdata.coin_cnt}枚</td>
-				<td id="alert">${alert}</td><td id="result">${result}</td><td id="rarity">${gachadata.rarity}</td><td></td><td></td><td></td>
-			</tr>
-		</table>
+				<div class="btn1">
+				  <a href="/Esan/Pet_homeServlet" id="btn1"><ふれあい画面</a>
+				</div>
+				<div class="coin">
+		           <div class="coinImg"><img src="img/fc.png" width="100" height="100"></div>
+		           <div class="coinCnt"><label id="coin">${userdata.coin_cnt}</label></div>
+	            </div>
 	</div>
 
     <!--ここからガチャ結果画面-->
@@ -47,12 +52,11 @@
 	    <table>
 	    <tr><td><img id="broken_egg"></td><td>レア度</td><td><img id="star"></td></tr>
 	    </table>
-	    <img src="${gachadata.closet_img_path}" class="result"><br>
-	    ${gachadata.closet_name}を手に入れた！<br>
-	    <hr>
-	    <a href="/Esan/GachaServlet">
-	    <button type="button" id="ok_btn">OK</button>
-	    </a>
+	    <img src="${gachadata.closet_img_path}" class="result"><br><br>
+	    <h1>${gachadata.closet_name}を手に入れた！</h1><br>
+	    <div class="ok_btn">
+	    <a href="/Esan/GachaServlet" id="ok_btn">OK</a>
+	    </div>
 	    </div>
     </section>
 

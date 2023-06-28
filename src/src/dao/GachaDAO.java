@@ -16,7 +16,8 @@ public class GachaDAO{
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_岩田/fcdb3", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_岩田/fcdb3", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select pet_id,closet_img_id,closet_img_path,closet_name,closet_kind_id,rarity from gacha where closet_img_id = ?";
@@ -67,7 +68,8 @@ public class GachaDAO{
 			Class.forName("org.h2.Driver");
 
 			//DB接続
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			//conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_成沢/fcdb5", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
 
 			//SQLの準備
 			String sql = "insert into closet(user_name, closet_kind_id, closet_img_id) values(?, ?, ?)";
