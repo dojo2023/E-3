@@ -23,7 +23,7 @@
 	<c:set var="bgjudge" value="false"/>
 	<c:forEach var="e" items="${closetList}" >
 		<c:if test='${e.closet_kind_id == 5 && e.last_closet == true}'>
-			<img src ="${e.closet_img_path}">
+			<img class="closet" src ="${e.closet_img_path}">
 			<c:set var="bgjudge" value="true"/>
 		</c:if>
 	</c:forEach>
@@ -39,11 +39,9 @@
 	<section id="info">
 
 	<h2>きせかえ</h2>
-	<div class="box1">
-	<div class="grl">
-	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 		<div class = "box1">
 			<div class = "grl">
+	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 				<table class="border">
 				<c:set var="i" value="0"/>
 				<c:forEach var="e" items="${closetList}" >
@@ -53,19 +51,19 @@
 							<c:choose>
 								<c:when test='${e.closet_kind_id == 1}'>
 									<input id="hat_radio${i}" type="radio" value="${e.closet_img_id}" name="hatimg">
-									<label for="hat_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="hat_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 2}'>
 									<input id="dress_radio${i}" type="radio" value="${e.closet_img_id}" name="dressimg">
-									<label for="dress_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="dress_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 3}'>
 									<input id="shoes_radio${i}" type="radio" value="${e.closet_img_id}" name="shoesimg">
-									<label for="shoes_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="shoes_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 4}'>
 									<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="accessoryimg">
-									<label for="accessory_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="accessory_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 							</c:choose>
 							</div>
@@ -75,7 +73,6 @@
 				</c:forEach>
 				</table>
 			</div>
-	</div>
 			<div class="grl2">
 		 		<table>
 		 			<c:set var="i" value="0"/>
@@ -86,7 +83,7 @@
 		                		<c:choose>
 		                			<c:when test='${e.closet_kind_id == 5}'>
 									<input id="bg_radio${i}" type="radio" value="${e.closet_img_id}" name="backgroundimg">
-									<label for="bg_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="bg_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 									</c:when>
 								</c:choose>
 							</div>
@@ -97,13 +94,12 @@
 				</table>
 			</div>
 
+	</div>
 		<button type="submit" name="dress_up" value="決定" class="submit">決定</button><br>
 
 	</form>
-	</div>
-	</div>
 	</section>
-
+<div class="nonScroll"></div>
 	<!--吹き出し-->
 	<div class="balloon">
 		おはようございます！
@@ -193,7 +189,7 @@
 	<div class="box2">
 	<!--画面遷移ボタン-->
 	<div class = "btn1">
-		<a href="/Esan/Schedule_listServlet" id="btn1"><スケジュール管理</a>
+		<a href="/Esan/Schedule_listServlet" id="btn1">&lt;&nbsp;スケジュール管理</a>
 	</div>
 	 <!--コイン-->
 	<div class="coin">
@@ -205,7 +201,7 @@
 	      <a href="#info" class="modal-open"><img src="img/closet.png" width="80" height="80"></a>
 	</div>
 	<div class = "btn2">
-		<a href="/Esan/GachaServlet" id="btn2">ガチャを引く></a>
+		<a href="/Esan/GachaServlet" id="btn2">ガチャを引く&nbsp;&gt;</a>
 	</div>
 	</div>
 </div>
