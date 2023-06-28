@@ -175,7 +175,7 @@
 	<div class="box2">
 	<!--画面遷移ボタン-->
 	<div class = "btn1">
-		<a href="/Esan/Schedule_listServlet" id="btn1">スケジュール管理</a>
+		<a href="/Esan/Schedule_listServlet" id="btn1"><スケジュール管理</a>
 	</div>
 	 <!--コイン-->
 	<div class="coin">

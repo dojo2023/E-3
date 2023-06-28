@@ -104,7 +104,7 @@ label img {
   background: #c0c0c0;
 }
 .btn1,.btn2{
-	margin:30px 0 20px 0;
+	margin:20px 0 30px 0;
 	width:150px;
 	text-align:center;
 }
@@ -160,7 +160,8 @@ h3{
   border-width: 25px 15px 25px 0px;
   border-color: transparent #fff transparent transparent;
   border-style: solid;
-}.btn1 a, .btn2 a{
+}
+.btn1 a, .btn2 a{
 	position: relative;
     display: flex;
     justify-content: space-around;
@@ -183,7 +184,6 @@ h3{
   transition: all 0.2s;
 }
 .btn1 a:after, btn2 a:after{
-    content: '';
     width: 5px;
     height: 5px;
     border-top: 3px solid #543618;
@@ -191,7 +191,7 @@ h3{
     transform: rotate(45deg) translateY(-50%);
     position: absolute;
     top: 50%;
-    right: 20px;
+    left: 20px;
     border-radius: 1px;
     transition: 0.3s ease-in-out;
 }
