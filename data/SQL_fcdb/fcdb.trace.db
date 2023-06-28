@@ -2697,3 +2697,127 @@ update gacha set closet_kind_id=2 where clsoet_img_id='dress1-1' [42122-200]
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-28 16:40:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-1',
+'imgcloset2/hat1.png',
+'トリケラトプスの角（紫）',
+1,
+1)
+
+INSERT[*] INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-2',
+'imgcloset2/hat2.png',
+'天使の輪',
+1,
+2)
+
+INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-3',
+'imgcloset2/hat3.png',
+'トリケラトプスの頭（笑顔）',
+1,
+3)"
+Syntax error in SQL statement "INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-1',
+'imgcloset2/hat1.png',
+'トリケラトプスの角（紫）',
+1,
+1)
+
+INSERT[*] INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-2',
+'imgcloset2/hat2.png',
+'天使の輪',
+1,
+2)
+
+INSERT INTO GACHA(
+PET_ID,
+CLOSET_IMG_ID,
+CLOSET_IMG_PATH,
+CLOSET_NAME,
+CLOSET_KIND_ID,
+RARITY) VALUES(
+2,
+'hat2-3',
+'imgcloset2/hat3.png',
+'トリケラトプスの頭（笑顔）',
+1,
+3)"; SQL statement:
+INSERT INTO gacha(
+pet_id,
+closet_img_id,
+closet_img_path,
+closet_name,
+closet_kind_id,
+rarity) values(
+2,
+'hat2-1',
+'imgcloset2/hat1.png',
+'トリケラトプスの角（紫）',
+1,
+1)
+
+INSERT INTO gacha(
+pet_id,
+closet_img_id,
+closet_img_path,
+closet_name,
+closet_kind_id,
+rarity) values(
+2,
+'hat2-2',
+'imgcloset2/hat2.png',
+'天使の輪',
+1,
+2)
+
+INSERT INTO gacha(
+pet_id,
+closet_img_id,
+closet_img_path,
+closet_name,
+closet_kind_id,
+rarity) values(
+2,
+'hat2-3',
+'imgcloset2/hat3.png',
+'トリケラトプスの頭（笑顔）',
+1,
+3) [42000-200]
