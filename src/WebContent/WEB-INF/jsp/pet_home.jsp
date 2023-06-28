@@ -17,7 +17,21 @@
 <div class="main">
 	<%@include file="/include/menu.jsp"%>
 
+	<!-- きせかえ画像の数 -->
 	<c:set var="closetlen" value="${fn:length(closetList)}"/>
+
+	<!-- ペットの種類IDをHTML上に表示 -->
+	<p id="pet_id" style="display:none">${userdata.pet_id}</p>
+
+	<!-- ひとことメッセージ -->
+	<c:set var="messagelen" value="${fn:length(messageList)}"/>
+	<p id="messagelen" style="display:none">${messagelen}</p>
+
+	<c:set var="i" value="0"/>
+    <c:forEach var="e" items="${messageList}" >
+    <div class="message_data" id="message_content${i}" style="display:none">${e.message_content}</div>
+    <c:set var="i" value="${i+1}"/>
+    </c:forEach>
 
 	<!--背景-->
 	<c:set var="bgjudge" value="false"/>
@@ -102,56 +116,247 @@
 <div class="nonScroll"></div>
 	<!--吹き出し-->
 	<div class="balloon">
-		おはようございます！
-		<br>今日も一日がんばろう！
+		<span id="messagetarget">クリックでメッセージが変わるよ</span>
 	</div>
 
 	<!-- ペットの画像 -->
-	<div class="box">
-		<c:forEach var="e" items="${petList}" >
-			<c:if test='${fn: contains(e.pet_img_id,"head")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:if>
-		</c:forEach>
-		<c:forEach var="e" items="${petList}" >
-			<c:if test='${fn: contains(e.pet_img_id,"body")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:if>
-		</c:forEach>
-		<c:forEach var="e" items="${petList}" >
-			<c:if test='${fn: contains(e.pet_img_id,"right")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:if>
-		</c:forEach>
-		<c:forEach var="e" items="${petList}" >
-			<c:if test='${fn: contains(e.pet_img_id,"left")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:if>
-		</c:forEach>
-		<c:forEach var="e" items="${petList}" >
-			<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:if>
-		</c:forEach>
+	<div class="box" id="touch">
+	<c:choose>
+		<c:when test="${userdata.pet_id == 1}"><!-- くまちゃん -->
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
 
 
-		<!-- ペットのきせかえ画像 -->
-		<c:forEach var="e" items="${closetList}" >
-		<c:choose>
-			<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
-				<img src ="${e.closet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
-				<img src ="${e.closet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
-				<img src ="${e.closet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
-				<img src ="${e.closet_img_path}" class="abs">
-			</c:when>
-		</c:choose>
-		</c:forEach>
+			<!-- ペットのきせかえ画像 -->
+			<c:forEach var="e" items="${closetList}" >
+			<c:choose>
+				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+
+		<c:when test="${userdata.pet_id == 2}"><!-- トリケラトプス -->
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
+				</c:if>
+			</c:forEach>
+
+
+			<!-- ペットのきせかえ画像 -->
+			<c:forEach var="e" items="${closetList}" >
+			<c:choose>
+				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+
+		<c:when test="${userdata.pet_id == 3}"><!-- いぬ -->
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+
+
+			<!-- ペットのきせかえ画像 -->
+			<c:forEach var="e" items="${closetList}" >
+			<c:choose>
+				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+
+		<c:when test="${userdata.pet_id == 4}"><!-- なまけもの -->
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
+				</c:if>
+			</c:forEach>
+
+
+			<!-- ペットのきせかえ画像 -->
+			<c:forEach var="e" items="${closetList}" >
+			<c:choose>
+				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+
+		<c:when test="${userdata.pet_id == 5}"><!-- りす -->
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
+				</c:if>
+			</c:forEach>
+
+
+			<!-- ペットのきせかえ画像 -->
+			<c:forEach var="e" items="${closetList}" >
+			<c:choose>
+				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+				<c:when test='${e.closet_kind_id == 4 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:when>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+	</c:choose>
 	</div>
 
 	<!-- モーション
@@ -160,11 +365,6 @@
 		<img class="image" src="imgmotion4/face1.png" />
 		<img class="image" src="imgmotion4/face2.png" />
 	</div>
-
-	<div class="pet mot">
-	  <img src="imgpet1/left0.png" alt="水滴画像" />
-	</div>
-
 
 	</div>
 	-->
@@ -211,6 +411,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-1/js/9-6-1.js"></script>
 <script src="js/modal_closet.js"></script>
-<script src="./js/message.js"></script>
+<script src="js/motion.js"></script>
+<script src="js/message.js"></script>
 </body>
 </html>

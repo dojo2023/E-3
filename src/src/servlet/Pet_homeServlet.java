@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.Pet_homeDAO;
 import model.Closet;
+import model.Message;
 import model.Pet;
 import model.User;
 
@@ -44,6 +45,10 @@ public class Pet_homeServlet extends HttpServlet {
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
 		//System.out.println(closetList);
+
+		//メッセージを取得
+		List<Message> messageList = pDao.selectmessage(userdata);
+		request.setAttribute("messageList", messageList);
 
 		//List<Closet> lastclosetList = pDao.selectlastcloset(user_name);
 		//request.setAttribute("closetList", lastclosetList);
@@ -104,6 +109,10 @@ public class Pet_homeServlet extends HttpServlet {
 		//きせかえ画像を取得
 		List<Closet> closetList = pDao.selectcloset(user_name);
 		request.setAttribute("closetList", closetList);
+
+		//メッセージを取得
+		List<Message> messageList = pDao.selectmessage(userdata);
+		request.setAttribute("messageList", messageList);
 
 
 		// 結果ページにフォワードする

@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Closet;
 import model.Dressup;
+import model.Message;
 import model.Pet;
 import model.User;
 
@@ -261,6 +262,69 @@ public class Pet_homeDAO {
 
 		// 結果を返す
 		return userdata;
+	}
+
+//#--------------------------------------------------------------
+
+	//ペットの種類からメッセージを取得
+	public List<Message> selectmessage(User userdata){
+
+		Connection conn = null;
+		List<Message> messageList = new ArrayList<Message>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/SQL_fcdb/fcdb", "sa", "");
+
+			// SQL文を準備する
+			String sql = "select message_id, pet_id, message_content from message where pet_id = ?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			if (userdata.getPet_id() != 0) {
+				pStmt.setInt(1, userdata.getPet_id());
+				}else {
+					pStmt.setInt(1, 1);
+				}
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Message messageimg = new Message(
+	            rs.getString("message_id"),
+	            rs.getInt("pet_id"),
+	            rs.getString("message_content")
+	            );
+	            messageList.add(messageimg);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			messageList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			messageList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					messageList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return messageList;
 	}
 
 //#--------------------------------------------------------------
