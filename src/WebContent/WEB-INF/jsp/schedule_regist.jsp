@@ -10,6 +10,7 @@
 </head>
 <body>
 	<%@include file="/include/menu.jsp"%>
+<img alt="ロゴ" src="img/logo.png">
 <div class="container">
 <form action="/Esan/Schedule_registServlet" method="POST" id="regist">
 	<input type="text" id="user_name" value="${user_name}" placeholder="ユーザー名" readonly><br>
@@ -45,6 +46,6 @@
 </form>
     <script src="js/error_message_schedule.js"></script>
 </div>
-
+</div>
 </body>
 </html>

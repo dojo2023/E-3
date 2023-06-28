@@ -10,6 +10,10 @@ body{
     background-color:#f4f2f3;
     position:relative;
 }
+img{
+	position:absolute;
+	left:-300px;
+}
 #user_name{
     margin-left: 20px;
     background-color: #cdcccc;

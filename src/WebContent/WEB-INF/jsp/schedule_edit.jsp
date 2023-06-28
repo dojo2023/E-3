@@ -11,6 +11,8 @@
 </head>
 <body>
 <%@include file="/include/menu.jsp"%>
+<img alt="ロゴ" src="img/logo.png">
+
 <p>${resultmessage}</p>
 <div class="container">
 	<form method="POST" action="/Esan/Schedule_editServlet" id="regist">
