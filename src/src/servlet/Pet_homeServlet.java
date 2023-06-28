@@ -68,6 +68,7 @@ public class Pet_homeServlet extends HttpServlet {
 		String dresscloset_img_id  = request.getParameter("dressimg");
 		String shoescloset_img_id  = request.getParameter("shoesimg");
 		String accessorycloset_img_id  = request.getParameter("accessoryimg");
+		String backgroundcloset_img_id  = request.getParameter("backgroundimg");
 
 		//request.getAttribute("closet_img_id");
 
@@ -87,6 +88,8 @@ public class Pet_homeServlet extends HttpServlet {
 		truelast = pDao.updatetrue(shoescloset_img_id, user_name);
 		System.out.println(truelast);
 		truelast = pDao.updatetrue(accessorycloset_img_id, user_name);
+		System.out.println(truelast);
+		truelast = pDao.updatetrue(backgroundcloset_img_id, user_name);
 		System.out.println(truelast);
 
 

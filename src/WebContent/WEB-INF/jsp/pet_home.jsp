@@ -20,7 +20,16 @@
 	<c:set var="closetlen" value="${fn:length(closetList)}"/>
 
 	<!--背景-->
-	<img src="img/bg.png">
+	<c:set var="bgjudge" value="false"/>
+	<c:forEach var="e" items="${closetList}" >
+		<c:if test='${e.closet_kind_id == 5 && e.last_closet == true}'>
+			<img src ="${e.closet_img_path}">
+			<c:set var="bgjudge" value="true"/>
+		</c:if>
+	</c:forEach>
+	<c:if test="${bgjudge == false}">
+		<img src="img/bg.png">
+	</c:if>
 
 	<!-- ペットの名前 -->
 	<h3 id="pet_name">${userdata.pet_name}</h3>
@@ -56,7 +65,7 @@
 								</c:when>
 								<c:when test='${e.closet_kind_id == 4}'>
 									<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="accessoryimg">
-									<label for="accesorry_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									<label for="accessory_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
 								</c:when>
 							</c:choose>
 							</div>
@@ -69,19 +78,21 @@
 	</div>
 			<div class="grl2">
 		 		<table>
+		 			<c:set var="i" value="0"/>
 					<c:forEach var="e" items="${closetList}" >
 						<tr>
 		                	<td>
 		                	<div class="radio_closet">
 		                		<c:choose>
 		                			<c:when test='${e.closet_kind_id == 5}'>
-		                				<input id="bg_radio" type="radio" value="5" name="image">
-		  								<label for="bg_radio"><img src="${e.closet_img_path}" width="100" height="100"></label>
-		           					</c:when>
+									<input id="bg_radio${i}" type="radio" value="${e.closet_img_id}" name="backgroundimg">
+									<label for="bg_radio${i}"><img src="${e.closet_img_path}" width="100" height="100"></label>
+									</c:when>
 								</c:choose>
 							</div>
 							</td>
 						</tr>
+						<c:set var="i" value="${i + 1}"/>
 					</c:forEach>
 				</table>
 			</div>
@@ -102,24 +113,31 @@
 	<!-- ペットの画像 -->
 	<div class="box">
 		<c:forEach var="e" items="${petList}" >
-		<c:choose>
-			<c:when test='${fn: contains(e.pet_img_id,"head")}'>
+			<c:if test='${fn: contains(e.pet_img_id,"head")}'>
 				<img src ="${e.pet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${fn: contains(e.pet_img_id,"body")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${fn: contains(e.pet_img_id,"right_arm")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${fn: contains(e.pet_img_id,"left")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:when>
-			<c:when test='${fn: contains(e.pet_img_id,"legs")}'>
-				<img src ="${e.pet_img_path}" class="abs">
-			</c:when>
-		</c:choose>
+			</c:if>
 		</c:forEach>
+		<c:forEach var="e" items="${petList}" >
+			<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+				<img src ="${e.pet_img_path}" class="abs">
+			</c:if>
+		</c:forEach>
+		<c:forEach var="e" items="${petList}" >
+			<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+				<img src ="${e.pet_img_path}" class="abs">
+			</c:if>
+		</c:forEach>
+		<c:forEach var="e" items="${petList}" >
+			<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+				<img src ="${e.pet_img_path}" class="abs">
+			</c:if>
+		</c:forEach>
+		<c:forEach var="e" items="${petList}" >
+			<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+				<img src ="${e.pet_img_path}" class="abs">
+			</c:if>
+		</c:forEach>
+
 
 		<!-- ペットのきせかえ画像 -->
 		<c:forEach var="e" items="${closetList}" >

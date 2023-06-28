@@ -1,6 +1,4 @@
-/**
- *
- */
+
  //初回のみモーダルをすぐ出す判定。flagがモーダル表示のstart_open後に代入される
   var access = $.cookie('access')
   if(!access){
@@ -20,5 +18,3 @@
     $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
   }
   });
-
-  imgcloset1/hat1-1.png
