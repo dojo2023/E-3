@@ -53,9 +53,9 @@
 	<section id="info">
 
 	<h2>きせかえ</h2>
+	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 		<div class = "box1">
 			<div class = "grl">
-	<form method="POST" action="/Esan/Pet_homeServlet" id="closet_form">
 				<table class="border">
 				<c:set var="i" value="0"/>
 				<c:forEach var="e" items="${closetList}" >
@@ -65,19 +65,19 @@
 							<c:choose>
 								<c:when test='${e.closet_kind_id == 1}'>
 									<input id="hat_radio${i}" type="radio" value="${e.closet_img_id}" name="hatimg">
-									<label for="hat_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="closet" for="hat_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 2}'>
 									<input id="dress_radio${i}" type="radio" value="${e.closet_img_id}" name="dressimg">
-									<label for="dress_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="closet" for="dress_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 3}'>
 									<input id="shoes_radio${i}" type="radio" value="${e.closet_img_id}" name="shoesimg">
-									<label for="shoes_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="closet" for="shoes_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 								<c:when test='${e.closet_kind_id == 4}'>
 									<input id="accessory_radio${i}" type="radio" value="${e.closet_img_id}" name="accessoryimg">
-									<label for="accessory_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="closet" for="accessory_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 								</c:when>
 							</c:choose>
 							</div>
@@ -97,7 +97,7 @@
 		                		<c:choose>
 		                			<c:when test='${e.closet_kind_id == 5}'>
 									<input id="bg_radio${i}" type="radio" value="${e.closet_img_id}" name="backgroundimg">
-									<label for="bg_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
+									<label id="closet" for="bg_radio${i}"><img id="closet" src="${e.closet_img_path}"></label>
 									</c:when>
 								</c:choose>
 							</div>
@@ -113,7 +113,6 @@
 
 	</form>
 	</section>
-<div class="nonScroll"></div>
 	<!--吹き出し-->
 	<div class="balloon">
 		<span id="messagetarget">クリックでメッセージが変わるよ</span>
