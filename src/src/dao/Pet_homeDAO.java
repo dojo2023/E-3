@@ -326,6 +326,7 @@ public class Pet_homeDAO {
 
 //#--------------------------------------------------------------
 
+	//きせかえた服を着ている服として登録
 	public boolean updatetrue(String closet_img_id, String user_name) {
 		Connection conn = null;
 		boolean result = false;
@@ -372,6 +373,7 @@ public class Pet_homeDAO {
 
 //#--------------------------------------------------------------
 
+	//依然来ていた服をリセットするためにlast_closetをすべてfalse
 	public boolean updatedeletelastcloset(String user_name) {
 		Connection conn = null;
 		boolean result = false;
