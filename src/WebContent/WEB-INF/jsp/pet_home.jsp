@@ -215,17 +215,7 @@
 		</c:when>
 
 		<c:when test="${userdata.pet_id == 3}"><!-- いぬ -->
-			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
-					<img src ="${e.pet_img_path}" class="abs" id="head">
-				</c:if>
-			</c:forEach>
-			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
-					<img src ="${e.pet_img_path}" class="abs">
-				</c:if>
-			</c:forEach>
-			<c:forEach var="e" items="${petList}" >
+		    <c:forEach var="e" items="${petList}" >
 				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
 					<img src ="${e.pet_img_path}" class="abs" id="right">
 				</c:if>
@@ -238,6 +228,16 @@
 			<c:forEach var="e" items="${petList}" >
 				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
 					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${petList}" >
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
 				</c:if>
 			</c:forEach>
 
