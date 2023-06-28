@@ -82,15 +82,19 @@ for(let k=0;k<slen;k++){
     for(let i=0; i<24;i++){
         for(let j=0; j<=5;j++){
             if(i<10){
-                let colorday = "0"+i+":"+j+"9"
+                let colorday = "0"+i+":"+j+"9";
+                let colorfday = "0"+i+":"+j+"0";
                 let colordate = new Date(start_date + " " + colorday);
-                if(sdate <= colordate && fdate >= colordate){
+                let colorfdate = new Date(start_date + " " + colorfday);
+                if(sdate <= colordate && fdate >= colorfdate){
                     document.getElementById("0"+i+":"+j+"0" + "-" + k).setAttribute("bgcolor",color_code);
                 }
             }else{
-                let colorday = i+":"+j+"9"
+                let colorday = "0"+i+":"+j+"9";
+                let colorfday = "0"+i+":"+j+"0";
                 let colordate = new Date(start_date + " " + colorday);
-                if(sdate <= colordate && fdate >= colordate){
+                let colorfdate = new Date(start_date + " " + colorfday);
+                if(sdate <= colordate && fdate >= colorfdate){
                     document.getElementById(i+":"+j+"0" + "-" + k).setAttribute("bgcolor",color_code);
                 }
             }
