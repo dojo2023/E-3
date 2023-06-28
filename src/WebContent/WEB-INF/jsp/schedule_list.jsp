@@ -89,14 +89,15 @@
     </div>
 
 	<!-- 全件表示　なくてもいい -->
-    <div>
+    <!-- <div>
         <form method="POST" action="/Esan/Schedule_listServlet">
         	<input type="hidden" name="userid" value="ユーザ名">
             <input type="submit" name="values" value="スケジュール表示">
         </form>
     </div>
+    -->
 
-    <p>${date}のスケジュール</p>
+    <p id="schedate">${date}のスケジュール</p>
 
     <c:set var="i" value="0"/>
     <c:forEach var="e" items="${scheduleList}" >
@@ -117,8 +118,9 @@
 
     <div id="schedule">
     <c:set var="tdlength" value="${fn:length(scheduleList)}"/>
-    <div id="slength">${tdlength}</div>
+    <div id="slength" style="display:none">${tdlength}</div>
 
+	<c:if test="${tdlength != 0}">
         <table border>
         <c:forEach begin="0" end="23" step="1" var="hour">
 	        <c:forEach begin="0" end="5" step="1" var="minutes">
@@ -136,13 +138,22 @@
 	        		<c:otherwise><td class="hiddentime">${time}</td></c:otherwise>
 	        	</c:choose>
 
-	            <c:forEach begin="0" end="${tdlength}" step="1" var="tdnum">
-	            	<td id="${zero}${hour}:${minutes}0-${tdnum}"></td>
+	            <c:forEach begin="0" end="${tdlength-1}" step="1" var="tdnum">
+
+		            <c:choose>
+		        		<c:when test="${minutes == 0}"><td class="hourtime" id="${zero}${hour}:${minutes}0-${tdnum}"></td></c:when>
+		        		<c:when test="${minutes == 3}"><td class="halftime" id="${zero}${hour}:${minutes}0-${tdnum}"></td></c:when>
+		        		<c:otherwise><td class="hiddenborder" id="${zero}${hour}:${minutes}0-${tdnum}"></td></c:otherwise>
+		        	</c:choose>
 	            </c:forEach>
 	            </tr>
 	        </c:forEach>
         </c:forEach>
     	</table>
+    </c:if>
+    <c:if test="${tdlength == 0}">
+    	<p id="nonesche">スケジュールが登録されていません！</p>
+    </c:if>
     </div>
 
 <script src="js/jquery-3.6.4.min.js"></script>

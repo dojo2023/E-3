@@ -99,20 +99,23 @@
 /* ---------- 終 ---------- */
 
 #schedule table {
-  width: 1000px;
-  height: 500px;
+  width: 1200px;
+  height: 800px;
   table-layout: fixed;
+  border-collapse:collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #schedule td {
   width: 10rem;
-  /* border: none !important; */
   text-align: center;
   padding: 0px;
 }
 
 #schedule {
-  /* height: 300px; */
+  height: 500px;
+  resize:both;
   overflow: scroll;
 }
 
@@ -120,6 +123,36 @@
   display:none;
 }
 
+/* スケジュール完了ボタンを使えなくする */
 .true{
 	pointer-events: none;
 }
+
+#schedule .hiddentime{
+  border: none !important;
+  visibility: hidden;
+}
+
+.hiddenborder{
+  border: none !important;
+}
+
+.hourtime{
+  border: 2px #000000 solid;
+}
+
+.halftime{
+  border: 1px #000 dashed;
+}
+
+#schedate{
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 32px;
+}
+
+#nonesche{
+  font-family: sans-serif;
+  font-size: 24px;
+}
+

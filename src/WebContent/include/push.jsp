@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <c:set var="tdlength" value="${fn:length(scheduleList)}"/>
-<div id="slength">${tdlength}</div>
+<div id="slength" style="display:none">${tdlength}</div>
 <c:set var="i" value="0"/>
 <c:forEach var="e" items="${sessionscheduleList}" >
 <div class="schedule_data" id="schedule_id${i}" style="display:none">${e.schedule_id}</div>
