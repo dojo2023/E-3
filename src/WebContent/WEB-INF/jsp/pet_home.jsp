@@ -310,8 +310,8 @@
 
 		<c:when test="${userdata.pet_id == 5}"><!-- りす -->
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
-					<img src ="${e.pet_img_path}" class="abs" id="left">
+				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
+					<img src ="${e.pet_img_path}" class="abs">
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
@@ -320,8 +320,8 @@
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
-					<img src ="${e.pet_img_path}" class="abs">
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >

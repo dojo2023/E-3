@@ -9,6 +9,10 @@ body{
     /* background-color: #edefea; */
     background-color:#f4f2f3;
 }
+img{
+	position:absolute;
+	left:100px;
+}
 #user_name{
     margin-left: 20px;
     background-color: #cdcccc;
