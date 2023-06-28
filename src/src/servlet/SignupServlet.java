@@ -45,7 +45,7 @@ public class SignupServlet extends HttpServlet {
 
 		if ((un.equals("") && pw.equals("") && em.equals("") && pn.equals("")) || (un.equals("") && pw.equals("")) || (pw.equals("") && em.equals("")) || (em.equals("") && pn.equals(""))){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("未入力の項目があります", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※未入力の項目があります", "/Esan/SignupServlet"));
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
@@ -54,7 +54,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		else if (un.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("ユーザーネームを入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※ユーザーネームを入力してください", "/Esan/SignupServlet"));
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
@@ -63,7 +63,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		else if (pw.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("パスワードを入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※パスワードを入力してください", "/Esan/SignupServlet"));
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
@@ -72,7 +72,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		else if (em.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("メールアドレスを入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※メールアドレスを入力してください", "/Esan/SignupServlet"));
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
@@ -81,7 +81,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		else if (pn.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("ペット名を入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※ペット名を入力してください", "/Esan/SignupServlet"));
 
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
@@ -100,11 +100,11 @@ public class SignupServlet extends HttpServlet {
 		}
 			else if(logDao.insert(new Signup(un, pw, em, pn, pi)).equals("dup")) {
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("そのユーザーネームはすでに使われています！", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※そのユーザーネームはすでに使われています！", "/Esan/SignupServlet"));
 		}
 			else if(logDao.insert(new Signup(un, pw, em, pn, pi)).equals("don")) {
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("そのメールアドレスはすでに使われています！", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※そのメールアドレスはすでに使われています！", "/Esan/SignupServlet"));
 		}
 			// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");

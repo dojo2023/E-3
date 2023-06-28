@@ -43,7 +43,7 @@ public class InquiryServlet extends HttpServlet {
 
 		if (em.equals("") && co.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("未入力の項目があります", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※未入力の項目があります", "/Esan/SignupServlet"));
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiry.jsp");
 			dispatcher.forward(request, response);
@@ -52,7 +52,7 @@ public class InquiryServlet extends HttpServlet {
 
 		else if (em.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("メールアドレスを入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※メールアドレスを入力してください", "/Esan/SignupServlet"));
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiry.jsp");
 			dispatcher.forward(request, response);
@@ -61,7 +61,7 @@ public class InquiryServlet extends HttpServlet {
 
 		else if (co.equals("")){
 			// リクエストスコープにメッセージ、戻り先を格納する
-			request.setAttribute("result", new Result("お問い合わせ内容を入力してください", "/Esan/SignupServlet"));
+			request.setAttribute("result", new Result("※お問い合わせ内容を入力してください", "/Esan/SignupServlet"));
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiry.jsp");
 			dispatcher.forward(request, response);
