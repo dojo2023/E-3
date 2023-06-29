@@ -107,6 +107,42 @@ public class GachaServlet extends HttpServlet {
 			closet_id = "bg";
 		}
 
+
+        if(closet_id=="bg") {
+        	//きせかえ種類の中のどれかを決める
+    		int closetnum = (int)Math.ceil(Math.random() * 4);
+
+    		//データベースに送るcloset_img_id
+    		String gacharesult = closet_id + closetnum;
+    		System.out.println(gacharesult);
+    		String result = "OK";
+
+    		GachaDAO gDao = new GachaDAO();
+    		Gacha gachadata = gDao.selectgacha(gacharesult);
+
+
+    		//クローゼットテーブルにインサートする
+    		if(gachadata != null) {
+    			boolean insertOK = gDao.insertcloset(gachadata, user_name);
+    			if(insertOK) {
+    				System.out.println("インサート完了");
+    			}else {
+    				System.out.println("インサートできませんでした");
+    			}
+    		}else {
+    			System.out.println("そのきせかえは存在しません");
+    		}
+
+    		request.setAttribute("gachadata", gachadata);
+    		request.setAttribute("userdata", userdata);
+    		request.setAttribute("result", result);
+    		request.setAttribute("rarity", rarity);
+
+    		// 結果ページにフォワードする
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gacha.jsp");
+    		dispatcher.forward(request, response);
+        }
+        else {
 		//きせかえ種類の中のどれかを決める
 		int closetnum = (int)Math.ceil(Math.random() * 3);
 
@@ -139,6 +175,7 @@ public class GachaServlet extends HttpServlet {
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gacha.jsp");
 		dispatcher.forward(request, response);
+        }
 	}
 
 }
