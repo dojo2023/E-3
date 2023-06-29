@@ -173,6 +173,11 @@
 					<img src ="${e.pet_img_path}" class="abs">
 				</c:if>
 			</c:forEach>
+			<c:forEach var="e" items="${closetList}" >
+				<c:if test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
 				<c:if test='${fn: contains(e.pet_img_id,"legs")}'>
 					<img src ="${e.pet_img_path}" class="abs">
@@ -199,9 +204,6 @@
 			<c:forEach var="e" items="${closetList}" >
 			<c:choose>
 				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
-					<img src ="${e.closet_img_path}" class="abs">
-				</c:when>
-				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
 					<img src ="${e.closet_img_path}" class="abs">
 				</c:when>
 				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
@@ -263,13 +265,18 @@
 
 		<c:when test="${userdata.pet_id == 4}"><!-- なまけもの -->
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
-					<img src ="${e.pet_img_path}" class="abs" id="head">
+				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="right">
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
-					<img src ="${e.pet_img_path}" class="abs" id="left">
+				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
+					<img src ="${e.pet_img_path}" class="abs">
+				</c:if>
+			</c:forEach>
+			<c:forEach var="e" items="${closetList}" >
+				<c:if test='${e.closet_kind_id == 2 && e.last_closet == true}'>
+					<img src ="${e.closet_img_path}" class="abs">
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
@@ -278,13 +285,13 @@
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"body")}'>
-					<img src ="${e.pet_img_path}" class="abs">
+				<c:if test='${fn: contains(e.pet_img_id,"left")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="left">
 				</c:if>
 			</c:forEach>
 			<c:forEach var="e" items="${petList}" >
-				<c:if test='${fn: contains(e.pet_img_id,"right")}'>
-					<img src ="${e.pet_img_path}" class="abs" id="right">
+				<c:if test='${fn: contains(e.pet_img_id,"head")}'>
+					<img src ="${e.pet_img_path}" class="abs" id="head">
 				</c:if>
 			</c:forEach>
 
@@ -293,9 +300,6 @@
 			<c:forEach var="e" items="${closetList}" >
 			<c:choose>
 				<c:when test='${e.closet_kind_id == 1 && e.last_closet == true}'>
-					<img src ="${e.closet_img_path}" class="abs">
-				</c:when>
-				<c:when test='${e.closet_kind_id == 2 && e.last_closet == true}'>
 					<img src ="${e.closet_img_path}" class="abs">
 				</c:when>
 				<c:when test='${e.closet_kind_id == 3 && e.last_closet == true}'>
