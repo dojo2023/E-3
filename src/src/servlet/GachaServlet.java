@@ -111,7 +111,7 @@ public class GachaServlet extends HttpServlet {
         if(closet_id=="bg") {
 			rarity=1;
         	//きせかえ種類の中のどれかを決める
-    		int closetnum = (int)Math.ceil(Math.random() * 4);
+    		int closetnum = (int)Math.ceil(Math.random() * 5);
 
     		//データベースに送るcloset_img_id
     		String gacharesult = closet_id + closetnum;
