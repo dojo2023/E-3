@@ -29,6 +29,7 @@ public class GachaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		//session.setAttribute("user_name", "ユーザ名");
 		String user_name = (String)session.getAttribute("user_name");
 
 		//DAO宣言 スケジュールリスト コイン
@@ -111,6 +112,7 @@ public class GachaServlet extends HttpServlet {
 
 		//データベースに送るcloset_img_id
 		String gacharesult = closet_id + userdata.getPet_id() + "-" + closetnum;
+		System.out.println(gacharesult);
 		String result = "OK";
 
 		GachaDAO gDao = new GachaDAO();

@@ -53,7 +53,7 @@
 	    <table>
 	    <tr><td><img id="broken_egg"></td><td>レア度</td><td><img id="star"></td></tr>
 	    </table>
-	    <img src="${gachadata.closet_img_path}" class="result"><br><br>
+	    <img src="${gachadata.closet_img_path}" class="result" width="400" height="400"><br><br>
 	    <h1>${gachadata.closet_name}を手に入れた！</h1><br>
 	    <div class="ok_btn">
 	    <a href="/Esan/GachaServlet" id="ok_btn">OK</a>
