@@ -109,6 +109,7 @@ public class GachaServlet extends HttpServlet {
 
 
         if(closet_id=="bg") {
+			rarity=1;
         	//きせかえ種類の中のどれかを決める
     		int closetnum = (int)Math.ceil(Math.random() * 4);
 
@@ -143,11 +144,9 @@ public class GachaServlet extends HttpServlet {
     		dispatcher.forward(request, response);
         }
         else {
-		//きせかえ種類の中のどれかを決める
-		int closetnum = (int)Math.ceil(Math.random() * 3);
 
 		//データベースに送るcloset_img_id
-		String gacharesult = closet_id + userdata.getPet_id() + "-" + closetnum;
+		String gacharesult = closet_id + userdata.getPet_id() + "-" + rarity;
 		System.out.println(gacharesult);
 		String result = "OK";
 
