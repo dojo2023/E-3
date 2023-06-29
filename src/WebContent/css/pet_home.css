@@ -61,8 +61,8 @@ img.abs{
 }
 .box2{
 	display: flex;
-	/*position: absolute;*/
-	bottom: 0px;
+	position: absolute;
+	bottom: 15px;
 	gap: 150px;
 	height:80px;
 	margin-left:100px;
