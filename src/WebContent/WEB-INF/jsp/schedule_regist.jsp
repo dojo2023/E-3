@@ -10,6 +10,7 @@
 </head>
 <body>
 	<%@include file="/include/menu.jsp"%>
+	<%@include file="/include/push.jsp"%>
 <img alt="ロゴ" src="img/logo.png">
 <div class="container">
 <form action="/Esan/Schedule_registServlet" method="POST" id="regist">
@@ -47,5 +48,6 @@
     <script src="js/error_message_schedule.js"></script>
 </div>
 </div>
+<%@include file="/include/includeJS.jsp"%>
 </body>
 </html>
