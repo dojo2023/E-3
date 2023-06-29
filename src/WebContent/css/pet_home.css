@@ -3,7 +3,7 @@ body{
 	overflow:hidden;
 }
 .all{
-	padding-left:50px;
+	/*padding-left:50px;*/
 	position: relative;
 	height: 100vh;
 /*	display:flex;
