@@ -11,6 +11,7 @@
 </head>
 <body>
 <%@include file="/include/menu.jsp"%>
+<%@include file="/include/push.jsp"%>
 <img alt="ロゴ" src="img/logo.png">
 
 <p>${resultmessage}</p>
@@ -172,5 +173,6 @@
     <script src="js/error_message_schedule.js"></script>
 </form>
 </div>
+<%@include file="/include/includeJS.jsp"%>
 </body>
 </html>

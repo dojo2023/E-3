@@ -16,6 +16,7 @@
 <div class="all">
 <div class="main">
 	<%@include file="/include/menu.jsp"%>
+	<%@include file="/include/push.jsp"%>
 
 	<!-- きせかえ画像の数 -->
 	<c:set var="closetlen" value="${fn:length(closetList)}"/>
@@ -422,5 +423,6 @@
 <script src="js/modal_closet.js"></script>
 <script src="js/motion.js"></script>
 <script src="js/message.js"></script>
+<%@include file="/include/includeJS.jsp"%>
 </body>
 </html>

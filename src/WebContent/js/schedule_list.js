@@ -35,16 +35,20 @@ for(let k=0;k<slen;k++){
                         <span>`+start_time+`- `+finish_time+`</span><br>
                         <a href="#info`+k+`" class="modal-open">`+schedule_name+`</a>` +
                         `<section id="info`+k+`" style="display:none">
-                        <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
-                        <p>`+content+`</p>
+                        <h2 class="schedulename">`+schedule_name+`</h2>
+                        <h3 class="scheduletime">`+start_time+ "-"+ finish_time+`<h3>
+                        <p class="schedulecontent">`+content+`</p>
+                        <div class="modalbtn">
                         <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
                             <input type="hidden" name="schedule_id" value="`+schedule_id+`">
-                            <input type="submit" name="edit" value="編集">
+                            <input type="submit" name="edit" value="編集" class="editbtn">
                         </form>
                         <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
                             <input type="hidden" name="schedule_id" value="`+schedule_id+`">
-                            <input type="submit" name="values" value="削除">
+                            <input type="hidden" name="senddate" value=`+senddate+`>
+                            <input type="submit" name="values" value="削除" class="deletebtn">
                         </form>
+                        </div>
                         </section>`
                         ;
                     }
@@ -61,16 +65,20 @@ for(let k=0;k<slen;k++){
                         <span>`+start_time+`- `+finish_time+`</span><br>
                         <a href="#info` +k+`" class="modal-open">`+schedule_name+`</a>`+
                         `<section id="info`+k+`" style="display:none">
-                        <h2>`+schedule_name+ start_time+ "-"+ finish_time +`</h2>
-                        <p>`+content+`</p>
+                        <h2 class="schedulename">`+schedule_name+`</h2>
+                        <h3 class="scheduletime">`+start_time+ "-"+ finish_time+`<h3>
+                        <p class="schedulecontent">`+content+`</p>
+                        <div class="modalbtn">
                         <form method="POST" name="edit" action="/Esan/Schedule_editServlet">
                             <input type="hidden" name="schedule_id" value="`+schedule_id+`">
-                            <input type="submit" name="edit" value="編集">
+                            <input type="submit" name="edit" value="編集" class="editbtn">
                         </form>
                         <form method="POST" name="delete" action="/Esan/Schedule_listServlet">
                             <input type="hidden" name="schedule_id" value="`+schedule_id+`">
-                            <input type="submit" name="values" value="削除">
+                            <input type="hidden" name="senddate" value=`+senddate+`>
+                            <input type="submit" name="values" value="削除" class="deletebtn">
                         </form>
+                        </div>
                         </section>`
                         ;
                     }

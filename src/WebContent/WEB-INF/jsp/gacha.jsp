@@ -15,6 +15,7 @@
 
 <body>
 <%@include file="/include/menu.jsp"%>
+<%@include file="/include/push.jsp"%>
 <p id="closet_img_path">${gachadata.closet_img_path}</p>
 <p id="result">${result}</p>
 <p id="rarity">${rarity}</p>
@@ -67,5 +68,6 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="ano
 <!--自作のJS-->
 <script src="/Esan/js/modal_gacha_result.js"></script>
 <script src="/Esan/js/gacha.js"></script>
+<%@include file="/include/includeJS.jsp"%>
 </body>
 </html>

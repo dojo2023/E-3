@@ -1,8 +1,8 @@
-let slen = document.getElementById("slength").textContent;
+let splen = document.getElementById("slength").textContent;
 let pet_id = document.getElementById("pet_id").textContent;
 
 function GoPush(){
-for(let k=0;k<slen;k++){
+for(let k=0;k<splen;k++){
     let schedule_name = document.getElementById("schedule_name" + k).textContent;
     let content = document.getElementById("content" + k).textContent;
 
