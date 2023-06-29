@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/Esan/css/modal_closet.css">
 </head>
 <body>
+<%@include file="/include/menu.jsp"%>
 <div class="all">
 <div class="main">
 
@@ -423,7 +424,6 @@
 <script src="js/motion.js"></script>
 <script src="js/message.js"></script>
 <%@include file="/include/includeJS.jsp"%>
-<%@include file="/include/menu.jsp"%>
 <%@include file="/include/push.jsp"%>
 </body>
 </html>
