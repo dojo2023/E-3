@@ -132,6 +132,7 @@ public class GachaServlet extends HttpServlet {
 		request.setAttribute("gachadata", gachadata);
 		request.setAttribute("userdata", userdata);
 		request.setAttribute("result", result);
+		request.setAttribute("rarity", rarity);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gacha.jsp");

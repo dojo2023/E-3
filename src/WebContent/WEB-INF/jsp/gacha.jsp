@@ -17,7 +17,7 @@
 <%@include file="/include/menu.jsp"%>
 <p id="closet_img_path">${gachadata.closet_img_path}</p>
 <p id="result">${result}</p>
-<p id="rarity">${gachadata.rarity}</p>
+<p id="rarity">${rarity}</p>
 <p id="alert">${alert}</p>
 	<div class="content1">
 	    <div class="container"><div class="rotate_chicken"><img src="/Esan/img/chicken.png"></div></div><br>
