@@ -18,6 +18,8 @@
 </head>
 
 <body>
+	<%@include file="/include/menu.jsp"%>
+	<%@include file="/include/push.jsp"%>
 
 	<!-- コインの追加処理 ログイン時、スケジュール完了時 -->
     <div style="display:none">
@@ -113,7 +115,6 @@
     <div class="schedule_data" id="schedule_done${i}" style="display:none">${e.schedule_done}</div>
     <c:set var="i" value="${i+1}"/>
     </c:forEach>
-    <%@include file="/include/push.jsp"%>
     <div class="schedule_data" id="senddate" style="display:none">${date}</div>
 
     <div id="schedule">

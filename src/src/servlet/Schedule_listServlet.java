@@ -193,6 +193,25 @@ public class Schedule_listServlet extends HttpServlet {
 			else {						// 削除失敗
 				request.setAttribute("result","スケジュールを削除できませんでした。");
 			}
+
+			//日付を受け取り、その日のスケジュールを表示
+			String strdate = request.getParameter("senddate");
+			strdate = strdate.replaceAll("/", "-");
+			Date date= Date.valueOf(strdate);
+
+			List<Schedule> scheduleList = sDao.selectdate(date, user_name);
+
+			for(Schedule e: scheduleList) {
+				e.setStart_time(e.getStart_time().substring(0, 5));
+				e.setFinish_time(e.getFinish_time().substring(0, 5));
+				e.setStart_hour(e.getStart_time().substring(0, 2));
+				e.setFinish_hour(e.getFinish_time().substring(0, 2));
+			}
+
+			// スケジュールの検索結果と表示する日付をリクエストスコープに格納する
+			request.setAttribute("scheduleList", scheduleList);
+			request.setAttribute("date", date);
+
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule_list.jsp");
 			dispatcher.forward(request, response);
