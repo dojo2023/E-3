@@ -118,6 +118,7 @@ public class Schedule_listServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		//sessionresultmessageを削除する
 		session.removeAttribute("sessionresultmessage");
+		session.removeAttribute("registOK");
 
 		//valuesの値で処理を決める
 		request.setCharacterEncoding("UTF-8");

@@ -86,6 +86,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					schedule_id, user_name, schedule_name, start_date, start_time, finish_date, finish_time, color_id, content))) {
 				//登録成功
 				session.setAttribute("sessionresultmessage", "編集が完了しました。");
+				session.removeAttribute("registOK");
 				response.sendRedirect("/Esan/Schedule_listServlet");
 				return;
 			}else{

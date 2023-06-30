@@ -27,7 +27,7 @@
     	<a href="#coinplus" class="modal-open" id="coinbtn"></a>
     	<section id="coinplus">
     		<h2>${coinplus.event_name}</h2>
-    		<p>コインが${coinplus.coinnum}枚追加！</p>
+    		<p>ふっくらコインが${coinplus.coinnum}枚追加！</p>
     	</section>
     </div>
 
